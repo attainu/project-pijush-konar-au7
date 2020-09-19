@@ -12,10 +12,10 @@ require('./src/db/keys')
 // const keys = require('./config/keys');
 
 // Load routes
-const users = require('./src/routes/users');
-// const profile = require('./routes/api/profile');
-// const courses = require('./routes/api/courses');
-// const subjects = require('./routes/api/subjects');
+import users from './src/routes/users'
+import profile from './src/routes/profile';
+import courses from './src/routes/courses';
+import subjects from './src/routes/subjects';
 
 const app = express();
 const port = process.env.PORT || 8080;
@@ -59,9 +59,9 @@ app.use(passport.session());
 
 
 app.use('/users', users);
-// app.use('/profile', profile);
-// app.use('/courses', courses);
-// app.use('/subjects', subjects);
+app.use('/profile', profile);
+app.use('/courses', courses);
+app.use('/subjects', subjects);
 app.get('/email/confirm/:id', emailController.confirmEmail);
 
 if (setting.isProduction) {

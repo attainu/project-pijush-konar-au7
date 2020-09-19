@@ -70,7 +70,7 @@ router.post('/register', async (req, res, next) => {
     }
 });
 
-// @route   POST api/users/login
+// @route   POST users/login
 // @desc    Login User / Returning JWT Token
 // @access  Public
 router.post('/login', async (req, res) => {
@@ -134,7 +134,7 @@ router.post('/login', async (req, res) => {
     }
 });
 
-// @route   GET api/users/current
+// @route   GET users/current
 // @desc    Return current user
 // @access  Private
 router.get('/current', passport.authenticate('jwt', { session: false }), (req, res) => {
@@ -147,7 +147,7 @@ router.get('/current', passport.authenticate('jwt', { session: false }), (req, r
    }); 
 });
 
-// @route   POST api/users/admin
+// @route   POST users/admin
 // @desc    Updates the isAdmin property
 // @access  Private
 router.post('/admin', passport.authenticate('jwt', { session: false}), (req, res) => {
