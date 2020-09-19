@@ -4,7 +4,7 @@
 // extensible if the application needs to send different email templates
 // (eg. unsubscribe) in the future.
 
-const url = process.env.NODE_ENV === 'production' ? process.env.hostedClientURL : 'localhost:3000';
+const url = process.env.NODE_ENV === 'production' ? process.env.hostedClientURL : 'localhost:5000';
 
 module.exports = {
   confirm: id => {
@@ -23,6 +23,7 @@ module.exports = {
           text-align: center;
         display: block;
           font-family: "Roboto", Helvetica, Veranda, sans-serif;
+
       }
       a:hover {
         background-color: #97bece;

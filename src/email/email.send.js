@@ -1,11 +1,12 @@
-const sgMail = require('@sendgrid/mail');
+import sgMail from '@sendgrid/mail';
+
 sgMail.setApiKey(process.env.SENDGRID_KEY)
 
 module.exports = async (to, content) => {
   const config = {
     to: to,
-    from: 'attainuchatapp@gmail.com',
-    subject: 'TutorAPP Email Confirmation',
+    from: 'mondalsaidul3232@gmail.com',
+    subject: 'TutorUP Email Confirmation',
     html: content
   }
 

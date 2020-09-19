@@ -1,6 +1,4 @@
-import mongoose from 'mongoose'
-
-const Schema = mongoose.Schema;
+import mongoose, { Schema } from 'mongoose';
 
 const UserSchema = new Schema({
     firstname: {
@@ -41,7 +39,7 @@ const UserSchema = new Schema({
     }
 });
 
-UserSchema.virtual('fullName').get(() => this.firstname + ' ' + this.lastname);
+UserSchema.virtual('fullName').get(() => this.firstname + ' ' + this.lastname );
 
 const User = mongoose.model('users', UserSchema);
 
