@@ -52,6 +52,6 @@ ProfileSchema.index({
     }
 });
 
-const Profile = mongoose.model('profile', ProfileSchema); 
+const Profile = mongoose.model('profile', ProfileSchema);
 
-module.exports = Profile;
+module.exports = Profile
