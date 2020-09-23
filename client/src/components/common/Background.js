@@ -39,8 +39,8 @@ class Background extends Component {
     return (
         <div>
           <div id="bg">
-            <img src={image} id="image-h" alt="" />
-            <img src={imageV} id="image-v" alt="" />
+            <img src={image} alt=""/>
+            <img src={imageV} alt=""/>
           </div>
         </div>
     );

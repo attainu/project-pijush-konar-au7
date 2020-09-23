@@ -4,6 +4,9 @@ import { connect } from 'react-redux';
 import { loginUser } from '../../redux/actions/authActions';
 import { Link } from 'react-router-dom';
 
+//Background
+import Background from '../common/Background'
+
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
@@ -11,7 +14,6 @@ import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import LockIcon from '@material-ui/icons/LockOutlined';
 import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
 
 const styles = theme => ({
@@ -37,6 +39,9 @@ const styles = theme => ({
     width: '100%', // Fix IE 11 issue.
     marginTop: theme.spacing.unit,
   },
+  h3: {
+    margin:"",
+  }
 });
 
 class Login extends Component {
@@ -83,15 +88,15 @@ class Login extends Component {
         const { errors } = this.state;
         const { classes } = this.props;
         return (
+          <React.Fragment>
+          <Background /> 
             <div className={classes.main}>
               <Paper className={classes.paper} elevation={3}>
                 <Avatar className="blueAvatar">
                   <LockIcon />
                 </Avatar>
-                <Typography component="h1" variant="h5">
-                  Sign in
-                </Typography>
                 <form className={classes.form} onSubmit={this.onSubmit}>
+                <FormControl ><h3 className={classes.h3}>Signin</h3></FormControl>
                   <FormControl margin="normal" required fullWidth>
                     <InputLabel htmlFor="email">User Email</InputLabel>
                     <Input id="email" 
@@ -106,25 +111,27 @@ class Login extends Component {
                     <InputLabel htmlFor="password">Password</InputLabel>
                     <Input name="password" type="password" id="password" autoComplete="current-password" 
                     onChange={this.onChange}/>
-                  </FormControl>
+                  
                   <span className="error">{errors.password}</span>      
                   <Button
                     type="submit"
                     fullWidth
                     variant="contained"
-                    color="default"
+                    color="secondary"
                     className="purpleSubmit"
                   >
                     Sign in
                   </Button>
+                  <div className="link-container">
+                    <Link to="/register" className="link reg-link">
+                        New user? Click here to register!
+                    </Link>
+                  </div>
+                  </FormControl>
                 </form>
-              </Paper>
-              <div className="link-container">
-                <Link to="/register" className="link reg-link">
-                    New user? Click here to register!
-                </Link>
-              </div>
+              </Paper>           
             </div>
+            </React.Fragment>
           );
     }
 }

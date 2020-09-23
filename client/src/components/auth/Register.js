@@ -4,21 +4,26 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import isEmpty from '../../utils/is-empty';
+
 // redux action
 import { registerUser, clearErrors } from '../../redux/actions/authActions';
+
+//Background
+import Background from '../common/Background'
+
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
+import InputAdornment from '@material-ui/core/InputAdornment';
 import Paper from '@material-ui/core/Paper';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
 
 const styles = theme => ({
@@ -58,6 +63,9 @@ const styles = theme => ({
     form: {
       width: '100%', // Fix IE 11 issue.
       marginTop: theme.spacing.unit,
+    },
+    h3: {
+      margin:'auto',
     }
   });
 class Register extends Component {
@@ -111,13 +119,13 @@ class Register extends Component {
         const { classes, errors } = this.props;
 
         return (
+          <React.Fragment>
+          <Background /> 
             <div className={classes.main}>
               <Paper className={classes.paper} elevation={3}>
-                <Avatar className="blueAvatar" />
-                <Typography component="h1" variant="h5">
-                  Register
-                </Typography>
+              <Avatar className="blueAvatar"/>
                 <form className={classes.container} autoComplete="off" onSubmit={this.onSubmit}>
+                  <FormControl ><h3 className={classes.h3}>Signup</h3></FormControl>
                   <FormControl margin="normal" required fullWidth>
                     <InputLabel htmlFor="firstname">First Name</InputLabel>
                     <Input id="firstname" name="firstname" onChange={this.onChange} autoFocus/>
@@ -133,6 +141,7 @@ class Register extends Component {
                       name="email" 
                       autoComplete="email" 
                       onChange={this.onChange}
+                      endAdornment={<InputAdornment ></InputAdornment>}
                     />
 
                   </FormControl>
@@ -146,7 +155,7 @@ class Register extends Component {
                   <FormControl margin="normal" required fullWidth>
                     <InputLabel htmlFor="password2">Confirm Password</InputLabel>
                     <Input name="password2" type="password" id="password2" autoComplete="current-password" onChange={this.onChange}/>
-                  </FormControl>
+                  
                   <span className="error">{this.state.errors.password2}</span>
                   <Button
                     type="submit"
@@ -157,13 +166,14 @@ class Register extends Component {
                   >
                     Register
                   </Button>
-                </form>
-              </Paper>
-              <div className="link-container">
-                <Link to="/login" className="link reg-link">
+                  <div className="link-container">
+                    <Link to="/login" className="link reg-link">
                     Existing user? Click here to login!
                 </Link>
               </div>
+              </FormControl>
+                </form>
+              </Paper>
                 {isEmpty(errors) && isEmpty(this.state.errors) ?
                 <Dialog
                   open={this.state.openDialog}
@@ -187,6 +197,7 @@ class Register extends Component {
                 <React.Fragment></React.Fragment>
                 }
             </div>
+            </React.Fragment>
           );
     }
 
