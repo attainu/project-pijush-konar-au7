@@ -6,7 +6,7 @@ module.exports = async (to, content) => {
   const config = {
     to: to,
     from: 'pjk612@gmail.com',
-    subject: 'TutorAPP Email Confirmation',
+    subject: 'GuruKul Email Confirmation',
     html: content
   }
 
