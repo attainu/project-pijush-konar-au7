@@ -42,7 +42,7 @@ module.exports = {
   }        
     </style>
     <div>
-    <h1>Welcome to Gurukul!</h1>
+    <h1>Welcome to GuruKul!</h1>
         <a href='http://${url}/confirm/${id}'>
             click to confirm email
         </a>
