@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import isEmpty from '../../utils/is-empty';
 // redux action
-import { registerUser, clearErrors } from '../../redux/actions/authAction';
+import { registerUser, clearErrors } from '../../redux/actions/authActions';
 
 import SentimentSatisfiedAlt from '@material-ui/icons/SentimentSatisfiedAlt';
 import Avatar from '@material-ui/core/Avatar';
