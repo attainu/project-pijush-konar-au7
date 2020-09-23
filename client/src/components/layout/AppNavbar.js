@@ -1,10 +1,8 @@
-  
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { connect } from 'react-redux';
-
 import './layout.css';
 
 // Material UI imports
@@ -182,6 +180,8 @@ class AppNavbar extends Component {
                           <ChevronLeftIcon />
                         </IconButton>
                     </div>
+                    {isAuthenticated ? <List className={classes.pb0}></List> :
+                      <List className={classes.pb0}></List>}
                     {isAuthenticated && 
                     <ListItem button onClick={this.onLogoutClick}>
                       <ListItemIcon>
@@ -192,6 +192,7 @@ class AppNavbar extends Component {
                     }
                   </div>
                   </Drawer>
+
             </div>
         );
     }
@@ -204,7 +205,9 @@ AppNavbar.propTypes = {
 };
 
 const mapStateToProps = state => ({
+
     auth: state.auth,
   });
-  
-  export default connect(mapStateToProps)(withStyles(styles)(AppNavbar));
+
+export default connect(mapStateToProps)(withStyles(styles)(AppNavbar));
+

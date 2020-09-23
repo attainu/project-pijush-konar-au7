@@ -7,8 +7,6 @@ import isEmpty from '../../utils/is-empty';
 
 // redux action
 import { registerUser, clearErrors } from '../../redux/actions/authActions';
-
-
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
