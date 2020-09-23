@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { connect } from 'react-redux';
+
+// import { secondaryListItems, authLinks, guestLinks, adminLinks } from './AppNavbarLinks';
 import './layout.css';
 
 // Material UI imports
@@ -10,6 +12,8 @@ import { withStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
+import List from '@material-ui/core/List';
+import Divider from '@material-ui/core/Divider';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -138,7 +142,7 @@ class AppNavbar extends Component {
     render() {
         const { open } = this.state;
         const { classes } = this.props;
-        const { isAuthenticated } = this.props.auth;
+        const { isAuthenticated, user } = this.props.auth;
 
         return (
             <div>
@@ -191,8 +195,7 @@ class AppNavbar extends Component {
                     </ListItem>
                     }
                   </div>
-                  </Drawer>
-
+                </Drawer>
             </div>
         );
     }
@@ -205,9 +208,7 @@ AppNavbar.propTypes = {
 };
 
 const mapStateToProps = state => ({
-
-    auth: state.auth,
-  });
+  auth: state.auth,
+});
 
 export default connect(mapStateToProps)(withStyles(styles)(AppNavbar));
-
