@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { connect } from 'react-redux';
 
-// import { secondaryListItems, authLinks, guestLinks, adminLinks } from './AppNavbarLinks';
+import { secondaryListItems, guestLinks } from './AppNavbarLinks';
 import './layout.css';
 
 // Material UI imports
@@ -184,7 +184,7 @@ class AppNavbar extends Component {
                         </IconButton>
                     </div>
                     {isAuthenticated ? <List className={classes.pb0}></List> :
-                      <List className={classes.pb0}></List>}
+                      <List className={classes.pb0}>{guestLinks}</List>}
                     {isAuthenticated && 
                     <ListItem button onClick={this.onLogoutClick}>
                       <ListItemIcon>
@@ -193,6 +193,7 @@ class AppNavbar extends Component {
                       <ListItemText primary="Logout" />
                     </ListItem>
                     }
+                    <List>{secondaryListItems}</List>
                   </div>
                 </Drawer>
             </div>
