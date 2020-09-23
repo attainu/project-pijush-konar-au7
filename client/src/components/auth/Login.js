@@ -67,7 +67,7 @@ class Login extends Component {
         e.preventDefault();
         
         const { email, password } = this.state;
-        const upEmail = `${email}@up.edu`;
+        const upEmail = `${email}`;
         const userData = {
             email: upEmail,
             password: password
@@ -112,6 +112,7 @@ class Login extends Component {
                     type="submit"
                     fullWidth
                     variant="contained"
+                    color="default"
                     className="purpleSubmit"
                   >
                     Sign in

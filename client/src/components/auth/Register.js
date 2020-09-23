@@ -118,7 +118,7 @@ class Register extends Component {
               <Paper className={classes.paper} elevation={3}>
               <Avatar className="blueAvatar"/>
                 <Typography component="h1" variant="h5">
-                  <b>Register</b>
+                  Register
                 </Typography>
                 <form className={classes.container} autoComplete="off" onSubmit={this.onSubmit}>
                   <FormControl margin="normal" required fullWidth>

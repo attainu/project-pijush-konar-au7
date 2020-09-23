@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';
 import store from './redux/store';
 
 //comopnents
+import AppNavbar from './components/layout/AppNavbar';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 
@@ -17,6 +18,7 @@ class App extends Component {
       <Provider store={ store }>
              <div className="App">
                 <Router>
+                  <AppNavbar />
                   <Switch>
                     <Route exact path="/Register" component={Register} /> 
                     <Route exact path="/login" component={Login} />
