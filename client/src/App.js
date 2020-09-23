@@ -10,6 +10,7 @@ import store from './redux/store';
 import withStyles from '@material-ui/core/styles/withStyles';
 
 //comopnents
+import AppLanding from './components/layout/AppLanding'
 import AppNavbar from './components/layout/AppNavbar';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
@@ -35,6 +36,7 @@ class App extends Component {
                   <main className={classes.content}/>
                     <div className={classes.appBarSpacer} />
                     <Switch>
+                      <Route exact path="/" component={AppLanding} />
                       <Route exact path="/Register" component={Register} /> 
                       <Route exact path="/login" component={Login} />
                     </Switch>  
