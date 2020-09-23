@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import Button from '@material-ui/core/Button';
 
+<<<<<<< HEAD
 // importing horizontal images for the background
+=======
+>>>>>>> 9e3088aded621195b528fa0f48dc223afeaf9af8
 import Img1 from '../../images/background-1.png';
 import Img2 from '../../images/background-2.png';
 import Img3 from '../../images/background-3.png';
@@ -11,8 +14,11 @@ import Img5 from '../../images/background-5.png';
 import Img6 from '../../images/background-6.png';
 import Img7 from '../../images/background-7.png';
 import Img8 from '../../images/background-8.png';
+<<<<<<< HEAD
 
 // importing vertical images for the background
+=======
+>>>>>>> 9e3088aded621195b528fa0f48dc223afeaf9af8
 import Img1v from '../../images/background-1-v.png';
 import Img2v from '../../images/background-2-v.png';
 import Img3v from '../../images/background-3-v.png';
@@ -21,10 +27,14 @@ import Img5v from '../../images/background-5-v.png';
 import Img6v from '../../images/background-6-v.png';
 import Img7v from '../../images/background-7-v.png';
 import Img8v from '../../images/background-8-v.png';
+<<<<<<< HEAD
 
 // importing logo
 import Logo from '../../images/background-logo.png';
 
+=======
+import Logo from '../../images/background-logo.png';
+>>>>>>> 9e3088aded621195b528fa0f48dc223afeaf9af8
 import '../layout/layout.css';
 
 class VideoBackground extends Component {
@@ -51,7 +61,11 @@ class VideoBackground extends Component {
           <div className="centered">
             <img src={Logo} className="logo-width" alt="logo" />
             <div>
+<<<<<<< HEAD
               <Button aria-label="Cancel" fullWidth variant="contained" align="center" color="secondary" className="Button startButton" component={Link} to="/login">
+=======
+              <Button aria-label="Cancel" fullWidth variant="contained" color="secondary" align="center" className="Button startButton" component={Link} to="/login">
+>>>>>>> 9e3088aded621195b528fa0f48dc223afeaf9af8
                   click here to get started!
               </Button>
             </div>
