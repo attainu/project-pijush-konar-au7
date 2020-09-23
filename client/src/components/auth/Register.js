@@ -4,17 +4,17 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import isEmpty from '../../utils/is-empty';
-// redux action
-import { registerUser, clearErrors } from '../../redux/actions/authAction';
 
-import SentimentSatisfiedAlt from '@material-ui/icons/SentimentSatisfiedAlt';
+// redux action
+import { registerUser, clearErrors } from '../../redux/actions/authActions';
+
+
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
-import InputAdornment from '@material-ui/core/InputAdornment';
 import Paper from '@material-ui/core/Paper';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -116,11 +116,9 @@ class Register extends Component {
         return (
             <div className={classes.main}>
               <Paper className={classes.paper} elevation={3}>
-                <Avatar className="blueAvatar">
-                  <SentimentSatisfiedAlt />
-                </Avatar>
+              <Avatar className="blueAvatar"/>
                 <Typography component="h1" variant="h5">
-                  Register
+                  <b>Register</b>
                 </Typography>
                 <form className={classes.container} autoComplete="off" onSubmit={this.onSubmit}>
                   <FormControl margin="normal" required fullWidth>
@@ -138,7 +136,6 @@ class Register extends Component {
                       name="email" 
                       autoComplete="email" 
                       onChange={this.onChange}
-                      endAdornment={<InputAdornment ></InputAdornment>}
                     />
 
                   </FormControl>

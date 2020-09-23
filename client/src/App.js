@@ -8,6 +8,7 @@ import store from './redux/store';
 
 //comopnents
 import Register from './components/auth/Register';
+import Login from './components/auth/Login';
 
 class App extends Component {
   render() {
@@ -17,7 +18,8 @@ class App extends Component {
              <div className="App">
                 <Router>
                   <Switch>
-                    <Route exact path="/" component={Register} /> 
+                    <Route exact path="/Register" component={Register} /> 
+                    <Route exact path="/login" component={Login} />
                   </Switch>  
                 </Router>
              </div>
