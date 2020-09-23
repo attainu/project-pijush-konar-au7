@@ -1,5 +1,6 @@
-# Robin - GuruKul App
+# GuruKul App
 
+A Peer to peer educational website.
 The objective of this website/project is to provide a social platform to students and teachers from any university to Join As a Student or Teacher where they can teach or learn from one of the Teacher. 
 
 ---
@@ -78,7 +79,7 @@ Open `project-pijush-konar-au7` then create and dev.env file and edit it with yo
     $ npm run dev
 ```
 
-## Running The Test
+## Running The Tests
 
 ```sh
     $ npm run cover
