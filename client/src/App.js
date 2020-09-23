@@ -14,7 +14,6 @@ import AppLanding from './components/layout/AppLanding'
 import AppNavbar from './components/layout/AppNavbar';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
-import AppLanding from './components/layout/AppLanding';
 
 const styles = theme => ({
   content: {
