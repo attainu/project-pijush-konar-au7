@@ -59,7 +59,7 @@ class Login extends Component {
       }
 
       if (nextProps.errors) {
-        this.setState({ errors: nextProps.errors });
+        return ({ errors: nextProps.errors });
       }
       return null;
     }
@@ -99,14 +99,14 @@ class Login extends Component {
                     name="email" 
                     autoComplete="email" 
                     autoFocus 
-                    onChange={this.onChange}
+                    onChange={() => this.onChange}
                     />
                   </FormControl>
                   <span className="error">{errors.email}</span>
                   <FormControl margin="normal" required fullWidth>
                     <InputLabel htmlFor="password">Password</InputLabel>
                     <Input name="password" type="password" id="password" autoComplete="current-password" 
-                    onChange={this.onChange}/>
+                    onChange={() => this.onChange}/>
                   </FormControl>
                   <span className="error">{errors.password}</span>      
                   <Button
@@ -132,7 +132,7 @@ class Login extends Component {
 Login.propTypes = {
   loginUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
-  // errors: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired,
 };
 
