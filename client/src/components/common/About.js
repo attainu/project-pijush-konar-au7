@@ -55,7 +55,7 @@ class About extends Component {
                 <img src={imageV} id="image-v" alt="" />
               </div>
               <div className="about padding20">
-                    <Grid container spacing={16}>
+                    <Grid container spacing={1}>
                      <Grid item xs={12}>
                       <Typography variant="h3" align="center" className="about-title" id="lg-header">
                         A Peer To Peer Educational Website.
