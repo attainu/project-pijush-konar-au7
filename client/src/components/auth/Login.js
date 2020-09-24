@@ -53,7 +53,7 @@ class Login extends Component {
       }
     }
 
-    componentWillReceiveProps(nextProps) {
+    static getDerivedStateFromProps(nextProps) {
       if (nextProps.auth.isAuthenticated) {
         this.props.history.push('/profile');
       }
@@ -61,6 +61,7 @@ class Login extends Component {
       if (nextProps.errors) {
         this.setState({ errors: nextProps.errors });
       }
+      return null;
     }
     
     onSubmit = e => {
