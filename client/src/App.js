@@ -14,6 +14,7 @@ import AppLanding from './components/layout/AppLanding'
 import AppNavbar from './components/layout/AppNavbar';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
+import About from './components/common/About';
 
 const styles = theme => ({
   content: {
@@ -39,6 +40,7 @@ class App extends Component {
                       <Route exact path="/" component={AppLanding} />
                       <Route exact path="/Register" component={Register} /> 
                       <Route exact path="/login" component={Login} />
+                      <Route exact path="/about" component={About} />
                     </Switch>  
                 </Router>
              </div>
