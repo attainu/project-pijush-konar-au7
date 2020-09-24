@@ -27,7 +27,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "proxy": "https://tution-media.herokuapp.com/",
+  "proxy": "https://tutionapp.herokuapp.com/",
   "eslintConfig": {
     "extends": "react-app"
   },
