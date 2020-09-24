@@ -4,23 +4,23 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import isEmpty from '../../utils/is-empty';
-
 // redux action
 import { registerUser, clearErrors } from '../../redux/actions/authActions';
 
+import SentimentSatisfiedAlt from '@material-ui/icons/SentimentSatisfiedAlt';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
-import InputAdornment from '@material-ui/core/InputAdornment';
 import Paper from '@material-ui/core/Paper';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
 
 const styles = theme => ({
@@ -29,8 +29,8 @@ const styles = theme => ({
       flexWrap: 'wrap',
     },
     textField: {
-      marginLeft: theme.spacing.unit,
-      marginRight: theme.spacing.unit,
+      marginLeft: theme.spacing(1),
+      marginRight: theme.spacing(1),
       width: 200,
     },
     dense: {
@@ -42,27 +42,24 @@ const styles = theme => ({
     main: {
       width: 'auto',
       display: 'block', // Fix IE 11 issue.
-      marginLeft: theme.spacing.unit * 3,
-      marginRight: theme.spacing.unit * 3,
-      [theme.breakpoints.up(400 + theme.spacing.unit * 3 * 2)]: {
+      marginLeft: theme.spacing(3),
+      marginRight: theme.spacing(3),
+      [theme.breakpoints.up(400 + theme.spacing(3) * 2)]: {
         width: 400,
         marginLeft: 'auto',
         marginRight: 'auto',
       },
     },
     paper: {
-      marginTop: theme.spacing.unit * 8,
+      marginTop: theme.spacing(8),
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
-      padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 3}px ${theme.spacing.unit * 3}px`,
+      padding: `${theme.spacing(3)}px ${theme.spacing(3)}px ${theme.spacing(3)}px`,
     },
     form: {
       width: '100%', // Fix IE 11 issue.
-      marginTop: theme.spacing.unit,
-    },
-    h3: {
-      margin:'auto',
+      marginTop: theme.spacing(1),
     }
   });
 class Register extends Component {
@@ -118,10 +115,13 @@ class Register extends Component {
         return (
             <div className={classes.main}>
               <Paper className={classes.paper} elevation={3}>
-              <Avatar className="blueAvatar"/>
+                <Avatar className="blueAvatar">
+                  <SentimentSatisfiedAlt />
+                </Avatar>
+                <Typography component="h1" variant="h5">
+                  Register
+                </Typography>
                 <form className={classes.container} autoComplete="off" onSubmit={this.onSubmit}>
-                
-                  <FormControl ><h3 className={classes.h3}>Signup</h3></FormControl>
                   <FormControl margin="normal" required fullWidth>
                     <InputLabel htmlFor="firstname">First Name</InputLabel>
                     <Input id="firstname" name="firstname" onChange={this.onChange} autoFocus/>
@@ -137,7 +137,6 @@ class Register extends Component {
                       name="email" 
                       autoComplete="email" 
                       onChange={this.onChange}
-                      endAdornment={<InputAdornment ></InputAdornment>}
                     />
 
                   </FormControl>
@@ -151,7 +150,7 @@ class Register extends Component {
                   <FormControl margin="normal" required fullWidth>
                     <InputLabel htmlFor="password2">Confirm Password</InputLabel>
                     <Input name="password2" type="password" id="password2" autoComplete="current-password" onChange={this.onChange}/>
-                  
+                  </FormControl>
                   <span className="error">{this.state.errors.password2}</span>
                   <Button
                     type="submit"
@@ -162,14 +161,13 @@ class Register extends Component {
                   >
                     Register
                   </Button>
-                  <div className="link-container">
-                    <Link to="/login" className="link reg-link">
+                </form>
+              </Paper>
+              <div className="link-container">
+                <Link to="/login" className="link reg-link">
                     Existing user? Click here to login!
                 </Link>
               </div>
-              </FormControl>
-                </form>
-              </Paper>
                 {isEmpty(errors) && isEmpty(this.state.errors) ?
                 <Dialog
                   open={this.state.openDialog}
@@ -201,7 +199,7 @@ class Register extends Component {
 Register.propTypes = {
   registerUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
-  errors: PropTypes.object.isRequired,
+  // errors: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired,
 };
 

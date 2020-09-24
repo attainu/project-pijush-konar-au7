@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { connect } from 'react-redux';
 
+import { logoutUser } from '../../redux/actions/authActions';
+import { clearCurrentProfile } from '../../redux/actions/profileActions';
 import { secondaryListItems, guestLinks } from './AppNavbarLinks';
 import './layout.css';
 
@@ -11,6 +13,7 @@ import './layout.css';
 import { withStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
+import Divider from '@material-ui/core/Divider';
 import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
 import { fade } from '@material-ui/core/styles/colorManipulator';
@@ -81,20 +84,20 @@ const styles = theme => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
-    width: theme.spacing.unit * 7,
+    width: theme.spacing(7),
     [theme.breakpoints.up('sm')]: {
-      width: theme.spacing.unit * 9,
+      width: theme.spacing(9),
     },
   },
   appBarSpacer: theme.mixins.toolbar,
   content: {
     flexGrow: 1,
-    padding: theme.spacing.unit * 3,
+    padding: theme.spacing(3),
     height: '100vh',
     overflow: 'auto',
   },
   h5: {
-    marginBottom: theme.spacing.unit * 2,
+    marginBottom: theme.spacing(2),
   },
   search: {
     position: 'relative',
@@ -106,7 +109,7 @@ const styles = theme => ({
     marginLeft: 0,
     width: '100%',
     [theme.breakpoints.up('sm')]: {
-      marginLeft: theme.spacing.unit,
+      marginLeft: theme.spacing(1),
       width: 'auto',
     },
   },
@@ -126,89 +129,102 @@ const styles = theme => ({
 });
 
 class AppNavbar extends Component {
-    state = {
-        open: false
-    };
+  state = {
+      open: false
+  };
 
-    handleDrawerOpen = e => {
-        this.setState({ open: true });
-    };
-    
-    handleDrawerClose = () => {
-        this.setState({ open: false });
-    };
+  handleDrawerOpen = e => {
+      this.setState({ open: true });
+  };
+  
+  handleDrawerClose = () => {
+      this.setState({ open: false });
+  };
 
-    render() {
-        const { open } = this.state;
-        const { classes } = this.props;
-        const { isAuthenticated } = this.props.auth;
+  onLogoutClick = e => {
+    e.preventDefault();
+    this.props.clearCurrentProfile();
+    this.props.logoutUser();
+  }
 
-        return (
-            <div>
-                <AppBar
-                    position="fixed"
-                    color="primary"
-                    className={classNames(classes.appBar, open && classes.appBarShift)}
+  render() {
+      const { open } = this.state;
+      const { classes } = this.props;
+      const { isAuthenticated, user } = this.props.auth;
+
+      return (
+          <div>
+              <AppBar
+                  position="fixed"
+                  color="primary"
+                  className={classNames(classes.appBar, open && classes.appBarShift)}
+              >
+                  <Toolbar disableGutters={!open} className={classes.toolbar}>
+                      <IconButton
+                          color="inherit"
+                          aria-label="Open drawer"
+                          className={classNames(
+                              classes.menuButton, open && classes.menuButtonHidden
+                          )}
+                          onClick={this.handleDrawerOpen}
+                      >
+                          <MenuIcon />
+                      </IconButton>
+                      <Link to="/" className="link">
+                        <img src={LogoImg} className="headerImg" alt="logo"></img>
+                      </Link>
+                      <div className={classes.grow} />
+                  </Toolbar>
+              </AppBar>
+              <Drawer
+                anchor="left"
+                classes={{
+                    paper: classNames(classes.drawerPaper, !open && classes.drawerPaperClose),
+                }}
+                open={open}
+                onClose={this.handleDrawerClose}
                 >
-                    <Toolbar disableGutters={!open} className={classes.toolbar}>
-                        <IconButton
-                            color="inherit"
-                            aria-label="Open drawer"
-                            className={classNames(
-                                classes.menuButton, open && classes.menuButtonHidden
-                            )}
-                            onClick={this.handleDrawerOpen}
-                        >
-                            <MenuIcon />
-                        </IconButton>
-                        <Link to="/" className="link">
-                          <img src={LogoImg} className="headerImg" alt="logo"></img>
-                        </Link>
-                        <div className={classes.grow} />
-                    </Toolbar>
-                </AppBar>
-                <Drawer
-                  anchor="left"
-                  classes={{
-                      paper: classNames(classes.drawerPaper, !open && classes.drawerPaperClose),
-                  }}
-                  open={open}
-                  onClose={this.handleDrawerClose}
-                  >
-                  <div tabIndex={0} role="button" 
-                  onClick={this.handleDrawerClose} 
-                  onKeyDown={this.handleDrawerClose}>
-                    <div className={classes.toolbarIcon}>
-                        <IconButton onClick={this.handleDrawerClose}>
-                          <ChevronLeftIcon />
-                        </IconButton>
-                    </div>
-                    {isAuthenticated ? <List className={classes.pb0}></List> :
-                      <List className={classes.pb0}>{guestLinks}</List>}
-                    {isAuthenticated && 
-                    <ListItem button onClick={this.onLogoutClick}>
-                      <ListItemIcon>
-                        <DirectionsRunIcon />
-                      </ListItemIcon>
-                      <ListItemText primary="Logout" />
-                    </ListItem>
-                    }
-                    <List>{secondaryListItems}</List>
+                <div tabIndex={0} role="button" 
+                onClick={this.handleDrawerClose} 
+                onKeyDown={this.handleDrawerClose}>
+                  <div className={classes.toolbarIcon}>
+                      <IconButton onClick={this.handleDrawerClose}>
+                        <ChevronLeftIcon />
+                      </IconButton>
                   </div>
-                </Drawer>
-            </div>
-        );
-    }
+                  {isAuthenticated ? <List className={classes.pb0}>auth link</List> :
+                    <List className={classes.pb0}>{guestLinks}</List>}
+                  {isAuthenticated && 
+                  <ListItem button onClick={this.onLogoutClick}>
+                    <ListItemIcon>
+                      <DirectionsRunIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Logout" />
+                  </ListItem>
+                  }
+                  {isAuthenticated && user.isAdmin &&
+                    <div>
+                      <Divider />
+                      <List>admin link</List>
+                    </div>
+                  }
+                  <Divider />
+                  <List>{secondaryListItems}</List>
+                </div>
+              </Drawer>
+          </div>
+      );
+  }
 }
 
 AppNavbar.propTypes = {
-    classes: PropTypes.object.isRequired,
-    logoutUser: PropTypes.func.isRequired,
-    auth: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  logoutUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
-  auth: state.auth,
+auth: state.auth,
 });
 
-export default connect(mapStateToProps)(withStyles(styles)(AppNavbar));
+export default connect(mapStateToProps, { logoutUser, clearCurrentProfile })(withStyles(styles)(AppNavbar));
