@@ -9,7 +9,6 @@ import { setCurrentUser, logoutUser } from './redux/actions/authActions';
 import { clearCurrentProfile } from './redux/actions/profileActions';
 
 // MUI imports
-// MUI imports
 import withStyles from '@material-ui/core/styles/withStyles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
@@ -19,7 +18,7 @@ import AppNavbar from './components/layout/AppNavbar';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import About from './components/common/About';
-import PrivateRoute from './components/common/PrivateRoute';
+// import PrivateRoute from './components/common/PrivateRoute';
 import Dashboard from './components/dashboard/Dashboard';
 
 import UserConfirm from './components/auth/UserConfirm';
@@ -70,7 +69,7 @@ class App extends Component {
                       <Route exact path="/login" component={Login} />
                       <Route exact path="/about" component={About} />
                       <Route exact path='/confirm/:id' component={UserConfirm} />
-                      <PrivateRoute exact path="/profile" component={Dashboard}/>
+                      <Route exact path="/profile" component={Dashboard}/>
                     </Switch> 
                   </main>                 
               </div>

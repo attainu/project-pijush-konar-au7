@@ -7,11 +7,13 @@ import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import ConfirmImg from '../../images/confirmed-text.jpg';
 import axios from 'axios';
+import { API_URL } from '../../client-config'
+
 
 class UserConfirm extends Component {
     componentDidMount = () => {
         const { id } = this.props.match.params;
-        axios.get(`/email/confirm/${id}`)
+        axios.get(`${API_URL}/email/confirm/${id}`)
         .then(res => res.json())
         .catch(err => console.error(err));
     }
@@ -19,8 +21,8 @@ class UserConfirm extends Component {
     render() {
         return (
             <div className="padding20">
-                <Grid container spacing={24} justify="center">
-                    <Grid item xs={12} sm={8} md={6}>
+                <Grid container spacing={4} justify="center">
+                    <Grid item xs={2} sm={8} md={6}>
                         <Paper>
                         <Card component={Link} to={'/login'}>
                                 <CardMedia
