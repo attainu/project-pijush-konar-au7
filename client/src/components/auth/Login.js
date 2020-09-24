@@ -4,9 +4,6 @@ import { connect } from 'react-redux';
 import { loginUser } from '../../redux/actions/authActions';
 import { Link } from 'react-router-dom';
 
-//Background
-import Background from '../common/Background'
-
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
@@ -89,7 +86,6 @@ class Login extends Component {
         const { classes } = this.props;
         return (    
             <div className={classes.main}>
-              <Background />
               <Paper className={classes.paper} elevation={3}>
                 <Avatar className="blueAvatar">
                   <LockIcon />
