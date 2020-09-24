@@ -45,9 +45,9 @@ const styles = theme => ({
     main: {
       width: 'auto',
       display: 'block', // Fix IE 11 issue.
-      marginLeft: theme.spacing.unit * 3,
-      marginRight: theme.spacing.unit * 3,
-      [theme.breakpoints.up(400 + theme.spacing.unit * 3 * 2)]: {
+      marginLeft: theme.spacing(3),
+      marginRight: theme.spacing(3),
+      [theme.breakpoints.up(400 + theme.spacing(3) * 2)]: {
         width: 400,
         marginLeft: 'auto',
         marginRight: 'auto',
@@ -58,7 +58,7 @@ const styles = theme => ({
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
-      padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 3}px ${theme.spacing.unit * 3}px`,
+      padding: `${theme.spacing(2)}px ${theme.spacing(3)}px ${theme.spacing(3)}px`,
     },
     form: {
       width: '100%', // Fix IE 11 issue.
@@ -100,12 +100,13 @@ class Register extends Component {
       this.props.clearErrors();
     }
 
-    componentWillReceiveProps(nextProps) {
-      if (nextProps.errors) {
-        this.setState({ errors: nextProps.errors });
-      }
-
-    }
+    // componentWillReceiveProps(nextProps) {
+    //     if (nextProps.errors) {
+    //       this.setState({ errors: nextProps.errors });
+    //     }
+  
+    //   }
+     
 
     handleDialogClose = () => {
       this.setState({ openDialog: false });
@@ -124,7 +125,6 @@ class Register extends Component {
               <Paper className={classes.paper} elevation={3}>
               <Avatar className="blueAvatar"/>
                 <form className={classes.container} autoComplete="off" onSubmit={this.onSubmit}>
-                
                   <FormControl ><h3 className={classes.h3}>Signup</h3></FormControl>
                   <FormControl margin="normal" required fullWidth>
                     <InputLabel htmlFor="firstname">First Name</InputLabel>
@@ -164,7 +164,7 @@ class Register extends Component {
                     color="primary"
                     className="purpleSubmit"
                   >
-                    Register
+                    Signup
                   </Button>
                   <div className="link-container">
                     <Link to="/login" className="link reg-link">

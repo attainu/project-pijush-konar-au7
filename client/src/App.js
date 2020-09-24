@@ -15,6 +15,8 @@ import AppNavbar from './components/layout/AppNavbar';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 
+import UserConfirm from './components/auth/UserConfirm';
+
 const styles = theme => ({
   content: {
     flexGrow: 1,
@@ -39,6 +41,7 @@ class App extends Component {
                       <Route exact path="/" component={AppLanding} />
                       <Route exact path="/Register" component={Register} /> 
                       <Route exact path="/login" component={Login} />
+                      <Route exact path='/confirm/:id' component={UserConfirm} />
                     </Switch>  
                 </Router>
              </div>
