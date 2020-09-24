@@ -8,9 +8,6 @@ import isEmpty from '../../utils/is-empty';
 // redux action
 import { registerUser, clearErrors } from '../../redux/actions/authActions';
 
-//Background
-import Background from '../common/Background'
-
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
@@ -121,7 +118,6 @@ class Register extends Component {
 
         return (
             <div className={classes.main}>
-              <Background /> 
               <Paper className={classes.paper} elevation={3}>
               <Avatar className="blueAvatar"/>
                 <form className={classes.container} autoComplete="off" onSubmit={this.onSubmit}>
