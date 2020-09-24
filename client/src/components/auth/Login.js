@@ -87,15 +87,14 @@ class Login extends Component {
     render() {
         const { errors } = this.state;
         const { classes } = this.props;
-        return (
-          <React.Fragment>
-          <Background /> 
+        return (    
             <div className={classes.main}>
+              <Background />
               <Paper className={classes.paper} elevation={3}>
                 <Avatar className="blueAvatar">
                   <LockIcon />
                 </Avatar>
-                <form className={classes.form} onSubmit={this.onSubmit}>
+                <form className={classes.form} onSubmit={this.onSubmit}> 
                 <FormControl ><h3 className={classes.h3}>Signin</h3></FormControl>
                   <FormControl margin="normal" required fullWidth>
                     <InputLabel htmlFor="email">User Email</InputLabel>
@@ -131,7 +130,6 @@ class Login extends Component {
                 </form>
               </Paper>           
             </div>
-            </React.Fragment>
           );
     }
 }

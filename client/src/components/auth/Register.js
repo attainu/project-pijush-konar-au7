@@ -119,12 +119,12 @@ class Register extends Component {
         const { classes, errors } = this.props;
 
         return (
-          <React.Fragment>
-          <Background /> 
             <div className={classes.main}>
+              <Background /> 
               <Paper className={classes.paper} elevation={3}>
               <Avatar className="blueAvatar"/>
                 <form className={classes.container} autoComplete="off" onSubmit={this.onSubmit}>
+                
                   <FormControl ><h3 className={classes.h3}>Signup</h3></FormControl>
                   <FormControl margin="normal" required fullWidth>
                     <InputLabel htmlFor="firstname">First Name</InputLabel>
@@ -197,7 +197,6 @@ class Register extends Component {
                 <React.Fragment></React.Fragment>
                 }
             </div>
-            </React.Fragment>
           );
     }
 

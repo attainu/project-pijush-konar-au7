@@ -3,22 +3,14 @@ import React, { Component } from 'react';
 // importing horizontal images for the background
 import Img1 from '../../images/background-1.png';
 import Img2 from '../../images/background-2.png';
-import Img3 from '../../images/background-3.png';
 import Img4 from '../../images/background-4.png';
 import Img5 from '../../images/background-5.png';
-import Img6 from '../../images/background-6.png';
-import Img7 from '../../images/background-7.png';
-import Img8 from '../../images/background-8.png';
 
 // importing vertical images for the background
 import Img1v from '../../images/background-1-v.png';
 import Img2v from '../../images/background-2-v.png';
-import Img3v from '../../images/background-3-v.png';
 import Img4v from '../../images/background-4-v.png';
 import Img5v from '../../images/background-5-v.png';
-import Img6v from '../../images/background-6-v.png';
-import Img7v from '../../images/background-7-v.png';
-import Img8v from '../../images/background-8-v.png';
 import '../layout/layout.css';
 
 class Background extends Component {
@@ -29,11 +21,11 @@ class Background extends Component {
 
   render() {
     // horizontal versions of images
-    const images = [Img1, Img2, Img3, Img4, Img5, Img6, Img7, Img8];
+    const images = [Img1, Img2, Img4, Img5];
     var image = images[Math.floor(Math.random()*images.length)];
 
     // vertical versions of images
-    const imagesV = [Img1v, Img2v, Img3v, Img4v, Img5v, Img6v, Img7v, Img8v];
+    const imagesV = [Img1v, Img2v, Img4v, Img5v];
     var imageV = imagesV[Math.floor(Math.random()*imagesV.length)];
 
     return (
