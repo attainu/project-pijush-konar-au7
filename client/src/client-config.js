@@ -1,1 +1,1 @@
-export const API_URL = "https://tution-media.herokuapp.com";
+export const API_URL = "https://tutionapp.herokuapp.com";
