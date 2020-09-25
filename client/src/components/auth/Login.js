@@ -53,22 +53,23 @@ class Login extends Component {
       }
     }
 
-    static getDerivedStateFromProps(nextProps) {
-      if (nextProps.auth.isAuthenticated) {
-        this.props.history.push('/profile');
+    componentDidUpdate(prevProps){
+      if(prevProps.auth.isAuthenticated !== this.props.auth.isAuthenticated){
+         this.props.history.push("/profile");
       }
-
-      if (nextProps.errors) {
-        return ({ errors: nextProps.errors });
-      }
-      return null;
-    }
+   
+      if (prevProps.errors !== this.props.errors) {
+         this.setState({
+           errors: this.props.errors
+         });
+       }
+   }
     
     onSubmit = e => {
         e.preventDefault();
         
         const { email, password } = this.state;
-        const upEmail = {...email};
+        const upEmail = email;
         const userData = {
             email: upEmail,
             password: password

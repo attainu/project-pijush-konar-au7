@@ -7,7 +7,7 @@ import { API_URL } from '../../client-config'
 // Register User
 export const registerUser = (userData) => dispatch => {
     axios
-        .post(`${API_URL}/users/register`, userData)
+        .post(`${API_URL}/api/users/register`, userData)
         .then(res => {
             if (res.status === 200) {
                 dispatch({
@@ -25,7 +25,7 @@ export const registerUser = (userData) => dispatch => {
 
 // Login - Get User JWT
 export const loginUser = userData => dispatch => {
-    axios.post(`${API_URL}/users/login`, userData)
+    axios.post(`${API_URL}/api/users/login`, userData)
         .then(res => {
             // save to localStorage
             const { token } = res.data;
@@ -63,7 +63,7 @@ export const setCurrentUser = decoded => {
 
 // Set admin property
 export const setAdmin = (adminProps) => dispatch => {
-    axios.post(`${API_URL}/users/admin`, {adminProps: adminProps})
+    axios.post(`${API_URL}/api/users/admin`, {adminProps: adminProps})
         .catch(err => console.log(err));
 }
 
