@@ -68,7 +68,7 @@ class Login extends Component {
         e.preventDefault();
         
         const { email, password } = this.state;
-        const upEmail = email;
+        const upEmail = {...email};
         const userData = {
             email: upEmail,
             password: password
@@ -99,14 +99,14 @@ class Login extends Component {
                     name="email" 
                     autoComplete="email" 
                     autoFocus 
-                    onChange={() => this.onChange}
+                    onChange={this.onChange}
                     />
                   </FormControl>
                   <span className="error">{errors.email}</span>
                   <FormControl margin="normal" required fullWidth>
                     <InputLabel htmlFor="password">Password</InputLabel>
                     <Input name="password" type="password" id="password" autoComplete="current-password" 
-                    onChange={() => this.onChange}/>
+                    onChange={this.onChange}/>
                   </FormControl>
                   <span className="error">{errors.password}</span>      
                   <Button

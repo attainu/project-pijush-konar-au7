@@ -1,16 +1,33 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import { 
+    GET_SUBJECTS,
+    SUBJECTS_LOADING,
+    DELETE_SUBJECTS
+} from '../actions/types';
 
-export default class subjectReducer extends Component {
-    static propTypes = {
-        prop: PropTypes
-    }
+const initialState = {
+    subjects: null,
+    loading: false
+}
 
-    render() {
-        return (
-            <div>
-                
-            </div>
-        )
+export default function(state = initialState, action) {
+    switch(action.type) {
+        case SUBJECTS_LOADING:
+            return {
+                ...state,
+                loading: true
+            };
+        case GET_SUBJECTS:
+            return {
+                ...state,
+                subjects: action.payload,
+                loading: false
+            };
+        case DELETE_SUBJECTS:
+            return {
+                ...state,
+                loading: false
+            };
+        default:
+            return state;
     }
 }
