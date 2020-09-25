@@ -1,3 +1,25 @@
-.ok {
-    background-attachment: fixed;
+.about-title {
+	margin-top: 15px !important;
+	font-weight: bold !important;
+	color: #ffffff !important;
+}
+
+.about-text {
+	color: #ffffff !important;
+}
+
+.about-line {
+	background-color: #EEAF30 !important;
+	margin-top: 15px !important;
+	margin-bottom: 15px !important
+}
+
+.padding20 {
+	padding-left: 10%;
+	padding-right: 10%;
+}
+
+.paddingMargin {
+	padding: 20px;
+	margin-bottom: 40px;
 }
