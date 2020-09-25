@@ -21,6 +21,7 @@ import About from './components/common/About';
 import PrivateRoute from './components/common/PrivateRoute';
 import Dashboard from './components/dashboard/Dashboard';
 
+//containers
 import UserConfirm from './components/auth/UserConfirm';
 import { checkAuth } from './utils/authPersist';
 

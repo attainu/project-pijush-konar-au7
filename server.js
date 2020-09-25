@@ -35,6 +35,17 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 // app.use(express.session({ secret: process.env.secretOrKey }));
 
+// Serve the static files from the React app
+// app.use(express.static(path.join(__dirname, 'client/build')));
+
+// Handles any requests that don't match the ones above
+if(process.env.NODE_ENV === 'production'){
+    const path  =  require('path');
+    app.get('/*',(req,res)=>{
+        res.sendFile(path.resolve(__dirname,'client','build','index.html'))
+    })
+};
+
 // Config express-session
 const MemoryStore = memorystore(session)
 const sessConfig = {
