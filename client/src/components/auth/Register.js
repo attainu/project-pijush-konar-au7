@@ -95,7 +95,7 @@ class Register extends Component {
 
     static getDerivedStateFromProps(nextProps) {
       if (nextProps.errors) {
-        this.setState({ errors: nextProps.errors });
+        return ({ errors: nextProps.errors });
       }
       return null;
 
@@ -197,7 +197,7 @@ class Register extends Component {
 Register.propTypes = {
   registerUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
-  // errors: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired,
 };
 
