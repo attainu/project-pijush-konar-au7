@@ -113,6 +113,7 @@ class Login extends Component {
                     type="submit"
                     fullWidth
                     variant="contained"
+                    color="primary"
                     className="purpleSubmit"
                   >
                     Sign in
@@ -122,6 +123,11 @@ class Login extends Component {
               <div className="link-container">
                 <Link to="/register" className="link reg-link">
                     New user? Click here to register!
+                </Link>
+              </div>
+              <div className="link-container">
+                <Link to="#" className="link reg-link">
+                    Forgot password?
                 </Link>
               </div>
             </div>
