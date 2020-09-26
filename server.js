@@ -69,10 +69,10 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
-app.use('/users', users);
-app.use('/profile', profile);
-app.use('/courses', courses);
-app.use('/subjects', subjects);
+app.use('/api/users', users);
+app.use('/api/profile', profile);
+app.use('/api/courses', courses);
+app.use('/api/subjects', subjects);
 app.get('/email/confirm/:id', emailController.confirmEmail);
 
 if (setting.isProduction) {
