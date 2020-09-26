@@ -26,6 +26,9 @@ import CreateProfile from './components/profile/CreateProfile'
 import UserConfirm from './components/auth/UserConfirm';
 import { checkAuth } from './utils/authPersist';
 
+import ProfileShowcase from './components/showcase/ProfileShowcase';
+import Profile from './components/profile/Profile';
+
 // Check for JWT for persistence
 if (localStorage.jwtToken) {
   const decoded = checkAuth();
@@ -67,10 +70,12 @@ class App extends Component {
                     <div className={classes.appBarSpacer} />
                     <Switch>
                       <Route exact path="/" component={AppLanding} />
-                      <Route exact path="/Register" component={Register} /> 
+                      <Route exact path="/register" component={Register} /> 
                       <Route exact path="/login" component={Login} />
+                      <Route exact path="/profile/:handle" component={Profile} />
+                      <PrivateRoute exact path="/profiles" component={ProfileShowcase} />
                       <Route exact path="/about" component={About} />
-                      <Route exact path='/confirm/:id' component={UserConfirm} />
+                      <Route exact path="/confirm/:id" component={UserConfirm} />
                       <PrivateRoute exact path="/profile" component={Dashboard} />
                       <PrivateRoute exact path="/create-profile" component={CreateProfile} />
                     </Switch> 

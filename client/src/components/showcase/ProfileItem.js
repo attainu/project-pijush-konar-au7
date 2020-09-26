@@ -9,7 +9,7 @@ export default class ProfileItem extends Component {
     render() {
         return (
             <div>
-                
+                OK
             </div>
         )
     }

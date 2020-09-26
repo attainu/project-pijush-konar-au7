@@ -93,6 +93,14 @@ class Register extends Component {
       this.props.clearErrors();
     }
 
+    // componentDidUpdate(prevProps) {
+    //   if (prevProps.errors !== this.props.errors) {
+    //     this.setState({
+    //       errors: this.props.errors
+    //     });
+    //   }
+    // }
+  
     static getDerivedStateFromProps(nextProps) {
       if (nextProps.errors) {
         return ({ errors: nextProps.errors });

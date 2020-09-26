@@ -34,14 +34,28 @@ class CreateProfile extends Component {
      this.props.getSubjects();
  }
 
- componentWillReceiveProps(nextProps) {
-    if (nextProps.errors) this.setState({ errors: nextProps.errors });
-    if (nextProps.subjects.subjects) {
+componentDidUpdate(prevProps){
+    if(prevProps.subjects.subjects !== this.props.subjects.subjects){
         this.setState({
-            subjects: sortArrByAscending(nextProps.subjects.subjects, ['name'])
+            subjects: sortArrByAscending(prevProps.subjects.subjects, ['name'])
         });
-    }
+     }
+ 
+    if (prevProps.errors !== this.props.errors) {
+       this.setState({
+         errors: this.props.errors
+       });
+     }
  }
+
+//  componentWillReceiveProps(nextProps) {
+//     if (nextProps.errors) this.setState({ errors: nextProps.errors });
+//     if (nextProps.subjects.subjects) {
+//         this.setState({
+//             subjects: sortArrByAscending(nextProps.subjects.subjects, ['name'])
+//         });
+//     }
+//  }
 
  addCourse = (e) => {
     this.setState((prevState) => ({
@@ -128,7 +142,7 @@ render() {
     const majorMenuItems =  majors.map((major, i) =>
             <MenuItem key={i} value={major.name}>{major.name}</MenuItem>
     );
-    const minorMenuItems = minors.map((minor, i) =>
+    const minorMenuItems = minors.map((minor, i) => 
             <MenuItem key={i} value={minor.name}>{minor.name}</MenuItem>
     );
     const courseMenuItems = subjectItems.map((subject, i) =>
@@ -141,7 +155,7 @@ render() {
             let courseName = "courseName-" + i; 
 
             return  (
-              <Grid item xs={12} sm={6} md={4} key={i}>
+              <Grid item xs={4} sm={6} md={6} key={i}>
                <Card className="card" elevation={0}>
                   <CardContent>
                     <FormControl margin="normal" required fullWidth>
@@ -208,26 +222,29 @@ render() {
             </Typography>
             <form onSubmit={this.onSubmit}>    
                 <Grid container spacing={6}>
-                    <Grid item xs={12} sm={6} md={6}>
+                    <Grid item xs={4} sm={6} md={6}>
                         <FormControl margin="normal" required fullWidth>
                             <InputLabel htmlFor="major">Major(s)</InputLabel>
-                            <Select required multiple value={major} onChange={this.onChange} variant="outlined" MenuProps={{ style: {maxHeight: 300} }}
+                            <Select required multiple value={major || []} onChange={this.onChange} variant="outlined" MenuProps={{ style: {maxHeight: 300} }}
                               inputProps={{
                                   name: 'major',
                                   id: 'major'
                               }}>
-                                {majorMenuItems}
+                              <MenuItem value=""></MenuItem>
+                              {majorMenuItems}
+                                
                             </Select>
                         </FormControl>
                     </Grid>
-                    <Grid item xs={12} sm={6} md={6}>
+                    <Grid item xs={4} sm={6} md={6}>
                         <FormControl margin="normal" fullWidth>
                             <InputLabel htmlFor="minor">Minor(s)</InputLabel>
-                            <Select multiple value={minor || []} onChange={this.onChange} MenuProps={{ style: {maxHeight: 300} }} inputProps={{
+                            <Select multiple value={minor} onChange={this.onChange} MenuProps={{ style: {maxHeight: 300} }} inputProps={{
                                 name: 'minor',
                                 id: 'minor'
                             }}>
-                                {minorMenuItems}
+                            <MenuItem value=""></MenuItem>
+                               {minorMenuItems}
                             </Select>
                         </FormControl>
                     </Grid>

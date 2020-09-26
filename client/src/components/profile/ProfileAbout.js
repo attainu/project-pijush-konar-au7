@@ -9,7 +9,7 @@ export default class ProfileAbout extends Component {
     render() {
         return (
             <div>
-                
+               ok 
             </div>
         )
     }

@@ -25,11 +25,70 @@ const styles = theme => ({
 });
 
 class Dashboard extends Component {
+    state = {
+        disabled: false,
+        deleteDialogOpen: false,
+        deleteToast: false,
+      }
+  
     componentDidMount() {
-        const { profile } = this.props;
-        if (Object.keys(profile).length > 0 ) this.props.getCurrentProfile();
-        this.setState({ disabled: profile.disabled });
-    }
+          const { profile } = this.props;
+          if (Object.keys(profile).length > 0 ) this.props.getCurrentProfile();
+          this.setState({ disabled: profile.disabled });
+      }
+
+
+  
+    static getDerivedStateFromProps(nextProps) {
+          if (nextProps.profile.profile) {
+              return ({
+                  disabled: nextProps.profile.profile.disabled
+              });
+          }
+          return null
+      }
+  
+    onDeleteClick = e => {
+          e.preventDefault();
+          if (this.props.profile.profile.user.isAdmin) {
+              this.handleDeleteToastOpen();
+          }
+          else {
+              this.handleDeleteOpen();
+          }
+      }
+  
+      handleDeleteToastOpen = () => {
+        this.setState({ deleteToast: true });
+      };
+  
+      deleteToastClose = () => {
+        this.setState({ deleteToast: false });
+      };
+  
+      handleDeleteOpen = () => {
+        this.setState({ deleteDialogOpen: true });
+      };
+  
+      handleDeleteClose = () => {
+        this.setState({ deleteDialogOpen: false });
+      };
+  
+      handleDeleteSuccessClose = () => {
+        this.setState({ deleteDialogOpen: false });
+        this.props.deleteAccount();
+      };
+  
+      onProfileSettingClick = (e, setting) => {
+          e.preventDefault();
+          const { profile } = this.props;
+          const userId = profile.profile.user._id;
+  
+          this.setState({ disabled: ((setting === 'enable') ? false : true) });
+  
+          if (setting === 'enable') this.props.enableProfileByUser(userId, this.props.history);
+          else if (setting === 'disable') this.props.disableProfileByUser(userId, this.props.history);
+      }
 
     render() {
         const { user } = this.props.auth;
@@ -42,7 +101,7 @@ class Dashboard extends Component {
         }
         else {
             dashboardContent = Object.keys(profile).length > 0 ? (
-                <Grid container spacing={24} justify="center">
+                <Grid container spacing={6} justify="center">
                     <Grid item xs={12} sm={6} md={4}>
                         <Card className={styles.card}>
                             <CardActionArea component={Link} to={'/edit-profile'}>
