@@ -3,7 +3,7 @@
 
 const proxyUrl = "https://cors-anywhere.herokuapp.com/"
 
-const url = "https://tution-media.herokuapp.com"
+const url = "https://tutionapp.herokuapp.com"
 
 export const API_URL = proxyUrl + url
 
