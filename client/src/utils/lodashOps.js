@@ -1,16 +1,21 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import _ from 'lodash';
 
-export default class lodashOps extends Component {
-    static propTypes = {
-        prop: PropTypes
-    }
+export function filterArrDuplicates(arr1, arr2) {
+    return _.difference(arr1, arr2);
+}
 
-    render() {
-        return (
-            <div>
-                
-            </div>
-        )
-    }
+export function sortArrByAscending(arr, iters) {
+    return _.sortBy(arr, iters);
+}
+
+export function filterByOptions(collection, options) {
+    return _.filter(collection, options);
+}
+
+export function findFirstMatch(collection, toMatch) {
+    return _.find(collection, toMatch);
+}
+
+export function removeByMatch(collection, toMatch) {
+    return _.remove(collection, toMatch);
 }

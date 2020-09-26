@@ -20,6 +20,7 @@ import Login from './components/auth/Login';
 import About from './components/common/About';
 import PrivateRoute from './components/common/PrivateRoute';
 import Dashboard from './components/dashboard/Dashboard';
+import CreateProfile from './components/profile/CreateProfile'
 
 //containers
 import UserConfirm from './components/auth/UserConfirm';
@@ -70,7 +71,8 @@ class App extends Component {
                       <Route exact path="/login" component={Login} />
                       <Route exact path="/about" component={About} />
                       <Route exact path='/confirm/:id' component={UserConfirm} />
-                      <PrivateRoute exact path="/profile" component={Dashboard}/>
+                      <PrivateRoute exact path="/profile" component={Dashboard} />
+                      <PrivateRoute exact path="/create-profile" component={CreateProfile} />
                     </Switch> 
                   </main>                 
               </div>
