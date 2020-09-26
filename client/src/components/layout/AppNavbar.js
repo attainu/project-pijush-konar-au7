@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 
 import { logoutUser } from '../../redux/actions/authActions';
 import { clearCurrentProfile } from '../../redux/actions/profileActions';
-import { secondaryListItems, guestLinks } from './AppNavbarLinks';
+import { secondaryListItems, authLinks, guestLinks, adminLinks } from './AppNavbarLinks';
 import './layout.css';
 
 // Material UI imports
@@ -192,7 +192,7 @@ class AppNavbar extends Component {
                         <ChevronLeftIcon />
                       </IconButton>
                   </div>
-                  {isAuthenticated ? <List className={classes.pb0}>auth link</List> :
+                  {isAuthenticated ? <List className={classes.pb0}>{authLinks}</List> :
                     <List className={classes.pb0}>{guestLinks}</List>}
                   {isAuthenticated && 
                   <ListItem button onClick={this.onLogoutClick}>
@@ -205,7 +205,7 @@ class AppNavbar extends Component {
                   {isAuthenticated && user.isAdmin &&
                     <div>
                       <Divider />
-                      <List>admin link</List>
+                      <List>{adminLinks}</List>
                     </div>
                   }
                   <Divider />
