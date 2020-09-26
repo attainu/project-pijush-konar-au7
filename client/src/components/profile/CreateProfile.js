@@ -73,7 +73,7 @@ class CreateProfile extends Component {
  onSubmit = e => {
      e.preventDefault();
      const { bio, major, minor, availability, courses, type } = this.state;
-     const handle = this.props.auth.user.email.replace("@up.edu", "");
+     const handle = this.props.auth.user.email;
 
      const profileData = {
          handle,
@@ -204,7 +204,7 @@ render() {
     return (
       <div className="padding20">
             <Typography variant="h4" component="h1" align="center" className="editHeading">
-                Create Tutor Profile
+                Create Guru Profile
             </Typography>
             <form onSubmit={this.onSubmit}>    
                 <Grid container spacing={6}>
@@ -259,7 +259,7 @@ render() {
                         </FormControl>
                     </Grid>
                  </Grid>
-                 <Grid container spacing={24}>
+                 <Grid container spacing={6}>
                    <Grid item xs={12}>
                        <div className="courses"></div>
                    </Grid>
@@ -270,7 +270,7 @@ render() {
                        </Button>
                    </Grid>
                 </Grid>  
-                <Grid container justify="flex-end" spacing={24}>
+                <Grid container justify="flex-end" spacing={6}>
                     <Grid item>
                         <Button aria-label="Cancel" align="right" type="cancel" className="Button" component={Link} to="/profile">
                           Cancel
