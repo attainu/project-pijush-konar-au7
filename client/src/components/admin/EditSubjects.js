@@ -51,14 +51,38 @@ class EditSubjects extends Component {
      this.props.getSubjects();
  }
 
- componentWillReceiveProps(nextProps) {
-    if (nextProps.errors) this.setState({ errors: nextProps.errors });
-    if (nextProps.subjects.subjects) {
-        this.setState({
-            subjects: sortArrByAscending(nextProps.subjects.subjects, ['name'])
-        });
-    }
- }
+//  static getDerivedStateFromProps(nextProps) {
+//   if (nextProps.errors){
+//     return ({ errors: nextProps.errors });
+//   }
+    
+//   if (nextProps.subjects.subjects) {
+//       return ({
+//         subjects: sortArrByAscending(nextProps.subjects.subjects, ['name'])
+//       })
+//   }
+//   return null
+// }
+
+componentDidUpdate(prevProps) {
+  if(prevProps.subjects.subjects !== this.props.subjects.subjects) {
+      this.setState({ subjects: sortArrByAscending(prevProps.subjects.subjects, ['name']) })
+  }
+  if (prevProps.errors !== this.props.errors) {
+    this.setState({
+      errors: this.props.errors
+    });
+  }
+}
+
+//  componentWillReceiveProps(nextProps) {
+//     if (nextProps.errors) this.setState({ errors: nextProps.errors });
+//     if (nextProps.subjects.subjects) {
+//         this.setState({
+//             subjects: sortArrByAscending(nextProps.subjects.subjects, ['name'])
+//         });
+//     }
+//  }
 
  addSubject = (e) => {
     // push new subject to the top of the existing list
@@ -111,7 +135,7 @@ render() {
               <Grid item xs={12} key={i}>
                <Card className="card" elevation={0}>
                   <CardContent>
-                    <Grid container spacing={24}>
+                    <Grid container spacing={6}>
                       <Grid item xs={12} sm={4}>
                         <FormControl margin="normal" required fullWidth>
                             <InputLabel htmlFor={name}>Subject Name</InputLabel>
@@ -121,7 +145,7 @@ render() {
                       </Grid>
                       <Grid item xs={12} sm={2}>
                           <FormControl margin="normal" required fullWidth>
-                            <InputLabel htmlFor={isMajor}>Is Major?</InputLabel>
+                            <InputLabel htmlFor={isMajor}> Is Major?</InputLabel>
                             <Select value={subject.isMajor} onChange={this.onChange} variant="outlined" name={isMajor} id={isMajor}>
                                 <MenuItem value="Yes">Yes</MenuItem>
                                 <MenuItem value="No">No</MenuItem>
@@ -130,7 +154,7 @@ render() {
                       </Grid>
                       <Grid item xs={12} sm={2}>
                           <FormControl margin="normal" required fullWidth>
-                            <InputLabel htmlFor={isMinor}>Is Minor?</InputLabel>
+                            <InputLabel htmlFor={isMinor}> Is Minor?</InputLabel>
                             <Select value={subject.isMinor} onChange={this.onChange} variant="outlined" name={isMinor} id={isMinor}>
                                 <MenuItem value="Yes">Yes</MenuItem>
                                 <MenuItem value="No">No</MenuItem>
@@ -139,7 +163,7 @@ render() {
                       </Grid>
                       <Grid item xs={12} sm={2}>
                           <FormControl margin="normal" required fullWidth>
-                            <InputLabel htmlFor={isCourse}>Is Course?</InputLabel>
+                            <InputLabel htmlFor={isCourse}> Is Course?</InputLabel>
                             <Select value={subject.isCourse} onChange={this.onChange} variant="outlined" name={isCourse} id={isCourse}>
                                 <MenuItem value="Yes">Yes</MenuItem>
                                 <MenuItem value="No">No</MenuItem>
@@ -167,7 +191,7 @@ render() {
             <Typography variant="h4" component="h1" align="center" className="editHeading">
                 Create and Edit Subjects
             </Typography>
-            <Grid container justify="space-between" spacing={24}>
+            <Grid container justify="space-between" spacing={6}>
                <Grid item xs={12}>
                    <div className="courses"></div>
                </Grid>

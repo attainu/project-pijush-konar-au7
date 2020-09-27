@@ -46,7 +46,7 @@ render() {
         <Typography variant="h4" component="h1" align="center" className="editHeading">
             Subjects
         </Typography>
-        <Grid container justify="center" spacing={24}>
+        <Grid container justify="center" spacing={6}>
            <Grid item xs={12}>
                <div className="courses"></div>
            </Grid>

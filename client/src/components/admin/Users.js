@@ -69,13 +69,14 @@ class Users extends Component {
      this.props.getAllProfilesByAdmin();
  }
 
- componentWillReceiveProps(nextProps) {
-    if (nextProps.errors) this.setState({ errors: nextProps.errors });
+ static getDerivedStateFromProps(nextProps) {
+    if (nextProps.errors) return ({ errors: nextProps.errors });
     if (nextProps.profiles) {
-        this.setState({
+        return ({
             profiles: sortArrByAscending(nextProps.profiles, ['firstname', 'lastname'])
         });
     }
+    return null
   }
 
   handleAdminClose = () => {

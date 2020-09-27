@@ -56,14 +56,30 @@ class ViewSubjects extends Component {
      this.props.getSubjects();
  }
 
- componentWillReceiveProps(nextProps) {
-    if (nextProps.errors) this.setState({ errors: nextProps.errors });
+ static getDerivedStateFromProps(nextProps) {
+    if (nextProps.errors) {
+      return ({ errors: nextProps.errors })
+    };
     if (nextProps.subjects.subjects) {
-        this.setState({
+        return ({
             subjects: _.sortBy(nextProps.subjects.subjects, ['name'])
         });
     }
+    return null
  }
+
+//  componentDidUpdate(prevProps) {
+//   if(prevProps.subjects.subjects !== this.props.subjects.subjects) {
+//       this.setState({ subjects: _.sortBy(prevProps.subjects.subjects, ['name']) })
+//   }
+//   if (prevProps.errors !== this.props.errors) {
+//     this.setState({
+//       errors: this.props.errors
+//     });
+//   }
+  
+// }
+
 
 // on cancel go back to dashboard to eliminate need for extra button
 render() {
