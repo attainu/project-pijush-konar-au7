@@ -8,12 +8,12 @@ import {
     SET_CURRENT_USER 
 } 
 from './types';
-import { API_URL } from '../../client-config'
+// import { API_URL } from '../../client-config'
 
 // Get current profile
 export const getCurrentProfile = () => dispatch => {
     dispatch(setProfileLoading());
-    axios.get(`${API_URL}/api/profile`)
+    axios.get(`/api/profile`)
         .then(res => 
             dispatch({
                 type: GET_PROFILE,
@@ -31,7 +31,7 @@ export const getCurrentProfile = () => dispatch => {
 export const getProfileByHandle = handle => dispatch => {
     dispatch(setProfileLoading());
     axios
-      .get(`${API_URL}/api/profile/handle/${handle}`)
+      .get(`/api/profile/handle/${handle}`)
       .then(res =>
         dispatch({
           type: GET_PROFILE,
@@ -47,7 +47,7 @@ export const getProfileByHandle = handle => dispatch => {
 };
 
 export const createProfile = (profileData, history) => dispatch => {
-    axios.post(`${API_URL}/api/profile`, profileData)
+    axios.post(`/api/profile`, profileData)
         .then(res => history.push('/profile'))
         .catch(err => console.error(err));
 }
@@ -55,7 +55,7 @@ export const createProfile = (profileData, history) => dispatch => {
 // Get all profiles (only enabled profiles)
 export const getProfiles = () => dispatch => {
     dispatch(setProfileLoading());
-    axios.get(`${API_URL}/api/profile/all`)
+    axios.get(`/api/profile/all`)
     .then(res => {
         dispatch({
             type: GET_PROFILES,
@@ -71,17 +71,17 @@ export const getProfiles = () => dispatch => {
 }
 
 export const disableProfileByUser = (userId) => dispatch => {
-    axios.post(`${API_URL}/api/profile/disableProfile`, { userId: userId })
+    axios.post(`/api/profile/disableProfile`, { userId: userId })
     .catch(err => console.error(err));
 }
 
 export const enableProfileByUser = (userId) => dispatch => {
-    axios.post(`${API_URL}/api/profile/enableProfile`, { userId: userId })
+    axios.post(`/api/profile/enableProfile`, { userId: userId })
     .catch(err => console.error(err));
 }
 
 export const getProfileByName = name => dispatch => {
-    axios.get(`${API_URL}/api/profile/search/${name}`)
+    axios.get(`/api/profile/search/${name}`)
     .then(res => {
         dispatch({
             payload: res.data
@@ -96,7 +96,7 @@ export const getProfileByName = name => dispatch => {
 
 // Delete account & profile
 export const deleteAccount = () => dispatch => {
-      axios.delete(`${API_URL}/api/profile`)
+      axios.delete(`/api/profile`)
         .then(res =>
           dispatch({
             type: SET_CURRENT_USER,
@@ -112,7 +112,7 @@ export const deleteAccount = () => dispatch => {
 }
 
 export const deleteAccountByAdmin = (id) => dispatch => {
-    axios.delete(`${API_URL}/api/profile/id`, {data: { id: id }})
+    axios.delete(`/api/profile/id`, {data: { id: id }})
     .catch(err =>
       dispatch({
         type: GET_ERRORS,
@@ -138,7 +138,7 @@ export const clearCurrentProfile = () => {
 // ADMIN: Get all enabled and disabled profiles
 export const getAllProfilesByAdmin = () => dispatch => {
     dispatch(setProfileLoading());
-    axios.get(`${API_URL}/api/profile/allUsers`)
+    axios.get(`/api/profile/allUsers`)
     .then(res => {
         dispatch({
             type: GET_PROFILES,
@@ -155,7 +155,7 @@ export const getAllProfilesByAdmin = () => dispatch => {
 
 // ADMIN: Create or update a course
 export const postCourse = courseData => dispatch => {
-    axios.post(`${API_URL}/api/courses`, courseData)
+    axios.post(`/api/courses`, courseData)
     .then(res => {
         console.log(res.data)
     })

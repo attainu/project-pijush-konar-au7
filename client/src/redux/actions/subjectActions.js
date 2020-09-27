@@ -5,10 +5,10 @@ import {
     GET_ERRORS, 
 } 
 from './types';
-import { API_URL } from '../../client-config'
+// import { API_URL } from '../../client-config'
 
 export const createSubjects = (subjectData, history) => dispatch => {
-    axios.post(`${API_URL}/api/subjects`, subjectData)
+    axios.post(`/api/subjects`, subjectData)
         .then(res => history.push('/subjects'))
         .catch(err => 
             dispatch({
@@ -21,7 +21,7 @@ export const createSubjects = (subjectData, history) => dispatch => {
 // Get all subjects
 export const getSubjects = () => dispatch => {
     dispatch(setSubjectsLoading());
-    axios.get(`${API_URL}/api/subjects`)
+    axios.get(`/api/subjects`)
     .then(res => {
         dispatch({
             type: GET_SUBJECTS,
@@ -38,7 +38,7 @@ export const getSubjects = () => dispatch => {
 
 // Delete a subject by ID
 export const removeSubject = (subjectId, history) => dispatch => {
-     axios.delete(`${API_URL}/api/subjects`, {data: { id: subjectId }} )
+     axios.delete(`/api/subjects`, {data: { id: subjectId }} )
          .catch(err => console.log(err));
 }
 

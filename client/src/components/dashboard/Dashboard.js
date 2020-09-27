@@ -47,6 +47,16 @@ class Dashboard extends Component {
           }
           return null
       }
+
+    //   componentDidUpdate(prevProps,prevState){
+
+    //     if(prevProps.profile.profile ){
+    //         this.setState({
+    //             disabled: prevProps.profile.profile.disabled
+    //         });
+    //     }
+
+    //  }
   
     onDeleteClick = e => {
           e.preventDefault();

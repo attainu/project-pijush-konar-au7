@@ -1,16 +1,9 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import React from 'react'
 
-export default class EditProfile extends Component {
-    static propTypes = {
-        prop: PropTypes
-    }
-
-    render() {
-        return (
-            <div>
-                ok
-            </div>
-        )
-    }
+export default function EditProfile() {
+    return (
+        <div>
+            
+        </div>
+    )
 }

@@ -137,11 +137,12 @@ render() {
     const minors = filterByOptions(subjects, ['isMinor', "Yes"]);
     const majors = filterByOptions(subjects, ['isMajor', "Yes"]);
     const subjectItems = filterByOptions(subjects, ['isCourse', "Yes"]);
+    console.log(majors)
     
-    
-    const majorMenuItems =  majors.map((major, i) =>
-            <MenuItem key={i} value={major.name}>{major.name}</MenuItem>
+    const majorMenuItems =  majors.map((major, index) =>
+            <MenuItem key={index} value={major.name}>{major.name}</MenuItem>
     );
+    // console.log(majorMenuItems)
     const minorMenuItems = minors.map((minor, i) => 
             <MenuItem key={i} value={minor.name}>{minor.name}</MenuItem>
     );
@@ -222,7 +223,7 @@ render() {
             </Typography>
             <form onSubmit={this.onSubmit}>    
                 <Grid container spacing={6}>
-                    <Grid item xs={4} sm={6} md={6}>
+                    <Grid item xs={12} sm={6} md={6}>
                         <FormControl margin="normal" required fullWidth>
                             <InputLabel htmlFor="major">Major(s)</InputLabel>
                             <Select required multiple value={major || []} onChange={this.onChange} variant="outlined" MenuProps={{ style: {maxHeight: 300} }}
@@ -236,7 +237,7 @@ render() {
                             </Select>
                         </FormControl>
                     </Grid>
-                    <Grid item xs={4} sm={6} md={6}>
+                    <Grid item xs={12} sm={6} md={6}>
                         <FormControl margin="normal" fullWidth>
                             <InputLabel htmlFor="minor">Minor(s)</InputLabel>
                             <Select multiple value={minor} onChange={this.onChange} MenuProps={{ style: {maxHeight: 300} }} inputProps={{
@@ -305,7 +306,7 @@ render() {
 
 CreateProfile.propTypes = {
     profile: PropTypes.object.isRequired,
-    errors: PropTypes.object.isRequired
+    // errors: PropTypes.object.isRequired
 }
 
 const mapStateToProps = state => ({

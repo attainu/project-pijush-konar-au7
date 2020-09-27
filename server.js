@@ -9,7 +9,7 @@ import passport from 'passport';
 import path from 'path';
 
 import { } from './src/db/keys';
-import setting from './config/checkProd';
+// import setting from './config/checkProd';
 
 // Load routes
 import users from './src/routes/users';
@@ -36,13 +36,13 @@ app.use(bodyParser.json());
 // app.use(express.session({ secret: process.env.secretOrKey }));
 
 // Serve the static files from the React app
-// app.use(express.static(path.join(__dirname, 'client/build')));
+app.use(express.static(path.join(__dirname, 'client/public')));
 
 // Handles any requests that don't match the ones above
 if(process.env.NODE_ENV === 'production'){
     const path  =  require('path');
     app.get('/*',(req,res)=>{
-        res.sendFile(path.resolve(__dirname,'client','build','index.html'))
+        res.sendFile(path.resolve(__dirname,'client','public', 'index.html'))
     })
 };
 
@@ -75,15 +75,15 @@ app.use('/api/courses', courses);
 app.use('/api/subjects', subjects);
 app.get('/email/confirm/:id', emailController.confirmEmail);
 
-if (setting.isProduction) {
-    sessConfig.cookie.secure = true;
+// if (setting.isProduction) {
+    // sessConfig.cookie.secure = true;
 
     // Set static folder
-    app.use(express.static('client/build'));
+    // app.use(express.static('client/build'));
 
-    app.get('*', (req, res) => {
-        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-    });
-}
+    // app.get('*', (req, res) => {
+        // res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    // });
+// }
 
 app.listen(port, () => console.info(`Server started on port ${port}`));
