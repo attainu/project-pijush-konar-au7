@@ -1,16 +1,9 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import React from 'react'
 
-export default class ProfileShowcase extends Component {
-    static propTypes = {
-        prop: PropTypes
-    }
-
-    render() {
-        return (
-            <div>
-                OK
-            </div>
-        )
-    }
+export default function ProfileShowcase() {
+    return (
+        <div>
+            
+        </div>
+    )
 }

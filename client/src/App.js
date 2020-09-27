@@ -12,22 +12,31 @@ import { clearCurrentProfile } from './redux/actions/profileActions';
 import withStyles from '@material-ui/core/styles/withStyles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
-//comopnents
-import AppLanding from './components/layout/AppLanding'
+// components
+import AdminRoute from './components/common/AdminRoute';
+import PrivateRoute from './components/common/PrivateRoute';
 import AppNavbar from './components/layout/AppNavbar';
+import AppLanding from './components/layout/AppLanding';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
-import About from './components/common/About';
-import PrivateRoute from './components/common/PrivateRoute';
 import Dashboard from './components/dashboard/Dashboard';
-import CreateProfile from './components/profile/CreateProfile'
+import CreateProfile from './components/profile/CreateProfile';
+import EditProfile from './components/profile/EditProfile';
+import Subjects from './components/admin/Subjects';
+import ViewSubjects from './components/admin/ViewSubjects';
+import EditSubjects from './components/admin/EditSubjects';
+import Users from './components/admin/Users';
+import About from './components/common/About';
 
-//containers
-import UserConfirm from './components/auth/UserConfirm';
+import NotFound from './components/common/NotFound';
+
+// containers
+import ProfileShowcase from './components/showcase/ProfileShowcase';
 import { checkAuth } from './utils/authPersist';
 
-import ProfileShowcase from './components/showcase/ProfileShowcase';
 import Profile from './components/profile/Profile';
+
+import UserConfirm from './components/auth/UserConfirm';
 
 // Check for JWT for persistence
 if (localStorage.jwtToken) {
@@ -51,40 +60,52 @@ const styles = theme => ({
   content: {
     flexGrow: 1,
     padding: theme.spacing(3),
-    height: 'auto',
+    height: '100vh',
     overflow: 'auto'
   },
   appBarSpacer: theme.mixins.toolbar,
 });
 
 class App extends Component {
+
   render() {
     const { classes } = this.props;
     return (
-      <Provider store={ store }>
+        <Provider store={ store }>
           <Router>
-             <div className="App">
-                 <CssBaseline />             
-                  <AppNavbar />
-                  <main className={classes.content}>
-                    <div className={classes.appBarSpacer} />
-                    <Switch>
-                      <Route exact path="/" component={AppLanding} />
-                      <Route exact path="/register" component={Register} /> 
-                      <Route exact path="/login" component={Login} />
-                      <Route exact path="/profile/:handle" component={Profile} />
-                      <PrivateRoute exact path="/profiles" component={ProfileShowcase} />
-                      <Route exact path="/about" component={About} />
-                      <Route exact path="/confirm/:id" component={UserConfirm} />
-                      <PrivateRoute exact path="/profile" component={Dashboard} />
-                      <Route exact path="/create-profile" component={CreateProfile} />
-                    </Switch> 
-                  </main>                 
-              </div>
-            </Router>
-      </Provider>
-    )
-  };
+            <div className="App">
+              <CssBaseline />
+              <AppNavbar />
+              <main className={classes.content}>
+                <div className={classes.appBarSpacer} />
+                <Switch>
+                  <Route exact path="/" component={AppLanding} />
+                  <Route exact path="/register" component={Register} />
+                  <Route exact path="/login" component={Login} />
+                  <Route exact path="/profile/:handle" component={Profile} />
+                  <PrivateRoute exact path="/profiles" component={ProfileShowcase} />
+                  <Route exact path="/not-found" component={NotFound} />
+                  <Route exact path='/confirm/:id' component={UserConfirm} />
+                  <Route exact path="/about" component={About} />
+                  <PrivateRoute exact path="/profile" component={Dashboard}/>
+                  <PrivateRoute exact path="/create-profile" component={CreateProfile} />
+                  <PrivateRoute exact path="/edit-profile" component={EditProfile} />
+                  <AdminRoute exact path="/subjects" component={Subjects} />
+                  <AdminRoute exact path="/view-subjects" component={ViewSubjects} />
+                  <AdminRoute exact path="/edit-subjects" component={EditSubjects} />
+                  <AdminRoute exact path="/manage-users" component={Users} />
+                  <Route path="*" component={NotFound} />
+                </Switch>
+              </main>
+            </div>
+          </Router>
+        </Provider>
+    );
+  }
 }
 
 export default withStyles(styles)(App);
+
+
+// npm install @testing-library/jest-dom @testing-library/react testing-library/user-event
+//npm uninstall prop-types

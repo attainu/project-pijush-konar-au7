@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import ProgressSpinner from '../common/ProgressSpinner';
 
@@ -10,95 +11,124 @@ import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardMedia from '@material-ui/core/CardMedia';
+import Snackbar from '@material-ui/core/Snackbar';
+import SnackbarContent from '@material-ui/core/SnackbarContent';
+import CheckCircleIcon from '@material-ui/icons/CheckCircle';
+import Button from '@material-ui/core/Button';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
 import EditProfileImg from '../../images/edit-profile.jpg';
 import DeleteAccountImg from '../../images/delete-account.jpg';
 import EnableProfileImg from '../../images/enable-profile.jpg';
 import DisableProfileImg from '../../images/disable-profile.jpg';
 import ViewProfileImg from '../../images/view-profile.jpg';
-import FindGuruImg from '../../images/find-guru.jpg';
-import BecomeGuruImg from '../../images/become-guru.jpg';
+import FindTutorImg from '../../images/find-guru.jpg';
+import BecomeTutorImg from '../../images/become-guru.jpg';
 
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
-    
+    card: {
+      minWidth: 300,
+      margin: 100
+    },
+    marginBottom20: {
+        marginBottom: 20,
+    },
+    purpleHeader: {
+        margin: 10,
+        color: '#fff',
+        backgroundColor: '#1E1656',
+     },
+     purpleText: {
+         color: '#1E1656'
+     },
+     media: {
+        objectFit: 'cover',
+     },
+     success: {
+         backgroundColor: '#EEAF30'
+     },
+     message: {
+       display: 'flex',
+       alignItems: 'center',
+     }
 });
 
 class Dashboard extends Component {
     state = {
-        disabled: false,
-        deleteDialogOpen: false,
-        deleteToast: false,
-      }
-  
+      disabled: false,
+      deleteDialogOpen: false,
+      deleteToast: false,
+    }
+
     componentDidMount() {
-          const { profile } = this.props;
-          if (Object.keys(profile).length > 0 ) this.props.getCurrentProfile();
-          this.setState({ disabled: profile.disabled });
-      }
+        const { profile } = this.props;
+        if (Object.keys(profile).length > 0 ) this.props.getCurrentProfile();
+        this.setState({ disabled: profile.disabled });
+    }
 
-
-  
-    static getDerivedStateFromProps(nextProps) {
-          if (nextProps.profile.profile) {
-              return ({
-                  disabled: nextProps.profile.profile.disabled
-              });
-          }
-          return null
-      }
-
-    //   componentDidUpdate(prevProps,prevState){
-
-    //     if(prevProps.profile.profile ){
+    // componentWillReceiveProps(nextProps) {
+    //     if (nextProps.profile.profile) {
     //         this.setState({
-    //             disabled: prevProps.profile.profile.disabled
+    //             disabled: nextProps.profile.profile.disabled
     //         });
     //     }
+    // }
 
-    //  }
-  
+    static getDerivedStateFromProps(nextProps) {
+        if (nextProps.profile.profile) {
+            return ({
+                disabled: nextProps.profile.profile.disabled
+            });
+        }
+        return null
+    }
+
     onDeleteClick = e => {
-          e.preventDefault();
-          if (this.props.profile.profile.user.isAdmin) {
-              this.handleDeleteToastOpen();
-          }
-          else {
-              this.handleDeleteOpen();
-          }
-      }
-  
-      handleDeleteToastOpen = () => {
-        this.setState({ deleteToast: true });
-      };
-  
-      deleteToastClose = () => {
-        this.setState({ deleteToast: false });
-      };
-  
-      handleDeleteOpen = () => {
-        this.setState({ deleteDialogOpen: true });
-      };
-  
-      handleDeleteClose = () => {
-        this.setState({ deleteDialogOpen: false });
-      };
-  
-      handleDeleteSuccessClose = () => {
-        this.setState({ deleteDialogOpen: false });
-        this.props.deleteAccount();
-      };
-  
-      onProfileSettingClick = (e, setting) => {
-          e.preventDefault();
-          const { profile } = this.props;
-          const userId = profile.profile.user._id;
-  
-          this.setState({ disabled: ((setting === 'enable') ? false : true) });
-  
-          if (setting === 'enable') this.props.enableProfileByUser(userId, this.props.history);
-          else if (setting === 'disable') this.props.disableProfileByUser(userId, this.props.history);
-      }
+        e.preventDefault();
+        if (this.props.profile.profile.user.isAdmin) {
+            this.handleDeleteToastOpen();
+        }
+        else {
+            this.handleDeleteOpen();
+        }
+    }
+
+    handleDeleteToastOpen = () => {
+      this.setState({ deleteToast: true });
+    };
+
+    deleteToastClose = () => {
+      this.setState({ deleteToast: false });
+    };
+
+    handleDeleteOpen = () => {
+      this.setState({ deleteDialogOpen: true });
+    };
+
+    handleDeleteClose = () => {
+      this.setState({ deleteDialogOpen: false });
+    };
+
+    handleDeleteSuccessClose = () => {
+      this.setState({ deleteDialogOpen: false });
+      this.props.deleteAccount();
+    };
+
+    onProfileSettingClick = (e, setting) => {
+        e.preventDefault();
+        const { profile } = this.props;
+        const userId = profile.profile.user._id;
+
+        this.setState({ disabled: ((setting === 'enable') ? false : true) });
+
+        if (setting === 'enable') this.props.enableProfileByUser(userId, this.props.history);
+        else if (setting === 'disable') this.props.disableProfileByUser(userId, this.props.history);
+    }
 
     render() {
         const { user } = this.props.auth;
@@ -143,10 +173,10 @@ class Dashboard extends Component {
                             <CardActionArea component={Link} to={'/profiles'}>
                                 <CardMedia
                                   component="img"
-                                  alt="find a guru"
+                                  alt="find a tutor"
                                   className={classes.media}
                                   height="140"
-                                  image={FindGuruImg}
+                                  image={FindTutorImg}
                                 />
                             </CardActionArea>
                         </Card>
@@ -197,16 +227,16 @@ class Dashboard extends Component {
                     }
                 </Grid>
             ) : (
-                <Grid container spacing={6} justify="center">
-                    <Grid item xs={3} sm={6} md={4}>
+                <Grid container spacing={10} justify="center">
+                    <Grid item xs={12} sm={6} md={4}>
                         <Card className={styles.card}>
                             <CardActionArea component={Link} to={'/create-profile'}>
                                 <CardMedia
                                   component="img"
-                                  alt="become a guru"
+                                  alt="become a tutor"
                                   className={classes.media}
                                   height="140"
-                                  image={BecomeGuruImg}
+                                  image={BecomeTutorImg}
                                 />
                             </CardActionArea>
                         </Card>
@@ -216,10 +246,10 @@ class Dashboard extends Component {
                             <CardActionArea component={Link} to={'/profiles'}>
                                 <CardMedia
                                   component="img"
-                                  alt="find a guru"
+                                  alt="find a tutor"
                                   className={classes.media}
                                   height="140"
-                                  image={FindGuruImg}
+                                  image={FindTutorImg}
                                 />
                             </CardActionArea>
                         </Card>
@@ -230,19 +260,63 @@ class Dashboard extends Component {
 
         return (
             <React.Fragment>
-           
-            <div>
-            </div>
                 <div className="padding20">
-                <Typography variant="h4" component="h1" align="center" className="editHeading">
-                Welcome, {user.firstname}!
-                </Typography>
+                    <Typography variant="h4" component="h1" align="center" className="editHeading">
+                        Welcome, {user.firstname}!
+                    </Typography>
                     <br/>
                     {dashboardContent}
                 </div>
+                <Dialog
+                  open={this.state.deleteDialogOpen}
+                  onClose={this.handleDeleteClose}
+                  aria-labelledby="alert-dialog-title"
+                  aria-describedby="alert-dialog-description"
+                >
+                  <DialogTitle id="alert-dialog-title">{"Delete Account?"}</DialogTitle>
+                  <DialogContent>
+                    <DialogContentText id="alert-dialog-description">
+                        Clicking Delete Account below will delete both your tutor profile and user account.
+                    </DialogContentText>
+                  </DialogContent>
+                  <DialogActions>
+                    <Button onClick={this.handleDeleteClose} className="textPurple">
+                      Cancel
+                    </Button>
+                    <Button onClick={this.handleDeleteSuccessClose} variant="outlined" className="purpleDelete" autoFocus>
+                      Delete Account
+                    </Button>
+                  </DialogActions>
+                </Dialog>
+
+                <Snackbar 
+                    anchorOrigin={{vertical: 'top', horizontal: 'right',}}
+                    open={this.state.deleteToast}
+                    autoHideDuration={8000}
+                    onClose={this.deleteToastClose}
+                    >
+                  <SnackbarContent
+                    className={classes.success}
+                    aria-describedby="client-snackbar"
+                    message={
+                      <span id="client-snackbar" className={classes.message}>
+                        <CheckCircleIcon className="toastIcon" />
+                        Admins cannot delete their accounts. Please transfer admin privileges and have that person revoke your admin status before trying again. 
+                      </span>
+                    }
+                  />
+                </Snackbar>
             </React.Fragment>
         );
     }
+}
+
+Dashboard.propTypes = {
+    getCurrentProfile: PropTypes.func.isRequired,
+    deleteAccount: PropTypes.func.isRequired,
+    auth: PropTypes.object.isRequired,
+    profile: PropTypes.object.isRequired,
+    classes: PropTypes.object.isRequired    
 }
 
 const mapStateToProps = state => ({

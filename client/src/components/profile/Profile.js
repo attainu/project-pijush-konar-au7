@@ -1,16 +1,9 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import React from 'react'
 
-export default class Profile extends Component {
-    static propTypes = {
-        prop: PropTypes
-    }
-
-    render() {
-        return (
-            <div>
-                ok
-            </div>
-        )
-    }
+export default function Profile() {
+    return (
+        <div>
+            
+        </div>
+    )
 }
