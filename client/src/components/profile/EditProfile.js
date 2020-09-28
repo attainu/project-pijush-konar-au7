@@ -36,6 +36,53 @@ class EditProfile extends Component {
      this.props.getSubjects();
  }
 
+//  componentWillReceiveProps(nextProps) {
+//     if (nextProps.errors) this.setState({ errors: nextProps.errors });
+//     if (nextProps.profile.profile) {
+//         const profile = nextProps.profile.profile;
+//         const courses = profile.courses.length > 0 ? profile.courses : [];
+//         this.setState({
+//             major: profile.major,
+//             minor: profile.minor,
+//             bio: profile.bio,
+//             availability: profile.availability,
+//             type: profile.type,
+//             courses: courses
+//         });
+//     }
+//     if (nextProps.subjects.subjects) {
+//         this.setState({
+//             subjects: sortArrByAscending(nextProps.subjects.subjects, ['name'])
+//         });
+//     }
+//  }
+
+
+//  componentDidUpdate(prevProps,prevState){
+//     if (prevProps.errors !== this.props.errors) {
+//         this.setState({
+//           errors: this.props.errors
+//         });
+//     }
+//     if (prevProps.profile !== this.props.profile) {
+//         const profile = this.props.profile.profile;
+//         const courses = profile.courses.length > 0 ? profile.courses : [];
+//         this.setState ({
+//             major: profile.major,
+//             minor: profile.minor,
+//             bio: profile.bio,
+//             availability: profile.availability,
+//             type: profile.type,
+//             courses: courses
+//         });
+//     }
+//     if (prevProps.subjects !== this.props.subjects) {
+//         this.setState ({
+//             subjects: sortArrByAscending(this.props.subjects.subjects, ['name'])
+//         });
+//     }
+//  }
+
  static getDerivedStateFromProps(nextProps) {
     if (nextProps.errors) return ({ errors: nextProps.errors });
     if (nextProps.profile.profile) {
