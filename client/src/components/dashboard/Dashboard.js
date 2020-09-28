@@ -102,7 +102,7 @@ class Dashboard extends Component {
 
     onDeleteClick = e => {
         e.preventDefault();
-        if (this.props.profile.profile.user.isAdmin) {
+        if (this.props.profile.profile.user) {     //.isAdmin
             this.handleDeleteToastOpen();
         }
         else {
@@ -288,7 +288,7 @@ class Dashboard extends Component {
                   <DialogTitle id="alert-dialog-title">{"Delete Account?"}</DialogTitle>
                   <DialogContent>
                     <DialogContentText id="alert-dialog-description">
-                        Clicking Delete Account below will delete both your tutor profile and user account.
+                        Clicking Delete Account below will delete both your GuruKul profile and user account.
                     </DialogContentText>
                   </DialogContent>
                   <DialogActions>
