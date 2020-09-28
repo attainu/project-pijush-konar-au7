@@ -57,7 +57,7 @@ class ProfileAbout extends Component {
                         {classes}
                     </div>
 
-                    <Grid container wrap="nowrap" spacing={16}>
+                    <Grid container wrap="nowrap" spacing={4}>
                         <Grid item>
                             <MailIcon className="icon"/>
                         </Grid>
@@ -66,7 +66,7 @@ class ProfileAbout extends Component {
                         </Grid>
                     </Grid>
                     {profile.bio &&
-                    <Grid container wrap="nowrap" spacing={16} >
+                    <Grid container wrap="nowrap" spacing={4} >
                           <Grid item>
                               <InfoIcon className="icon"/>
                           </Grid>
@@ -75,7 +75,7 @@ class ProfileAbout extends Component {
                           </Grid>
                     </Grid>}
                     {profile.availability &&
-                    <Grid container wrap="nowrap" spacing={16}>
+                    <Grid container wrap="nowrap" spacing={4}>
                           <Grid item>
                               <CalendarIcon className="icon"/>
                           </Grid>
@@ -90,7 +90,7 @@ class ProfileAbout extends Component {
                         className="colorPurple"
                         href={`mailto:${profile.user.email}`}
                     >
-                      Email Tutor
+                      Email Guru
                   </Button>
                 </CardActions>
             </Card>
@@ -99,7 +99,7 @@ class ProfileAbout extends Component {
 }
 
 ProfileAbout.propTypes = {
-  profile: PropTypes.object.isRequired
+  profile: PropTypes.string.isRequired
 };
 
 export default ProfileAbout;

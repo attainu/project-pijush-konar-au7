@@ -33,7 +33,7 @@ export const authLinks = (
         <ListItemIcon>
           <SearchIcon />
         </ListItemIcon>
-        <ListItemText primary="Find a Tutor" />
+        <ListItemText primary="Find a Guru" />
       </ListItem>
     </Link>
   </React.Fragment>
