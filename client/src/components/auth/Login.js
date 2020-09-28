@@ -64,6 +64,17 @@ class Login extends Component {
          });
        }
    }
+
+  // static getDerivedStateFromProps(nextProps) {
+  //   if (nextProps.auth.isAuthenticated) {
+  //     this.props.history.push('/profile');
+  //   }
+
+  //   if (nextProps.errors) {
+  //     return ({ errors: nextProps.errors });
+  //   }
+  //   return null;
+  // }
     
     onSubmit = e => {
         e.preventDefault();

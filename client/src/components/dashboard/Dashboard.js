@@ -85,20 +85,23 @@ class Dashboard extends Component {
                 disabled: nextProps.profile.profile.disabled
             });
         }
+       
         return null
     }
 
-    componentDidUpdate(prevProps){
-        if(prevProps.profile.profile !== this.props.profile.profile){
-           this.setState({ disabled: this.props.profile.profile.disabled })
-        }
+    // componentDidUpdate(prevProps){
+    //     if (prevProps.profile.profile !== this.props.profile.profile){
+    //        this.setState({ disabled: this.props.profile.profile.disabled })
+    //     }
+        
+    // }
      
-        if (prevProps.errors !== this.props.errors) {
-           this.setState({
-             errors: this.props.errors
-           });
-         }
-     }
+    //     if (prevProps.errors !== this.props.errors) {
+    //        this.setState({
+    //          errors: this.props.errors
+    //        });
+    //      }
+    //  }
 
     onDeleteClick = e => {
         e.preventDefault();
@@ -133,13 +136,16 @@ class Dashboard extends Component {
 
     onProfileSettingClick = (e, setting) => {
         e.preventDefault();
-        const { profile } = this.props;
-        const userId = profile.profile.user._id;
-
+        const { profile } = this.props ;
+    
+        const userId = profile.profile._id ; //user
+        
         this.setState({ disabled: ((setting === 'enable') ? false : true) });
-
         if (setting === 'enable') this.props.enableProfileByUser(userId, this.props.history);
         else if (setting === 'disable') this.props.disableProfileByUser(userId, this.props.history);
+        
+        
+        
     }
 
     render() {
@@ -210,7 +216,7 @@ class Dashboard extends Component {
                     {this.state.disabled ? (
                         <Grid item xs={12} sm={6} md={4}>
                             <Card className={styles.card}>
-                                <CardActionArea onClick={e => this.onProfileSettingClick(e, 'enable')}>
+                                <CardActionArea onClick={e => this.onProfileSettingClick(e, 'enable') }>
                                     <CardMedia
                                     component="img"
                                     alt="enable account"
@@ -224,7 +230,7 @@ class Dashboard extends Component {
                     ) : (
                         <Grid item xs={12} sm={6} md={4}>
                             <Card className={styles.card}>
-                                <CardActionArea onClick={e => this.onProfileSettingClick(e, 'disable')}>
+                                <CardActionArea onClick={e => this.onProfileSettingClick(e, 'disable') }>
                                     <CardMedia
                                         component="img"
                                         alt="disable account"

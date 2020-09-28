@@ -27,11 +27,11 @@ app.use(helmet());
 // app.use(express.cookieParser());
 
 // Email confirmation
-const emailController = require('./src/email/email.controller');
+import emailController from './src/email/email.controller';
 
 // Normal express middleware config defaults
 app.use(require('morgan')('dev'));
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: false }));  //false
 app.use(bodyParser.json());
 // app.use(express.session({ secret: process.env.secretOrKey }));
 
