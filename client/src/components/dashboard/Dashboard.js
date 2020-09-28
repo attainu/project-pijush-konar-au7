@@ -88,6 +88,18 @@ class Dashboard extends Component {
         return null
     }
 
+    componentDidUpdate(prevProps){
+        if(prevProps.profile.profile !== this.props.profile.profile){
+           this.setState({ disabled: this.props.profile.profile.disabled })
+        }
+     
+        if (prevProps.errors !== this.props.errors) {
+           this.setState({
+             errors: this.props.errors
+           });
+         }
+     }
+
     onDeleteClick = e => {
         e.preventDefault();
         if (this.props.profile.profile.user.isAdmin) {
