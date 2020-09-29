@@ -34,18 +34,27 @@ class CreateProfile extends Component {
      this.props.getSubjects();
  }
 
-componentDidUpdate(prevProps){
-    if(prevProps.subjects.subjects !== this.props.subjects.subjects){
-        this.setState({
-            subjects: sortArrByAscending(prevProps.subjects.subjects, ['name'])
-        });
-     }
+// componentDidUpdate(prevProps){
+//     if(prevProps.subjects !== this.props.subjects){
+//         this.setState({
+//             subjects: sortArrByAscending(prevProps.subjects, ['name'])
+//         });
+//      }
  
-    if (prevProps.errors !== this.props.errors) {
-       this.setState({
-         errors: this.props.errors
-       });
-     }
+//     if (prevProps.errors !== this.props.errors) {
+//        this.setState({
+//          errors: this.props.errors
+//        });
+//      }
+//  }
+
+static getDerivedStateFromProps(nextProps) {
+    if (nextProps.errors) return ({ errors: nextProps.errors });
+    if (nextProps.subjects.subjects) {
+        return ({
+            subjects: sortArrByAscending(nextProps.subjects.subjects, ['name'])
+        });
+    }
  }
 
 //  componentWillReceiveProps(nextProps) {

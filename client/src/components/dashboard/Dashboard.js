@@ -143,9 +143,7 @@ class Dashboard extends Component {
         this.setState({ disabled: ((setting === 'enable') ? false : true) });
         if (setting === 'enable') this.props.enableProfileByUser(userId, this.props.history);
         else if (setting === 'disable') this.props.disableProfileByUser(userId, this.props.history);
-        
-        
-        
+           
     }
 
     render() {
