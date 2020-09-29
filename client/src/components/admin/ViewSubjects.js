@@ -13,6 +13,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import { withStyles } from '@material-ui/core/styles';
 import _ from 'lodash';
+// import { GET_SUBJECTS } from '../../redux/actions/types';
 
 const CustomTableCell = withStyles(theme => ({
   head: {
@@ -47,44 +48,56 @@ const styles = theme => ({
 });
 
 class ViewSubjects extends Component {
- state = {
-     subjects: [],
-     errors: {}
- }
+  
+    state = {
+      subjects: [],
+      errors: {}
+  }
 
  componentDidMount() {
      this.props.getSubjects();
+     console.log(this.props)
  }
 
- static getDerivedStateFromProps(nextProps) {
-    if (nextProps.errors) {
-      return ({ errors: nextProps.errors })
-    };
-    if (nextProps.subjects.subjects) {
-        return ({
-            subjects: _.sortBy(nextProps.subjects.subjects, ['name'])
-        });
-    }
-    return null
- }
+//  static getDerivedStateFromProps(nextProps,prevState) {
+//     if (nextProps.errors) {
+//       return ({ errors: nextProps.errors })
+//     };
+//     if (nextProps.subjects.subjects) {
+//         return ({
+//             subjects: _.sortBy(nextProps.subjects.subjects, ['name'])
+//         });
+//     }
+//     return null
+//  }
 
-//  componentDidUpdate(prevProps) {
+//  componentDidUpdate(prevProps,prevState) {
+   
 //   if(prevProps.subjects.subjects !== this.props.subjects.subjects) {
-//       this.setState({ subjects: _.sortBy(prevProps.subjects.subjects, ['name']) })
+//       this.setState({ subjects:_.sortBy(prevProps.subjects.subjects, ['name']) })
 //   }
-//   if (prevProps.errors !== this.props.errors) {
-//     this.setState({
-//       errors: this.props.errors
-//     });
-//   }
+  // if (prevProps.errors !== this.props.errors) {
+  //   this.setState({
+  //     errors: this.props.errors
+  //   });
+  // }
   
 // }
 
+UNSAFE_componentWillReceiveProps(nextProps) {
+  if (nextProps.errors) this.setState({ errors: nextProps.errors });
+  if (nextProps.subjects.subjects) {
+      this.setState({
+          subjects: _.sortBy(nextProps.subjects.subjects, ['name'])
+      });
+      console.log(this.state)
+  }
+}
 
 // on cancel go back to dashboard to eliminate need for extra button
 render() {
     const { classes } = this.props;
-
+    console.log(this.state.name)
     return (
       <div className="padding20">
             <Typography variant="h4" component="h1" align="center" className="editHeading">
@@ -105,6 +118,7 @@ render() {
                   <TableRow key={subject.name} hover={true}>
                     <TableCell component="th" scope="row">
                       {subject.name}
+                    
                     </TableCell>
                     <TableCell>{subject.isMajor}</TableCell>
                     <TableCell>{subject.isMinor}</TableCell>

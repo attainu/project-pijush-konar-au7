@@ -79,30 +79,35 @@ class Dashboard extends Component {
     //     }
     // }
 
-    static getDerivedStateFromProps(nextProps) {
-        if (nextProps.profile.profile) {
-            return ({
-                disabled: nextProps.profile.profile.disabled
+    // static getDerivedStateFromProps(nextProps) {
+    //     if (nextProps.profile.profile) {
+    //         return ({
+    //             disabled: nextProps.profile.profile.disabled
+    //         });
+    //     }
+       
+    //     return null
+    // }
+
+    componentDidUpdate(prevProps){
+        if (prevProps.profile.profile !== this.props.profile.profile){
+           this.setState({ disabled: this.props.profile.profile.disabled })
+        }
+        if (prevProps.errors !== this.props.errors) {
+            this.setState({
+              errors: this.props.errors
             });
         }
-       
-        return null
     }
-
-    // componentDidUpdate(prevProps){
-    //     if (prevProps.profile.profile !== this.props.profile.profile){
-    //        this.setState({ disabled: this.props.profile.profile.disabled })
-    //     }
-        
-    // }
      
-    //     if (prevProps.errors !== this.props.errors) {
-    //        this.setState({
-    //          errors: this.props.errors
-    //        });
-    //      }
-    //  }
-
+    // componentWillReceiveProps(nextProps) {
+    //     if (nextProps.profile.profile) {
+    //         this.setState({
+    //             disabled: nextProps.profile.profile.disabled
+    //         });
+    //     }
+    // }  
+    
     onDeleteClick = e => {
         e.preventDefault();
         if (this.props.profile.profile.user) {     //.isAdmin
@@ -138,7 +143,7 @@ class Dashboard extends Component {
         e.preventDefault();
         const { profile } = this.props ;
     
-        const userId = profile.profile._id ; //user
+        const userId = profile.profile.users._id ; //user
         
         this.setState({ disabled: ((setting === 'enable') ? false : true) });
         if (setting === 'enable') this.props.enableProfileByUser(userId, this.props.history);
@@ -189,7 +194,7 @@ class Dashboard extends Component {
                             <CardActionArea component={Link} to={'/profiles'}>
                                 <CardMedia
                                   component="img"
-                                  alt="find a tutor"
+                                  alt="find a Guru"
                                   className={classes.media}
                                   height="140"
                                   image={FindTutorImg}
@@ -262,7 +267,7 @@ class Dashboard extends Component {
                             <CardActionArea component={Link} to={'/profiles'}>
                                 <CardMedia
                                   component="img"
-                                  alt="find a tutor"
+                                  alt="find a Guru"
                                   className={classes.media}
                                   height="140"
                                   image={FindTutorImg}

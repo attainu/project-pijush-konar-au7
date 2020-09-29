@@ -93,21 +93,28 @@ class Register extends Component {
       this.props.clearErrors();
     }
 
-    // componentDidUpdate(prevProps) {
-    //   if (prevProps.errors !== this.props.errors) {
-    //     this.setState({
-    //       errors: this.props.errors
-    //     });
+    componentDidUpdate(prevProps) {
+      if (prevProps.errors !== this.props.errors) {
+        this.setState({
+          errors: this.props.errors
+        });
+      }
+    }
+
+    // componentWillReceiveProps(nextProps) {
+    //   if (nextProps.errors) {
+    //     this.setState({ errors: nextProps.errors });
     //   }
+
     // }
   
-    static getDerivedStateFromProps(nextProps) {
-      if (nextProps.errors) {
-        return ({ errors: nextProps.errors });
-      }
-      return null;
+    // static getDerivedStateFromProps(nextProps) {
+    //   if (nextProps.errors) {
+    //     return ({ errors: nextProps.errors });
+    //   }
+    //   return null;
 
-    }
+    // }
 
     handleDialogClose = () => {
       this.setState({ openDialog: false });

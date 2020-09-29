@@ -36,34 +36,12 @@ class EditProfile extends Component {
      this.props.getSubjects();
  }
 
- static getDerivedStateFromProps(nextProps) {
-    if (nextProps.errors) return ({ errors: nextProps.errors });
-    if (nextProps.profile.profile) {
-        const profile = nextProps.profile.profile;
-        const courses = profile.courses.length > 0 ? profile.courses : [];
-        return ({
-            major: profile.major,
-            minor: profile.minor,
-            bio: profile.bio,
-            availability: profile.availability,
-            type: profile.type,
-            courses: courses
-        });
-    }
-    if (nextProps.subjects.subjects) {
-        return ({
-            subjects: sortArrByAscending(nextProps.subjects.subjects, ['name'])
-        });
-    }
-    return null
- }
-
-//  componentWillReceiveProps(nextProps) {
-//     if (nextProps.errors) this.setState({ errors: nextProps.errors });
+//  static getDerivedStateFromProps(nextProps) {
+//     if (nextProps.errors) return ({ errors: nextProps.errors });
 //     if (nextProps.profile.profile) {
 //         const profile = nextProps.profile.profile;
 //         const courses = profile.courses.length > 0 ? profile.courses : [];
-//         this.setState({
+//         return ({
 //             major: profile.major,
 //             minor: profile.minor,
 //             bio: profile.bio,
@@ -73,11 +51,33 @@ class EditProfile extends Component {
 //         });
 //     }
 //     if (nextProps.subjects.subjects) {
-//         this.setState({
+//         return ({
 //             subjects: sortArrByAscending(nextProps.subjects.subjects, ['name'])
 //         });
 //     }
+//     return null
 //  }
+
+UNSAFE_componentWillReceiveProps(nextProps) {
+    if (nextProps.errors) this.setState({ errors: nextProps.errors });
+    if (nextProps.profile.profile) {
+        const profile = nextProps.profile.profile;
+        const courses = profile.courses.length > 0 ? profile.courses : [];
+        this.setState({
+            major: profile.major,
+            minor: profile.minor,
+            bio: profile.bio,
+            availability: profile.availability,
+            type: profile.type,
+            courses: courses
+        });
+    }
+    if (nextProps.subjects.subjects) {
+        this.setState({
+            subjects: sortArrByAscending(nextProps.subjects.subjects, ['name'])
+        });
+    }
+ }
 
  addCourse = (e) => {
     const newCourse = {
