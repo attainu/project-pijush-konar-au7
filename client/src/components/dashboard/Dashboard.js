@@ -6,6 +6,7 @@ import ProgressSpinner from '../common/ProgressSpinner';
 import { connect } from 'react-redux';
 import { getCurrentProfile, deleteAccount, disableProfileByUser, enableProfileByUser } from '../../redux/actions/profileActions';
 
+// material UI - styling
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
@@ -20,13 +21,15 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+
+// button images
 import EditProfileImg from '../../images/edit-profile.jpg';
 import DeleteAccountImg from '../../images/delete-account.jpg';
 import EnableProfileImg from '../../images/enable-profile.jpg';
 import DisableProfileImg from '../../images/disable-profile.jpg';
 import ViewProfileImg from '../../images/view-profile.jpg';
-import FindTutorImg from '../../images/find-guru.jpg';
-import BecomeTutorImg from '../../images/become-guru.jpg';
+import FindGuruImg from '../../images/find-guru.jpg';
+import BecomeGuruImg from '../../images/become-guru.jpg';
 
 import { withStyles } from '@material-ui/core/styles';
 
@@ -185,10 +188,10 @@ class Dashboard extends Component {
                             <CardActionArea component={Link} to={'/profiles'}>
                                 <CardMedia
                                   component="img"
-                                  alt="find a tutor"
+                                  alt="find a guru"
                                   className={classes.media}
                                   height="140"
-                                  image={FindTutorImg}
+                                  image={FindGuruImg}
                                 />
                             </CardActionArea>
                         </Card>
@@ -245,10 +248,10 @@ class Dashboard extends Component {
                             <CardActionArea component={Link} to={'/create-profile'}>
                                 <CardMedia
                                   component="img"
-                                  alt="become a tutor"
+                                  alt="become a guru"
                                   className={classes.media}
                                   height="140"
-                                  image={BecomeTutorImg}
+                                  image={BecomeGuruImg}
                                 />
                             </CardActionArea>
                         </Card>
@@ -258,10 +261,10 @@ class Dashboard extends Component {
                             <CardActionArea component={Link} to={'/profiles'}>
                                 <CardMedia
                                   component="img"
-                                  alt="find a tutor"
+                                  alt="find a guru"
                                   className={classes.media}
                                   height="140"
-                                  image={FindTutorImg}
+                                  image={FindGuruImg}
                                 />
                             </CardActionArea>
                         </Card>
@@ -288,7 +291,7 @@ class Dashboard extends Component {
                   <DialogTitle id="alert-dialog-title">{"Delete Account?"}</DialogTitle>
                   <DialogContent>
                     <DialogContentText id="alert-dialog-description">
-                        Clicking Delete Account below will delete both your tutor profile and user account.
+                        Clicking Delete Account below will delete both your Guru profile and user account.
                     </DialogContentText>
                   </DialogContent>
                   <DialogActions>
