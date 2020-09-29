@@ -50,7 +50,7 @@ export const adminLinks = (
         <ListItemText primary="Manage Subjects" />
       </ListItem>
     </Link>
-    <Link to="/manage-users" className="link">
+    <Link to="/profile/manage-users" className="link">
       <ListItem button>
         <ListItemIcon>
           <PeopleIcon />

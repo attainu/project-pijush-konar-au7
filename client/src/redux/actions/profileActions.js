@@ -55,7 +55,7 @@ export const createProfile = (profileData, history) => dispatch => {
 // Get all profiles (only enabled profiles)
 export const getProfiles = () => dispatch => {
     dispatch(setProfileLoading());
-    axios.get(`/api/profile/all`)
+    axios.get(`/api/profile/manage-users`)
     .then(res => {
         dispatch({
             type: GET_PROFILES,

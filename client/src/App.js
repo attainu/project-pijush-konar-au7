@@ -93,7 +93,7 @@ class App extends Component {
                   <AdminRoute exact path="/subjects" component={Subjects} />
                   <AdminRoute exact path="/view-subjects" component={ViewSubjects} />
                   <AdminRoute exact path="/edit-subjects" component={EditSubjects} />
-                  <AdminRoute exact path="/manage-users" component={Users} />
+                  <AdminRoute exact path="/profile/manage-users" component={Users} />
                   <Route path="*" component={NotFound} />
                 </Switch>
               </main>

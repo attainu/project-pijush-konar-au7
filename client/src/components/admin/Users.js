@@ -69,14 +69,37 @@ class Users extends Component {
      this.props.getAllProfilesByAdmin();
  }
 
- static getDerivedStateFromProps(nextProps) {
-    if (nextProps.errors) return ({ errors: nextProps.errors });
-    if (nextProps.profiles) {
-        return ({
-            profiles: sortArrByAscending(nextProps.profiles, ['firstname', 'lastname'])
-        });
+//  static getDerivedStateFromProps(nextProps) {
+//     if (nextProps.errors) return ({ errors: nextProps.errors });
+//     if (nextProps.profiles) {
+//         return ({
+//             profiles: sortArrByAscending(nextProps.profiles, ['firstname', 'lastname'])
+//         });
+//     }
+//     return null
+//   }
+
+  // componentWillReceiveProps(nextProps) {
+  //   if (nextProps.errors) this.setState({ errors: nextProps.errors });
+  //   if (nextProps.profiles) {
+  //       this.setState({
+  //           profiles: sortArrByAscending(nextProps.profiles, ['firstname', 'lastname'])
+  //       });
+  //   }
+  // }
+   
+  componentDidUpdate(prevProps) {
+    // Typical usage (don't forget to compare props):
+    if (this.props.profiles !== prevProps.profiles) {
+      this.setState({
+        profiles: sortArrByAscending(this.props.profiles, ['firstname', 'lastname'])
+      });
     }
-    return null
+    if (prevProps.errors !== this.props.errors) {
+      this.setState({
+        errors: this.props.errors
+      });
+    }
   }
 
   handleAdminClose = () => {
