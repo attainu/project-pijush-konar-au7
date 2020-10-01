@@ -1,8 +1,9 @@
 import mongoose from 'mongoose';
+import keys from '../../config/keys'
 
 //Db connection
 
-mongoose.connect(process.env.MONGODB_URL_SET, {
+mongoose.connect(keys.mongoURI, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true,
