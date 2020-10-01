@@ -51,29 +51,29 @@ class EditSubjects extends Component {
      this.props.getSubjects();
  }
 
-//  static getDerivedStateFromProps(nextProps) {
-//   if (nextProps.errors){
-//     return ({ errors: nextProps.errors });
-//   }
+ static getDerivedStateFromProps(nextProps) {
+  if (nextProps.errors){
+    return ({ errors: nextProps.errors });
+  }
     
-//   if (nextProps.subjects.subjects) {
-//       return ({
-//         subjects: sortArrByAscending(nextProps.subjects.subjects, ['name'])
-//       })
-//   }
-//   return null
-// }
-
-componentDidUpdate(prevProps) {
-  if(prevProps.subjects.subjects !== this.props.subjects.subjects) {
-      this.setState({ subjects: sortArrByAscending(prevProps.subjects.subjects, ['name']) })
+  if (nextProps.subjects.subjects) {
+      return ({
+        subjects: sortArrByAscending(nextProps.subjects.subjects, ['name'])
+      })
   }
-  if (prevProps.errors !== this.props.errors) {
-    this.setState({
-      errors: this.props.errors
-    });
-  }
+  return null
 }
+
+// componentDidUpdate(prevProps) {
+//   if(prevProps.subjects.subjects !== this.props.subjects.subjects) {
+//       this.setState({ subjects: sortArrByAscending(prevProps.subjects.subjects, ['name']) })
+//   }
+//   if (prevProps.errors !== this.props.errors) {
+//     this.setState({
+//       errors: this.props.errors
+//     });
+//   }
+// }
 
 //  componentWillReceiveProps(nextProps) {
 //     if (nextProps.errors) this.setState({ errors: nextProps.errors });

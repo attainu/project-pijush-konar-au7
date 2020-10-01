@@ -17,17 +17,17 @@ componentDidMount() {
     }
 }
 
-componentDidUpdate(prevProps) { 
-    if (prevProps.profile.profile === null && this.props.profile.loading) {
-        this.props.history.push('/not-found');
-    }
-}
-
-// componentWillReceiveProps(nextProps) {
-//     if (nextProps.profile.profile === null && this.props.profile.loading) {
+// componentDidUpdate(prevProps) { 
+//     if (prevProps.profile.profile === null && this.props.profile.loading) {
 //         this.props.history.push('/not-found');
 //     }
 // }
+
+componentWillReceiveProps(nextProps) {
+    if (nextProps.profile.profile === null && this.props.profile.loading) {
+        this.props.history.push('/not-found');
+    }
+}
 
 render() {
     const { profile, loading } = this.props.profile;

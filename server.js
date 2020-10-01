@@ -39,12 +39,12 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'client/public')));
 
 // Handles any requests that don't match the ones above
-if(process.env.NODE_ENV === 'production'){
-    const path  =  require('path');
-    app.get('*',(req,res)=>{
+
+// const path  =  require('path');
+app.get('/*',(req,res)=>{
         res.sendFile(path.resolve(__dirname,'client', 'public', 'index.html'))
     })
-};
+
 
 // Config express-session
 const MemoryStore = memorystore(session)

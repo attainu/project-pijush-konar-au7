@@ -21,8 +21,9 @@ class ProfileAbout extends Component {
         const { profile } = this.props;
 
         // Create initials and short version of name for use on card
-        const firstname = profile.user.firstname;
-        const lastname = profile.user.lastname;
+        const email = profile.user ? profile.user.email : "";
+        const firstname = profile.user ? profile.user.firstname : "";
+        const lastname = profile.user ? profile.user.lastname : "";
         const initials =  (firstname && lastname) ? firstname.charAt(0) + lastname.charAt(0) : '';
         const shortname = (firstname && lastname) ? firstname + " " + lastname.charAt(0) + '.' : '';
 
@@ -62,7 +63,7 @@ class ProfileAbout extends Component {
                             <MailIcon className="icon"/>
                         </Grid>
                         <Grid item xs>
-                            <Typography>{profile.user.email}</Typography>
+                            <Typography>{email}</Typography>
                         </Grid>
                     </Grid>
                     {profile.bio &&
@@ -88,7 +89,7 @@ class ProfileAbout extends Component {
                     <Button
                         size="small"
                         className="colorPurple"
-                        href={`mailto:${profile.user.email}`}
+                        href={`mailto:${email}`}
                     >
                       Email Guru
                   </Button>

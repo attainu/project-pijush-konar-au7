@@ -71,34 +71,26 @@ class Dashboard extends Component {
         this.setState({ disabled: profile.disabled });
     }
 
-    // componentWillReceiveProps(nextProps) {
-    //     if (nextProps.profile.profile) {
-    //         this.setState({
-    //             disabled: nextProps.profile.profile.disabled
-    //         });
-    //     }
-    // }
-
-    // static getDerivedStateFromProps(nextProps) {
-    //     if (nextProps.profile.profile) {
-    //         return ({
-    //             disabled: nextProps.profile.profile.disabled
-    //         });
-    //     }
-       
-    //     return null
-    // }
-
-    componentDidUpdate(prevProps){
-        if (prevProps.profile.profile !== this.props.profile.profile){
-           this.setState({ disabled: this.props.profile.profile.disabled })
-        }
-        if (prevProps.errors !== this.props.errors) {
-            this.setState({
-              errors: this.props.errors
+    static getDerivedStateFromProps(nextProps) {
+        if (nextProps.profile.profile) {
+            return ({
+                disabled: nextProps.profile.profile.disabled
             });
         }
+       
+        return null
     }
+
+    // componentDidUpdate(prevProps){
+    //     if (prevProps.profile.profile !== this.props.profile.profile){
+    //        this.setState({ disabled: this.props.profile.profile.disabled })
+    //     }
+    //     if (prevProps.errors !== this.props.errors) {
+    //         this.setState({
+    //           errors: this.props.errors
+    //         });
+    //     }
+    // }
      
     // componentWillReceiveProps(nextProps) {
     //     if (nextProps.profile.profile) {
@@ -110,7 +102,7 @@ class Dashboard extends Component {
     
     onDeleteClick = e => {
         e.preventDefault();
-        if (this.props.profile.profile.user) {     //.isAdmin
+        if (this.props.profile.profile.user.isAdmin) {     //
             this.handleDeleteToastOpen();
         }
         else {
@@ -143,7 +135,7 @@ class Dashboard extends Component {
         e.preventDefault();
         const { profile } = this.props ;
     
-        const userId = profile.profile.users._id ; //user
+        const userId = profile.profile.user._id ; //
         
         this.setState({ disabled: ((setting === 'enable') ? false : true) });
         if (setting === 'enable') this.props.enableProfileByUser(userId, this.props.history);

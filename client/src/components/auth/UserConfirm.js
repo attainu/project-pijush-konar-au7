@@ -7,13 +7,13 @@ import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import ConfirmImg from '../../images/confirmed-text.jpg';
 import axios from 'axios';
-import { API_URL } from '../../client-config'
+// import { API_URL } from '../../client-config'
 
 
 class UserConfirm extends Component {
     componentDidMount = () => {
         const { id } = this.props.match.params;
-        axios.get(`${API_URL}/email/confirm/${id}`)
+        axios.get(`/email/confirm/${id}`)
         .then(res => res.json())
         .catch(err => console.error(err));
     }

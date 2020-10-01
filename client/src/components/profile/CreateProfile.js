@@ -141,12 +141,13 @@ render() {
     const minors = filterByOptions(subjects, ['isMinor', "Yes"]);
     const majors = filterByOptions(subjects, ['isMajor', "Yes"]);
     const subjectItems = filterByOptions(subjects, ['isCourse', "Yes"]);
-    console.log(this.state)
+    // console.log(this.state)
     
     const majorMenuItems =  majors.map((major, index) =>
             <MenuItem key={index} value={major.name}>{major.name}</MenuItem>
     );
-    // console.log(majorMenuItems)
+    console.log(majorMenuItems)
+
     const minorMenuItems = minors.map((minor, i) => 
             <MenuItem key={i} value={minor.name}>{minor.name}</MenuItem>
     );
@@ -235,10 +236,9 @@ render() {
                                   name: 'major',
                                   id: 'major'
                               }}>
-                              <MenuItem value={majorMenuItems}>
+                              <MenuItem value=""></MenuItem>
                               {majorMenuItems}
-                              </MenuItem>
-                                
+                                     
                             </Select>
                         </FormControl>
                     </Grid>
@@ -249,9 +249,9 @@ render() {
                                 name: 'minor',
                                 id: 'minor'
                             }}>
-                            <MenuItem value={minorMenuItems}>
+                            <MenuItem value=""></MenuItem>
                                {minorMenuItems}
-                               </MenuItem>
+                               
                             </Select>
                             
                         </FormControl>

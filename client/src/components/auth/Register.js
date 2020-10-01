@@ -76,11 +76,10 @@ class Register extends Component {
         e.preventDefault();
         
         const { firstname, lastname, email, password, password2 } = this.state;
-        const upEmail = `${email}`;
         const newUser = {
             firstname: firstname,
             lastname: lastname,
-            email: upEmail,
+            email: email,
             password: password,
             password2: password2
         }
@@ -100,21 +99,6 @@ class Register extends Component {
         });
       }
     }
-
-    // componentWillReceiveProps(nextProps) {
-    //   if (nextProps.errors) {
-    //     this.setState({ errors: nextProps.errors });
-    //   }
-
-    // }
-  
-    // static getDerivedStateFromProps(nextProps) {
-    //   if (nextProps.errors) {
-    //     return ({ errors: nextProps.errors });
-    //   }
-    //   return null;
-
-    // }
 
     handleDialogClose = () => {
       this.setState({ openDialog: false });
