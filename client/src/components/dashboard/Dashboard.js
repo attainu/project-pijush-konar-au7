@@ -102,7 +102,9 @@ class Dashboard extends Component {
     
     onDeleteClick = e => {
         e.preventDefault();
-        if (this.props.profile.profile.user.isAdmin) {     //
+        const { profile } = this.props
+        const isAdmin = profile.profile.user ? profile.profile.user.isAdmin : "";
+        if (isAdmin) {     //
             this.handleDeleteToastOpen();
         }
         else {
@@ -134,8 +136,8 @@ class Dashboard extends Component {
     onProfileSettingClick = (e, setting) => {
         e.preventDefault();
         const { profile } = this.props ;
-    
-        const userId = profile.profile.user._id ; //
+        // const userId =  profile.profile.user._id;
+        const userId = profile.profile.user ? profile.profile.user._id : "" ; 
         
         this.setState({ disabled: ((setting === 'enable') ? false : true) });
         if (setting === 'enable') this.props.enableProfileByUser(userId, this.props.history);

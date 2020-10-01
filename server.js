@@ -7,8 +7,10 @@ import helmet from 'helmet';
 import bodyParser from 'body-parser';
 import passport from 'passport';
 import path from 'path';
-
-import { } from './src/db/keys';
+import mongoose from 'mongoose';
+import keys from './config/keys'
+// require('./src/db/keys')
+// import { } from './src/db/keys';
 import setting from './config/checkProd';
 
 // Load routes
@@ -44,7 +46,11 @@ app.use(bodyParser.json());
 // app.get('/*',(req,res)=>{
 //         res.sendFile(path.resolve(__dirname,'client', 'public', 'index.html'))
 //     })
-
+// Connect to DB
+mongoose
+    .connect(keys.mongoURI, { useNewUrlParser: true, useCreateIndex: true })
+    .then(() => console.info('MongoDB Connected'))
+    .catch(err => console.error(err));
 
 // Config express-session
 const MemoryStore = memorystore(session)
@@ -79,7 +85,7 @@ if (setting.isProduction) {
     sessConfig.cookie.secure = true;
 
     //Set static folder
-    app.use(express.static('client/build'));
+    app.use(express.static('./client/build'));
 
     app.get('*', (req, res) => {
         res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
@@ -92,3 +98,13 @@ app.listen(port, () => console.info(`Server started on port ${port}`));
 
 //netstat -ano | findstr :3000
 //tskill 12345
+
+// npm install -g create-react-app
+// create-react-app my-app
+// cd my-app
+// git init
+// heroku create -b https://github.com/mars/create-react-app-buildpack.git
+// git add .
+// git commit -m "react-create-app on Heroku"
+// git push heroku master
+// heroku open

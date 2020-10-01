@@ -79,28 +79,28 @@ class Users extends Component {
 //     return null
 //   }
 
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    if (nextProps.errors) this.setState({ errors: nextProps.errors });
-    if (nextProps.profiles) {
-        this.setState({
-            profiles: sortArrByAscending(nextProps.profiles, ['firstname', 'lastname'])
-        });
-    }
-  }
-   
-  // componentDidUpdate(prevProps) {
-  //   // Typical usage (don't forget to compare props):
-  //   if (this.props.profiles !== prevProps.profiles) {
-  //     this.setState({
-  //       profiles: sortArrByAscending(this.props.profiles, ['firstname', 'lastname'])
-  //     });
-  //   }
-  //   if (prevProps.errors !== this.props.errors) {
-  //     this.setState({
-  //       errors: this.props.errors
-  //     });
+  // UNSAFE_componentWillReceiveProps(nextProps) {
+  //   if (nextProps.errors) this.setState({ errors: nextProps.errors });
+  //   if (nextProps.profiles) {
+  //       this.setState({
+  //           profiles: sortArrByAscending(nextProps.profiles, ['firstname', 'lastname'])
+  //       });
   //   }
   // }
+   
+  componentDidUpdate(prevProps) {
+    // Typical usage (don't forget to compare props):
+    if (this.props.profiles !== prevProps.profiles) {
+      this.setState({
+        profiles: sortArrByAscending(this.props.profiles, ['firstname', 'lastname'])
+      });
+    }
+    if (prevProps.errors !== this.props.errors) {
+      this.setState({
+        errors: this.props.errors
+      });
+    }
+  }
 
   handleAdminClose = () => {
     this.setState({ adminToastOpen: false });

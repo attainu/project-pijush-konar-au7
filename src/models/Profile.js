@@ -1,5 +1,5 @@
-import mongoose, { Schema } from 'mongoose';
-
+import mongoose from 'mongoose';
+const Schema = mongoose.Schema;
 // TODO: add payment or not
 
 const ProfileSchema = new Schema({

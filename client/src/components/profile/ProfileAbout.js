@@ -34,8 +34,11 @@ class ProfileAbout extends Component {
             <p>No classes defined yet.</p>
         );
 
-        const majors = profile.major.join(", ");
-        const minors = (profile.minor.length > 0) ? profile.minor.join(", ") : "";
+        // const majors = profile.major.join(", ");
+        // const minors = (profile.minor.length > 0) ? profile.minor.join(", ") : "";
+        
+        const majors = profile.major ? profile.major.join(", ") : "";
+        const minors = profile.minor ? profile.minor.join(", ") : "";
         const headerText = profile.type === "Paid" ?
             <span>{shortname}<span className="tag">Requesting Compensation</span></span>
             : <span>{shortname}</span>;
