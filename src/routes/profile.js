@@ -1,6 +1,7 @@
 import express from 'express';
 import passport from 'passport';
 
+
 //Load controllers
 import profileControll from '../controllers/profileController'
 

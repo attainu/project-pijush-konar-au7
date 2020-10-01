@@ -59,30 +59,30 @@ class ViewSubjects extends Component {
      console.log(this.props)
  }
 
- static getDerivedStateFromProps(nextProps,prevState) {
-    if (nextProps.errors) {
-      return ({ errors: nextProps.errors })
-    };
-    if (nextProps.subjects.subjects) {
-        return ({
-            subjects: _.sortBy(nextProps.subjects.subjects, ['name'])
-        });
-    }
-    return null
- }
+//  static getDerivedStateFromProps(nextProps,prevState) {
+//     if (nextProps.errors) {
+//       return ({ errors: nextProps.errors })
+//     };
+//     if (nextProps.subjects.subjects) {
+//         return ({
+//             subjects: _.sortBy(nextProps.subjects.subjects, ['name'])
+//         });
+//     }
+//     return null
+//  }
 
-//  componentDidUpdate(prevProps,prevState) {
+ componentDidUpdate(prevProps,prevState) {
    
-//   if(prevProps.subjects.subjects !== this.props.subjects.subjects) {
-//       this.setState({ subjects:_.sortBy(prevProps.subjects.subjects, ['name']) })
-//   }
-  // if (prevProps.errors !== this.props.errors) {
-  //   this.setState({
-  //     errors: this.props.errors
-  //   });
-  // }
+  if(prevProps.subjects.subjects !== this.props.subjects.subjects) {
+      this.setState({ subjects:_.sortBy(this.props.subjects.subjects, ['name']) })
+  }
+  if (prevProps.errors !== this.props.errors) {
+    this.setState({
+      errors: this.props.errors
+    });
+  }
   
-// }
+}
 
 // UNSAFE_componentWillReceiveProps(nextProps) {
 //   if (nextProps.errors) this.setState({ errors: nextProps.errors });

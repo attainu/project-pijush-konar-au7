@@ -147,7 +147,10 @@ class Users extends Component {
  deleteUser = (e, userID) => {
     e.preventDefault();
     let profiles = [...this.state.profiles];
-    let updatedUser = removeByMatch(profiles, function(user) { return user._id === userID; });
+    let updatedUser = removeByMatch(profiles, function(user) { 
+      // if(user)
+      return user._id === userID; 
+    });
     let userName = updatedUser[0].firstname + " " + updatedUser[0].lastname;
 
     this.setState({

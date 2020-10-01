@@ -65,8 +65,8 @@ const ProfileItem = props => {
     const profileEmail = profile.user ? profile.user.email : "";
     const id = profile.user ? profile.user._id : "";
 
-    const majors = profile.major.join(", ");
-    const minors = (profile.minor.length > 0) ? profile.minor.join(", ") : "";
+    const majors = profile.major ? profile.major.join(", "): "";
+    const minors = profile.minor ? profile.minor.join(", ") : "";
     const headerText = profile.type === "Paid" ?
         <span>{shortname}<span className="tag">$$$</span></span>
         : <span>{shortname}</span>;
