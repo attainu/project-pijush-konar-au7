@@ -36,36 +36,98 @@ class EditProfile extends Component {
      this.props.getSubjects();
  }
 
- static getDerivedStateFromProps(nextProps) {
-    if (nextProps.errors) return ({ errors: nextProps.errors });
-
-    const profile = nextProps.profile.profile;
-    const courses = profile.courses.length > 0 ? profile.courses : [];
-    if (profile) {
-        
-        return ({
-            major: profile.major,
-            minor: profile.minor,
-            bio: profile.bio,
-            availability: profile.availability,
-            type: profile.type,
-            courses: courses
+ componentDidUpdate(prevProps){
+    // this.setState({
+    //     major: [...this.props.profile.profile.major],
+    //     minor: [...this.props.profile.profile.minor],
+    //     bio: this.props.profile.profile.bio,
+    //     availability: this.props.profile.profile.availability,
+    //     type: this.props.profile.profile.type,
+    //     courses: [...this.props.profile.courses]
+    // });
+    if(prevProps.subjects.subjects !== this.props.subjects.subjects){
+        this.setState({
+            subjects: sortArrByAscending(this.props.subjects.subjects, ['name'])
         });
-    }
-    if (nextProps.subjects.subjects) {
-        return ({
-            subjects: sortArrByAscending(nextProps.subjects.subjects, ['name'])
-        });
-    }
-    return null
+     }
+    if (prevProps.errors !== this.props.errors) {
+       this.setState({
+         errors: this.props.errors
+       });
+     }
  }
+
+//  componentDidUpdate(prevProps){
+//     const profile = prevProps.profile ? prevProps.profile.profile : "";
+
+    // const courses = profile ? profile.courses : [];
+    // const courses = []
+    // if (profile && profile.courses ) {
+    //     courses.push(profile.courses)
+    // }
+    // const courses = profile && profile.courses && profile.courses.length > 0 ? profile.courses : [];
+//     if (profile ) {
+        
+//         this.setState ({
+//             major: profile?profile.major:[],
+//             minor: profile?profile.minor: [],
+//             bio: profile?profile.bio:"",
+//             availability: profile?profile.availability:"",
+//             type: profile?profile.type:"",
+//             courses: courses
+//         });
+//     }
+//     if(prevProps.subjects.subjects !== this.props.subjects.subjects){
+//         this.setState({
+//             subjects: sortArrByAscending(this.props.subjects.subjects, ['name'])
+//         });
+//      }
+//     if (prevProps.errors !== this.props.errors) {
+//        this.setState({
+//          errors: this.props.errors
+//        });
+//      }
+//  }
+
+// static getDerivedStateFromProps(nextProps) {
+//     if (nextProps.errors) return ({ errors: nextProps.errors });
+//  }
+
+//  static getDerivedStateFromProps(nextProps) {
+//     if (nextProps.errors) return ({ errors: nextProps.errors });
+
+    
+//     return null
+//  }
 
 // UNSAFE_componentWillReceiveProps(nextProps) {
     
+    // if (nextProps.errors) this.setState({ errors: nextProps.errors });
+    // const profile = nextProps.profile ? nextProps.profile.profile: "";
+    // if (profile) {  
+    //     const courses = profile && profile.courses && profile.courses.length > 0 ? profile.courses : [];
+    //     this.setState({
+    //         major: profile.major,
+    //         minor: profile.minor,
+    //         bio: profile.bio,
+    //         availability: profile.availability,
+    //         type: profile.type,
+    //         courses: courses
+    //     });
+    // }
+//     if (nextProps.subjects.subjects) {
+//         this.setState({
+//             subjects: sortArrByAscending(nextProps.subjects.subjects, ['name'])
+//         });
+//     }
+//  }
+
+
+// UNSAFE_componentWillReceiveProps(nextProps) {
 //     if (nextProps.errors) this.setState({ errors: nextProps.errors });
-//     const profile = nextProps.profile ? nextProps.profile.profile : "";
-//     if (profile) {  
-//         const courses = profile.courses.length > 0 ? profile.courses : [];
+//     if (nextProps.profile.profile) {
+//         const profile = nextProps.profile.profile;
+//         const courses = profile && profile.courses && profile.courses.length > 0 ? profile.courses : [];
 //         this.setState({
 //             major: profile.major,
 //             minor: profile.minor,
@@ -192,7 +254,7 @@ render() {
                   <CardContent>
                     <FormControl margin="normal" required fullWidth>
                         <InputLabel htmlFor={courseId}>Course Identifier</InputLabel>
-                        <Select value={course.courseId} onChange={this.onChange} variant="outlined" name={courseId} id="courseId"
+                        <Select displayEmpty value={course.courseId} onChange={this.onChange} variant="outlined" name={courseId} id="courseId"
                           MenuProps={{ style: {maxHeight: 300} }}>
                             {courseMenuItems}
                         </Select>
@@ -218,7 +280,9 @@ render() {
 
     ///enforcing major & type to be required
      var validProfile = false;
-     if(major.length > 0 && type.length > 0){ 
+     const mLength = major ? major.length : [];
+     const tLength = type ? type.length : [];
+     if(mLength > 0 && tLength > 0){ 
          validProfile = true;
      }
      else{
@@ -257,7 +321,7 @@ render() {
                     <Grid item xs={12} sm={6} md={6}>
                         <FormControl margin="normal" required fullWidth>
                             <InputLabel htmlFor="major">Major(s)</InputLabel>
-                            <Select multiple value={major} onChange={this.onChange} variant="outlined" MenuProps={{ style: {maxHeight: 300} }} 
+                            <Select displayEmpty multiple value={major} onChange={this.onChange} variant="outlined" MenuProps={{ style: {maxHeight: 300} }} 
                               inputProps={{
                                   name: 'major',
                                   id: 'major'
@@ -269,7 +333,7 @@ render() {
                     <Grid item xs={12} sm={6} md={6}>
                         <FormControl margin="normal" fullWidth>
                             <InputLabel htmlFor="minor">Minor(s)</InputLabel>
-                            <Select multiple value={minor || []} onChange={this.onChange} MenuProps={{ style: {maxHeight: 300} }} inputProps={{
+                            <Select displayEmpty={true} multiple value={minor || []} onChange={this.onChange} MenuProps={{ style: {maxHeight: 300} }} inputProps={{
                                 name: 'minor',
                                 id: 'minor'
                             }}>
@@ -280,7 +344,7 @@ render() {
                     <Grid item xs={12} sm={6}>
                         <FormControl margin="normal" required fullWidth>
                             <InputLabel htmlFor="type">Paid or volunteer?</InputLabel>
-                            <Select required value={type || ''} onChange={this.onChange} MenuProps={{ style: {maxHeight: 300} }} inputProps={{
+                            <Select displayEmpty required value={type || ''} onChange={this.onChange} MenuProps={{ style: {maxHeight: 300} }} inputProps={{
                                 name: 'type',
                                 id: 'type'
                             }}>
