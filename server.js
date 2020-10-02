@@ -9,7 +9,7 @@ import passport from 'passport';
 import path from 'path';
 import mongoose from 'mongoose';
 import keys from './config/keys'
-// require('./src/db/keys')
+
 // import { } from './src/db/keys';
 import setting from './config/checkProd';
 

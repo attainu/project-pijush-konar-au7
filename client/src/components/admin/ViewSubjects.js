@@ -56,7 +56,7 @@ class ViewSubjects extends Component {
 
  componentDidMount() {
      this.props.getSubjects();
-     console.log(this.props)
+    //  console.log(this.props)
  }
 
 //  static getDerivedStateFromProps(nextProps,prevState) {
@@ -97,7 +97,7 @@ class ViewSubjects extends Component {
 // on cancel go back to dashboard to eliminate need for extra button
 render() {
     const { classes } = this.props;
-    console.log(this.state.name)
+    // console.log(this.state.name)
     return (
       <div className="padding20">
             <Typography variant="h4" component="h1" align="center" className="editHeading">

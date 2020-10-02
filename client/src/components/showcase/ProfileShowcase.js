@@ -79,22 +79,38 @@ class ProfilesShowcase extends Component {
         }
     }
 
+    // static getDerivedStateFromProps(prevProps,prevState) {
+    //     if (prevProps.errors !== prevState.errors) return ({ errors: prevProps.errors });
+    //     if (prevProps.subjects.subjects !== prevState.subjects.subjects) {
+    //      return ({
+    //             subjects: _.sortBy(_.map(prevProps.subjects.subjects, 'name'))
+    //         });
+    //     }
+    //     if (prevProps.propfile.profiles !== prevState.profile.profiles) {
+    //      return ({
+    //             allProfiles: prevProps.profile.profiles
+    //         });
+    //     }
+    //     if (sessionStorage.length < 1) {
+    //      return ({ data: prevProps.profile.profiles })
+    //     }
+    //     return null;
+    //  }
     UNSAFE_componentWillReceiveProps(nextProps) {
         if (nextProps.errors) this.setState({ errors: nextProps.errors });
         if (nextProps.subjects.subjects) {
-         this.setState({
+            this.setState({
                 subjects: _.sortBy(_.map(nextProps.subjects.subjects, 'name'))
             });
         }
         if (nextProps.profile.profiles) {
-         this.setState({
+            this.setState({
                 allProfiles: nextProps.profile.profiles
             });
         }
         if (sessionStorage.length < 1) {
-         this.setState({ data: nextProps.profile.profiles })
+            this.setState({ data: nextProps.profile.profiles })
         }
-        // return null;
      }
 
     //for randomizing profiles displayed

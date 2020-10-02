@@ -134,7 +134,7 @@ const ProfileItem = props => {
                         className="colorPurple"
                         href={`mailto:${profileEmail}`}
                     >
-                        Email Tutor
+                        Email Guru
                     </Button>
                 }
                 {auth.isAuthenticated && id  === auth.user.id &&

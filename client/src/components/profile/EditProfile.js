@@ -36,14 +36,23 @@ class EditProfile extends Component {
      this.props.getSubjects();
  }
 
- static getDerivedStateFromProps(nextProps) {
-    if (nextProps.errors) return ({ errors: nextProps.errors });
-
-    const profile = nextProps.profile.profile;
-    const courses = profile.courses.length > 0 ? profile.courses : [];
-    if (profile) {
-        
-        return ({
+ componentDidUpdate(prevProps,prevState){
+    // const profile = prevProps.profile ? prevProps.profile.profile: "";
+    // if (profile) {  
+    //     const courses = profile && profile.courses && profile.courses.length > 0 ? profile.courses : [];
+    //     this.setState({
+            // major: profile.major,
+            // minor: profile.minor,
+            // bio: profile.bio,
+            // availability: profile.availability,
+            // type: profile.type,
+            // courses: courses
+    //     });
+    // }
+    if (this.props.profiles !== prevProps.profiles) {
+        const profile = this.props.profile ? this.props.profile.profile: "";
+        const courses = profile && profile.courses && profile.courses.length > 0 ? profile.courses : [];
+        this.setState({
             major: profile.major,
             minor: profile.minor,
             bio: profile.bio,
@@ -51,22 +60,49 @@ class EditProfile extends Component {
             type: profile.type,
             courses: courses
         });
-    }
-    if (nextProps.subjects.subjects) {
-        return ({
-            subjects: sortArrByAscending(nextProps.subjects.subjects, ['name'])
+      }
+    if(prevProps.subjects.subjects !== this.props.subjects.subjects){
+        this.setState({
+            subjects: sortArrByAscending(this.props.subjects.subjects, ['name'])
         });
-    }
-    return null
+     }
+    if (prevProps.errors !== this.props.errors) {
+       this.setState({
+         errors: this.props.errors
+       });
+     }
  }
+
 
 // UNSAFE_componentWillReceiveProps(nextProps) {
     
-//     if (nextProps.errors) this.setState({ errors: nextProps.errors });
-//     const profile = nextProps.profile ? nextProps.profile.profile : "";
-//     if (profile) {  
-//         const courses = profile.courses.length > 0 ? profile.courses : [];
-//         this.setState({
+    // if (nextProps.errors) this.setState({ errors: nextProps.errors });
+    // const profile = nextProps.profile ? nextProps.profile.profile: "";
+    // if (profile) {  
+    //     const courses = profile && profile.courses && profile.courses.length > 0 ? profile.courses : [];
+    //     this.setState({
+    //         major: profile.major,
+    //         minor: profile.minor,
+    //         bio: profile.bio,
+    //         availability: profile.availability,
+    //         type: profile.type,
+    //         courses: courses
+    //     });
+    // }
+    // if (nextProps.subjects.subjects) {
+    //     this.setState({
+    //         subjects: sortArrByAscending(nextProps.subjects.subjects, ['name'])
+    //     });
+    // }
+//  }
+
+
+// static getDerivedStateFromProps(nextProps) {
+//     if (nextProps.errors) return ({ errors: nextProps.errors });
+//     if (nextProps.profile.profile) {
+//         const profile = nextProps.profile.profile;
+//         const courses = profile && profile.courses && profile.courses.length > 0 ? profile.courses : [];
+//         return ({
 //             major: profile.major,
 //             minor: profile.minor,
 //             bio: profile.bio,
@@ -76,10 +112,11 @@ class EditProfile extends Component {
 //         });
 //     }
 //     if (nextProps.subjects.subjects) {
-//         this.setState({
+//         return ({
 //             subjects: sortArrByAscending(nextProps.subjects.subjects, ['name'])
 //         });
 //     }
+//     return null;
 //  }
 
  addCourse = (e) => {
@@ -136,7 +173,7 @@ class EditProfile extends Component {
  onChange = e => {
     const name = e.target.name;
     if (name.includes("courseId") || name.includes("courseNumber") || name.includes("courseName")) {
-      let courses = [...this.state.courses];
+      let courses = [...this.state.courses,e.target.courses];
       let i = name.charAt(name.length - 1);
       let property = name.substring(0, name.length - 2);
       courses[i][property] = e.target.value;
@@ -168,7 +205,6 @@ render() {
 
     const minors = filterByOptions(subjects, ['isMinor', "Yes"]);
     const majors = filterByOptions(subjects, ['isMajor', "Yes"]);
-    console.log(majors)
     const subjectItems = filterByOptions(subjects, ['isCourse', "Yes"]);
 
     const majorMenuItems =  majors.map((major, i) =>
