@@ -5,9 +5,10 @@ import PropTypes from 'prop-types'
 
 // Route protected by auth, redirect when user logs out or when auth is invalid
 const AdminRoute = ({ component: Component, auth, ...rest}) => (
+
     <Route 
         {...rest}
-        render = {props => auth.user.isAdmin === true && auth.isAuthenticated === true ? 
+        render = {props => auth.user.isAdmin  === true && auth.isAuthenticated === true ? 
         <Component {...props} /> : <Redirect to="/login" />   
         }
     />

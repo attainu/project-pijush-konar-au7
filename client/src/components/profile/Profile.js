@@ -17,25 +17,33 @@ componentDidMount() {
     }
 }
 
-componentDidUpdate(prevProps) { 
-    if (prevProps.profile.profile === null && this.props.profile.loading) {
-        this.props.history.push('/not-found');
-    }
-}
-
-// componentWillReceiveProps(nextProps) {
+// componentDidUpdate(prevProps) { 
+//     if (prevProps.profile.profile === null && this.props.profile.loading) {
+//         this.props.history.push('/not-found');
+//     }
+// }
+// static getDerivedStateFromProps(nextProps,prevState) {
 //     if (nextProps.profile.profile === null && this.props.profile.loading) {
 //         this.props.history.push('/not-found');
 //     }
 // }
 
+UNSAFE_componentWillReceiveProps(nextProps) {
+    if (nextProps.profile.profile === null && this.props.profile.loading) {
+        this.props.history.push('/not-found');
+    }
+}
+
 render() {
     const { profile, loading } = this.props.profile;
+    // const proload = this.props
+    // const profile = proload.profile? proload.profile.profile: "";
+    // const loading = proload.profile? proload.profile.loading: "";
     let profileContent;
     
     profileContent = (profile === null || loading) ? <ProgressSpinner /> : (
         <div>
-            <ProfileAbout profile={profile} />
+            <ProfileAbout profile={{profile}}/>
         </div>
     );
 
@@ -47,6 +55,7 @@ render() {
 
 Profile.propTypes = {
     getProfileByHandle: PropTypes.func.isRequired,
+    // profile: PropTypes.array.isRequired
     profile: PropTypes.object.isRequired
 };
 

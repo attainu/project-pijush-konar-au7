@@ -31,16 +31,16 @@ class CreateProfile extends Component {
  }
 
  componentDidMount() {
-     this.props.getSubjects();
+    this.props.getSubjects();
+    
  }
 
 componentDidUpdate(prevProps){
     if(prevProps.subjects.subjects !== this.props.subjects.subjects){
         this.setState({
-            subjects: sortArrByAscending(prevProps.subjects.subjects, ['name'])
+            subjects: sortArrByAscending(this.props.subjects.subjects, ['name'])
         });
      }
- 
     if (prevProps.errors !== this.props.errors) {
        this.setState({
          errors: this.props.errors
@@ -48,7 +48,11 @@ componentDidUpdate(prevProps){
      }
  }
 
-//  componentWillReceiveProps(nextProps) {
+static getDerivedStateFromProps(nextProps) {
+    if (nextProps.errors) return ({ errors: nextProps.errors });
+ }
+
+//  UNSAFE_componentWillReceiveProps(nextProps) {
 //     if (nextProps.errors) this.setState({ errors: nextProps.errors });
 //     if (nextProps.subjects.subjects) {
 //         this.setState({
@@ -64,11 +68,11 @@ componentDidUpdate(prevProps){
            courseName: "", 
            courseNumber: "", 
            courseSubject: "", 
-           id: Math.random().toString(36).replace(/[^a-z]+/g, '').substr(2, 10)
+           id:Math.random().toString().replace(/[^a-z]+/g, '').substr(2, 10)
       }],
     }));
  }
-
+//Math.random().toString(36).replace(/[^a-z]+/g, '').substr(2, 10)
  removeCourse = id => {
     let courses = [...this.state.courses];
     const newCourses = courses.filter(course => {
@@ -137,12 +141,13 @@ render() {
     const minors = filterByOptions(subjects, ['isMinor', "Yes"]);
     const majors = filterByOptions(subjects, ['isMajor', "Yes"]);
     const subjectItems = filterByOptions(subjects, ['isCourse', "Yes"]);
-    console.log(majors)
+    // console.log(this.state)
     
     const majorMenuItems =  majors.map((major, index) =>
             <MenuItem key={index} value={major.name}>{major.name}</MenuItem>
     );
-    // console.log(majorMenuItems)
+    console.log(majorMenuItems)
+
     const minorMenuItems = minors.map((minor, i) => 
             <MenuItem key={i} value={minor.name}>{minor.name}</MenuItem>
     );
@@ -233,7 +238,7 @@ render() {
                               }}>
                               <MenuItem value=""></MenuItem>
                               {majorMenuItems}
-                                
+                                     
                             </Select>
                         </FormControl>
                     </Grid>
@@ -246,7 +251,9 @@ render() {
                             }}>
                             <MenuItem value=""></MenuItem>
                                {minorMenuItems}
+                               
                             </Select>
+                            
                         </FormControl>
                     </Grid>
                     <Grid item xs={12} sm={6}>

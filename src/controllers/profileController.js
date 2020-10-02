@@ -160,25 +160,31 @@ const profileControll = {
             );
           });
     },
-    deleteProfileId: (req, res) => {
-        User.findOne({ _id: req.body.id.user }).then(user => {
-            if (user) {
-                if (user.hasProfile) {
-                    Profile.findOneAndRemove({ user: req.body.id.user }).then(() => {
+    deleteProfileId: async(req, res) => {  
+        // const _id = req.body.id.user
+        try{
+            const user = await User.findOne({ _id: req.body.id.user }).then(user => {
+                if (user) {
+                    if (user.hasProfile) {
+                        Profile.findOneAndRemove({ user: req.body.id.user }).then(() => {
+                            User.findOneAndRemove({ _id: req.body.id.user }).then(() =>
+                              res.json({ success: true })
+                            );
+                        });
+                    }
+                    else {
                         User.findOneAndRemove({ _id: req.body.id.user }).then(() =>
                           res.json({ success: true })
                         );
-                    });
+                    }
+      
                 }
-                else {
-                    User.findOneAndRemove({ _id: req.body.id.user }).then(() =>
-                      res.json({ success: true })
-                    );
-                }
-  
-            }
-        });
-    }
+            });
+        }
+        catch(err){
+            console.error(err)
+        }
+    }  
 
 }
 

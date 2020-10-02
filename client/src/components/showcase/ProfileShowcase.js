@@ -79,22 +79,22 @@ class ProfilesShowcase extends Component {
         }
     }
 
-    static getDerivedStateFromProps(nextProps) {
-        if (nextProps.errors) return ({ errors: nextProps.errors });
+    UNSAFE_componentWillReceiveProps(nextProps) {
+        if (nextProps.errors) this.setState({ errors: nextProps.errors });
         if (nextProps.subjects.subjects) {
-         return ({
+         this.setState({
                 subjects: _.sortBy(_.map(nextProps.subjects.subjects, 'name'))
             });
         }
         if (nextProps.profile.profiles) {
-         return ({
+         this.setState({
                 allProfiles: nextProps.profile.profiles
             });
         }
         if (sessionStorage.length < 1) {
-         return ({ data: nextProps.profile.profiles })
+         this.setState({ data: nextProps.profile.profiles })
         }
-        return null;
+        // return null;
      }
 
     //for randomizing profiles displayed

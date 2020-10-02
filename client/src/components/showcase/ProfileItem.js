@@ -57,15 +57,16 @@ const ProfileItem = props => {
     )
 
     // Create initials and short version of name for use on card
-    const firstname = profile.user.firstname === null ? 'NA' : profile.user.firstname;
-    const lastname = profile.user.lastname === null ? 'NA' : profile.user.lastname;
+    const firstname = profile.user ? profile.user.firstname : "";
+    const lastname = profile.user ? profile.user.lastname : "";
     const initials =  (firstname && lastname) ? firstname.charAt(0) + lastname.charAt(0) : '';
     const shortname = (firstname && lastname) ? firstname + " " + lastname.charAt(0) + '.' : '';
 
-    const profileEmail = profile.user.email === null ? 'NA' : profile.user.email;
+    const profileEmail = profile.user ? profile.user.email : "";
+    const id = profile.user ? profile.user._id : "";
 
-    const majors = profile.major.join(", ");
-    const minors = (profile.minor.length > 0) ? profile.minor.join(", ") : "";
+    const majors = profile.major ? profile.major.join(", "): "";
+    const minors = profile.minor ? profile.minor.join(", ") : "";
     const headerText = profile.type === "Paid" ?
         <span>{shortname}<span className="tag">$$$</span></span>
         : <span>{shortname}</span>;
@@ -127,16 +128,16 @@ const ProfileItem = props => {
                 >
                     View Profile
                 </Button>
-                {profile.user._id !== auth.user.id &&
+                {id !== auth.user.id &&
                     <Button
                         size="small"
                         className="colorPurple"
-                        href={`mailto:${profile.user.email}`}
+                        href={`mailto:${profileEmail}`}
                     >
                         Email Tutor
                     </Button>
                 }
-                {auth.isAuthenticated && profile.user._id === auth.user.id &&
+                {auth.isAuthenticated && id  === auth.user.id &&
                     <Button component={Link}
                         size="small"
                         to={`/edit-profile`}

@@ -7,9 +7,11 @@ import helmet from 'helmet';
 import bodyParser from 'body-parser';
 import passport from 'passport';
 import path from 'path';
-
-import { } from './src/db/keys';
-// import setting from './config/checkProd';
+import mongoose from 'mongoose';
+import keys from './config/keys'
+// require('./src/db/keys')
+// import { } from './src/db/keys';
+import setting from './config/checkProd';
 
 // Load routes
 import users from './src/routes/users';
@@ -36,15 +38,19 @@ app.use(bodyParser.json());
 // app.use(express.session({ secret: process.env.secretOrKey }));
 
 // Serve the static files from the React app
-app.use(express.static(path.join(__dirname, 'client/public')));
+// app.use(express.static(path.join(__dirname, 'client/public')));
 
 // Handles any requests that don't match the ones above
-if(process.env.NODE_ENV === 'production'){
-    const path  =  require('path');
-    app.get('*',(req,res)=>{
-        res.sendFile(path.resolve(__dirname,'client', 'public', 'index.html'))
-    })
-};
+
+// const path  =  require('path');
+// app.get('/*',(req,res)=>{
+//         res.sendFile(path.resolve(__dirname,'client', 'public', 'index.html'))
+//     })
+// Connect to DB
+mongoose
+    .connect(keys.mongoURI, { useNewUrlParser: true, useCreateIndex: true })
+    .then(() => console.info('MongoDB Connected'))
+    .catch(err => console.error(err));
 
 // Config express-session
 const MemoryStore = memorystore(session)
@@ -75,16 +81,16 @@ app.use('/api/courses', courses);
 app.use('/api/subjects', subjects);
 app.get('/email/confirm/:id', emailController.confirmEmail);
 
-// if (setting.isProduction) {
-    // sessConfig.cookie.secure = true;
+if (setting.isProduction) {
+    sessConfig.cookie.secure = true;
 
-    // Set static folder
-    // app.use(express.static('client/build'));
+    //Set static folder
+    app.use(express.static('./client/build'));
 
-    // app.get('*', (req, res) => {
-        // res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-    // });
-// }
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    });
+}
 
 app.listen(port, () => console.info(`Server started on port ${port}`));
 
@@ -92,3 +98,13 @@ app.listen(port, () => console.info(`Server started on port ${port}`));
 
 //netstat -ano | findstr :3000
 //tskill 12345
+
+// npm install -g create-react-app
+// create-react-app my-app
+// cd my-app
+// git init
+// heroku create -b https://github.com/mars/create-react-app-buildpack.git
+// git add .
+// git commit -m "react-create-app on Heroku"
+// git push heroku master
+// heroku open

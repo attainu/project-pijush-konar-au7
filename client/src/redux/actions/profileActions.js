@@ -55,7 +55,7 @@ export const createProfile = (profileData, history) => dispatch => {
 // Get all profiles (only enabled profiles)
 export const getProfiles = () => dispatch => {
     dispatch(setProfileLoading());
-    axios.get(`/api/profile/all`)
+    axios.get(`/api/profile`)
     .then(res => {
         dispatch({
             type: GET_PROFILES,
@@ -71,12 +71,12 @@ export const getProfiles = () => dispatch => {
 }
 
 export const disableProfileByUser = (userId) => dispatch => {
-    axios.post(`/api/profile/disableProfile`, { userId: userId })
+    axios.post(`/api/profile/disableProfile`, { userId })
     .catch(err => console.error(err));
 }
 
 export const enableProfileByUser = (userId) => dispatch => {
-    axios.post(`/api/profile/enableProfile`, { userId: userId })
+    axios.post(`/api/profile/enableProfile`, { userId })
     .catch(err => console.error(err));
 }
 
@@ -138,7 +138,7 @@ export const clearCurrentProfile = () => {
 // ADMIN: Get all enabled and disabled profiles
 export const getAllProfilesByAdmin = () => dispatch => {
     dispatch(setProfileLoading());
-    axios.get(`/api/profile/allUsers`)
+    axios.get(`/api/profile`)
     .then(res => {
         dispatch({
             type: GET_PROFILES,

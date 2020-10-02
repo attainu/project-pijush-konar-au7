@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router';
 import { Link } from 'react-router-dom'
 
 import { createProfile, getCurrentProfile } from '../../redux/actions/profileActions';
@@ -38,9 +38,11 @@ class EditProfile extends Component {
 
  static getDerivedStateFromProps(nextProps) {
     if (nextProps.errors) return ({ errors: nextProps.errors });
-    if (nextProps.profile.profile) {
-        const profile = nextProps.profile.profile;
-        const courses = profile.courses.length > 0 ? profile.courses : [];
+
+    const profile = nextProps.profile.profile;
+    const courses = profile.courses.length > 0 ? profile.courses : [];
+    if (profile) {
+        
         return ({
             major: profile.major,
             minor: profile.minor,
@@ -57,6 +59,28 @@ class EditProfile extends Component {
     }
     return null
  }
+
+// UNSAFE_componentWillReceiveProps(nextProps) {
+    
+//     if (nextProps.errors) this.setState({ errors: nextProps.errors });
+//     const profile = nextProps.profile ? nextProps.profile.profile : "";
+//     if (profile) {  
+//         const courses = profile.courses.length > 0 ? profile.courses : [];
+//         this.setState({
+//             major: profile.major,
+//             minor: profile.minor,
+//             bio: profile.bio,
+//             availability: profile.availability,
+//             type: profile.type,
+//             courses: courses
+//         });
+//     }
+//     if (nextProps.subjects.subjects) {
+//         this.setState({
+//             subjects: sortArrByAscending(nextProps.subjects.subjects, ['name'])
+//         });
+//     }
+//  }
 
  addCourse = (e) => {
     const newCourse = {
@@ -144,6 +168,7 @@ render() {
 
     const minors = filterByOptions(subjects, ['isMinor', "Yes"]);
     const majors = filterByOptions(subjects, ['isMajor', "Yes"]);
+    console.log(majors)
     const subjectItems = filterByOptions(subjects, ['isCourse', "Yes"]);
 
     const majorMenuItems =  majors.map((major, i) =>
@@ -322,3 +347,33 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps, { createProfile, getCurrentProfile, getSubjects })(withRouter(EditProfile));
+
+
+
+
+//  componentDidUpdate(prevProps,prevState){
+//     if (prevProps.errors !== this.props.errors) {
+//         this.setState({
+//           errors: this.props.errors
+//         });
+//     }
+//     if (prevProps.profile.propfile !== this.props.profile.propfile) {
+//         const profile = this.props.profile.propfile;
+//         const courses = profile.courses.length > 0 ? profile.courses : [];
+//         this.setState ({
+//             major: profile.major,
+//             minor: profile.minor,
+//             bio: profile.bio,
+//             availability: profile.availability,
+//             type: profile.type,
+//             courses: courses
+//         });
+//     }
+//     if (prevProps.subjects !== this.props.subjects) {
+//         this.setState ({
+//             subjects: sortArrByAscending(this.props.subjects.subjects, ['name'])
+//         });
+//     }
+//  }
+
+ 
