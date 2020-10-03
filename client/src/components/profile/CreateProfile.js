@@ -52,15 +52,6 @@ static getDerivedStateFromProps(nextProps) {
     if (nextProps.errors) return ({ errors: nextProps.errors });
  }
 
-//  UNSAFE_componentWillReceiveProps(nextProps) {
-//     if (nextProps.errors) this.setState({ errors: nextProps.errors });
-//     if (nextProps.subjects.subjects) {
-//         this.setState({
-//             subjects: sortArrByAscending(nextProps.subjects.subjects, ['name'])
-//         });
-//     }
-//  }
-
  addCourse = (e) => {
     this.setState((prevState) => ({
       courses: [...prevState.courses, 

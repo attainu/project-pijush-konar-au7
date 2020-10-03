@@ -46,7 +46,7 @@ const ProfileItem = props => {
     const classesCard = profile.courses !== undefined ? (
         <React.Fragment>
             {profile.courses.slice(0, 5).map((myClass, index) => (
-                <Tooltip key={index} title={myClass.courseName}>
+                <Tooltip key={index} title={myClass.courseName || ''}>
                     <Chip className="chip" label={`${myClass.courseId} ${myClass.courseNumber}`} />
                 </Tooltip>
             ))}

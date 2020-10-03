@@ -59,18 +59,6 @@ class ViewSubjects extends Component {
     //  console.log(this.props)
  }
 
-//  static getDerivedStateFromProps(nextProps,prevState) {
-//     if (nextProps.errors) {
-//       return ({ errors: nextProps.errors })
-//     };
-//     if (nextProps.subjects.subjects) {
-//         return ({
-//             subjects: _.sortBy(nextProps.subjects.subjects, ['name'])
-//         });
-//     }
-//     return null
-//  }
-
  componentDidUpdate(prevProps,prevState) {
    
   if(prevProps.subjects.subjects !== this.props.subjects.subjects) {
@@ -83,16 +71,6 @@ class ViewSubjects extends Component {
   }
   
 }
-
-// UNSAFE_componentWillReceiveProps(nextProps) {
-//   if (nextProps.errors) this.setState({ errors: nextProps.errors });
-//   if (nextProps.subjects.subjects) {
-//       this.setState({
-//           subjects: _.sortBy(nextProps.subjects.subjects, ['name'])
-//       });
-//       console.log(this.state)
-//   }
-// }
 
 // on cancel go back to dashboard to eliminate need for extra button
 render() {

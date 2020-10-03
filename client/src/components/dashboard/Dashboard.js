@@ -74,34 +74,16 @@ class Dashboard extends Component {
         this.setState({ disabled: profile.disabled });
     }
 
-    static getDerivedStateFromProps(nextProps) {
-        if (nextProps.profile.profile) {
-            return ({
-                disabled: nextProps.profile.profile.disabled
+    componentDidUpdate(prevProps){
+        if (prevProps.profile.profile !== this.props.profile.profile){
+           this.setState({ disabled: this.props.profile.profile.disabled })
+        }
+        if (prevProps.errors !== this.props.errors) {
+            this.setState({
+              errors: this.props.errors
             });
         }
-       
-        return null
     }
-
-    // componentDidUpdate(prevProps){
-    //     if (prevProps.profile.profile !== this.props.profile.profile){
-    //        this.setState({ disabled: this.props.profile.profile.disabled })
-    //     }
-    //     if (prevProps.errors !== this.props.errors) {
-    //         this.setState({
-    //           errors: this.props.errors
-    //         });
-    //     }
-    // }
-     
-    // componentWillReceiveProps(nextProps) {
-    //     if (nextProps.profile.profile) {
-    //         this.setState({
-    //             disabled: nextProps.profile.profile.disabled
-    //         });
-    //     }
-    // }  
     
     onDeleteClick = e => {
         e.preventDefault();

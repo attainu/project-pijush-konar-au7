@@ -4,14 +4,11 @@ import passport from 'passport';
 // import Profile from '../models/Profile';
 // import User from '../models/User';
 
-// Load validation
-// import validateProfileInput from '../validation/profileValidation';
-
-
 //Load controllers
 import profileControll from '../controllers/profileController'
 
 const router = express.Router();
+
 // @route   GET profile/all
 // @desc    Get all users' profiles
 // @access  Public
@@ -19,7 +16,7 @@ router.get('/all', profileControll.allProfiles);
 
 // @desc    Get profile/allUsers
 // @access  Admin
-router.get('/', profileControll.allUsers);
+router.get('/allUsers', profileControll.allUsers);
 
 // @route   GET profile/handle/:handle
 // @desc    Get profile by handle
@@ -27,26 +24,9 @@ router.get('/', profileControll.allUsers);
 router.get('/handle/:handle', profileControll.handle);
 
 // @route   GET profile/
-// @desc    Get current user's profile
+// @desc    Get current user's profile   
 // @access  Private
 router.get('/', passport.authenticate('jwt', { session: false }), profileControll.getProfile);
-
-// router.get('/', passport.authenticate('jwt', { session: false }), async (req, res) => {
-//     const errors = {};
-//     try {
-//         const profile =  await Profile.findOne({ user: req.user.id })
-//             .populate('user', ['isAdmin']);
-//         if (!profile) {
-//             errors.noprofile = 'There is no profile for this user';
-//             return res.status(404).json(errors);
-//         }
-//         res.json(profile);
-//     }
-//     catch (err) {
-//         res.status(404).json(err);
-//     }
-// }),
-
 
 // @route   POST profile/
 // @desc    Create or edit user profile
