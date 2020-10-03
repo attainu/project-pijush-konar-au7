@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
+  "engines": {
+    "node": "12.16.2"
+  },
   "scripts": {
     "babel": "babel --version",
     "test": "mocha --require @babel/register --require @babel/polyfill --timeout 15000",
@@ -15,6 +18,13 @@
     "dropdb": "node drop.db.js",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
+  "keywords": [
+    "react",
+    "express",
+    "guru",
+    "mongo",
+    "node"
+  ],
   "author": "Pijush & Saidul",
   "license": "ISC",
   "dependencies": {

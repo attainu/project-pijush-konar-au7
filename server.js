@@ -92,10 +92,14 @@ if (setting.isProduction) {
     });
 }
 
-app.listen(port, () => console.info(`Server started on port ${port}`));
+app.listen(port, () => console.info(`Server started on port ${port} & Prod setting is ${setting.isProduction}`));
 
 
-
+//docker-compose up -d
+//docker build . -t docker/getting-started
+//docker build . -t docker/getting-started:latest
+//docker run -d -p 80:80 docker/getting-started
+//docker-compose up -d
 //netstat -ano | findstr :3000
 //tskill 12345
 
