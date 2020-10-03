@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
+import { withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom'
 
 import { createProfile, getCurrentProfile } from '../../redux/actions/profileActions';
@@ -21,7 +21,7 @@ import { filterArrDuplicates, sortArrByAscending, filterByOptions, findFirstMatc
 
 class EditProfile extends Component {
  state = {
-     major: [],
+     major: ['abc', 'bnv'],
      bio: '',
      type: '',
      minor: [],
@@ -36,98 +36,33 @@ class EditProfile extends Component {
      this.props.getSubjects();
  }
 
- componentDidUpdate(prevProps){
-    // this.setState({
-    //     major: [...this.props.profile.profile.major],
-    //     minor: [...this.props.profile.profile.minor],
-    //     bio: this.props.profile.profile.bio,
-    //     availability: this.props.profile.profile.availability,
-    //     type: this.props.profile.profile.type,
-    //     courses: [...this.props.profile.courses]
-    // });
-    if(prevProps.subjects.subjects !== this.props.subjects.subjects){
+ componentDidUpdate(prevProps) {
+    if (this.props.errors !==prevProps.errors) this.setState({ errors: this.props.errors });
+    if (this.props.profile !==prevProps.profile) {
+        const profile = this.props.profile.profile;
+        const courses = profile.courses?.length > 0 ? profile.courses : [];
+        this.setState({
+            major: profile.major,
+            minor: profile.minor,
+            bio: profile.bio,
+            availability: profile.availability,
+            type: profile.type,
+            courses: courses
+        });
+        console.log(profile)
+    }
+    if (this.props.subjects.subjects !==prevProps.subjects.subjects) {
         this.setState({
             subjects: sortArrByAscending(this.props.subjects.subjects, ['name'])
         });
-     }
-    if (prevProps.errors !== this.props.errors) {
-       this.setState({
-         errors: this.props.errors
-       });
-     }
+    }
  }
-
-//  componentDidUpdate(prevProps){
-//     const profile = prevProps.profile ? prevProps.profile.profile : "";
-
-    // const courses = profile ? profile.courses : [];
-    // const courses = []
-    // if (profile && profile.courses ) {
-    //     courses.push(profile.courses)
-    // }
-    // const courses = profile && profile.courses && profile.courses.length > 0 ? profile.courses : [];
-//     if (profile ) {
-        
-//         this.setState ({
-//             major: profile?profile.major:[],
-//             minor: profile?profile.minor: [],
-//             bio: profile?profile.bio:"",
-//             availability: profile?profile.availability:"",
-//             type: profile?profile.type:"",
-//             courses: courses
-//         });
-//     }
-//     if(prevProps.subjects.subjects !== this.props.subjects.subjects){
-//         this.setState({
-//             subjects: sortArrByAscending(this.props.subjects.subjects, ['name'])
-//         });
-//      }
-//     if (prevProps.errors !== this.props.errors) {
-//        this.setState({
-//          errors: this.props.errors
-//        });
-//      }
-//  }
-
-// static getDerivedStateFromProps(nextProps) {
-//     if (nextProps.errors) return ({ errors: nextProps.errors });
-//  }
-
-//  static getDerivedStateFromProps(nextProps) {
-//     if (nextProps.errors) return ({ errors: nextProps.errors });
-
-    
-//     return null
-//  }
-
-// UNSAFE_componentWillReceiveProps(nextProps) {
-    
-    // if (nextProps.errors) this.setState({ errors: nextProps.errors });
-    // const profile = nextProps.profile ? nextProps.profile.profile: "";
-    // if (profile) {  
-    //     const courses = profile && profile.courses && profile.courses.length > 0 ? profile.courses : [];
-    //     this.setState({
-    //         major: profile.major,
-    //         minor: profile.minor,
-    //         bio: profile.bio,
-    //         availability: profile.availability,
-    //         type: profile.type,
-    //         courses: courses
-    //     });
-    // }
-//     if (nextProps.subjects.subjects) {
-//         this.setState({
-//             subjects: sortArrByAscending(nextProps.subjects.subjects, ['name'])
-//         });
-//     }
-//  }
-
 
 // UNSAFE_componentWillReceiveProps(nextProps) {
 //     if (nextProps.errors) this.setState({ errors: nextProps.errors });
 //     if (nextProps.profile.profile) {
 //         const profile = nextProps.profile.profile;
-//         const courses = profile && profile.courses && profile.courses.length > 0 ? profile.courses : [];
+//         const courses = profile.courses?.length > 0 ? profile.courses : [];
 //         this.setState({
 //             major: profile.major,
 //             minor: profile.minor,
@@ -136,13 +71,13 @@ class EditProfile extends Component {
 //             type: profile.type,
 //             courses: courses
 //         });
+//         console.log(profile[0].isAdmin)
 //     }
 //     if (nextProps.subjects.subjects) {
-//         return ({
+//         this.setState({
 //             subjects: sortArrByAscending(nextProps.subjects.subjects, ['name'])
 //         });
 //     }
-//     return null;
 //  }
 
  addCourse = (e) => {
@@ -180,7 +115,7 @@ class EditProfile extends Component {
    return (e.charCode >= 48 && e.charCode <= 57);
  }
 
- onSubmit = (e) => {
+ onSubmit = (e) => {    
      e.preventDefault();
      const { bio, major, minor, availability, courses, type } = this.state;
 
@@ -199,7 +134,7 @@ class EditProfile extends Component {
  onChange = e => {
     const name = e.target.name;
     if (name.includes("courseId") || name.includes("courseNumber") || name.includes("courseName")) {
-      let courses = [...this.state.courses,e.target.courses];
+      let courses = [...this.state.courses];
       let i = name.charAt(name.length - 1);
       let property = name.substring(0, name.length - 2);
       courses[i][property] = e.target.value;
@@ -254,7 +189,7 @@ render() {
                   <CardContent>
                     <FormControl margin="normal" required fullWidth>
                         <InputLabel htmlFor={courseId}>Course Identifier</InputLabel>
-                        <Select displayEmpty value={course.courseId} onChange={this.onChange} variant="outlined" name={courseId} id="courseId"
+                        <Select value={course.courseId} onChange={this.onChange} variant="outlined" name={courseId} id="courseId"
                           MenuProps={{ style: {maxHeight: 300} }}>
                             {courseMenuItems}
                         </Select>
@@ -280,9 +215,7 @@ render() {
 
     ///enforcing major & type to be required
      var validProfile = false;
-     const mLength = major ? major.length : [];
-     const tLength = type ? type.length : [];
-     if(mLength > 0 && tLength > 0){ 
+     if(major?.length > 0 && type?.length > 0){ 
          validProfile = true;
      }
      else{
@@ -316,12 +249,12 @@ render() {
             <Typography variant="h4" component="h1" align="center" className="editHeading">
                 Edit Profile
             </Typography>
-             <form onSubmit={this.onSubmit}>    
+             <form onSubmit={()=>this.onSubmit()}>    
                 <Grid container spacing={6}>
                     <Grid item xs={12} sm={6} md={6}>
                         <FormControl margin="normal" required fullWidth>
                             <InputLabel htmlFor="major">Major(s)</InputLabel>
-                            <Select displayEmpty multiple value={major} onChange={this.onChange} variant="outlined" MenuProps={{ style: {maxHeight: 300} }} 
+                            <Select multiple value={major || []} onChange={this.onChange} variant="outlined" MenuProps={{ style: {maxHeight: 300} }} 
                               inputProps={{
                                   name: 'major',
                                   id: 'major'
@@ -333,7 +266,7 @@ render() {
                     <Grid item xs={12} sm={6} md={6}>
                         <FormControl margin="normal" fullWidth>
                             <InputLabel htmlFor="minor">Minor(s)</InputLabel>
-                            <Select displayEmpty={true} multiple value={minor || []} onChange={this.onChange} MenuProps={{ style: {maxHeight: 300} }} inputProps={{
+                            <Select multiple value={minor || []} onChange={this.onChange} MenuProps={{ style: {maxHeight: 300} }} inputProps={{
                                 name: 'minor',
                                 id: 'minor'
                             }}>
@@ -344,7 +277,7 @@ render() {
                     <Grid item xs={12} sm={6}>
                         <FormControl margin="normal" required fullWidth>
                             <InputLabel htmlFor="type">Paid or volunteer?</InputLabel>
-                            <Select displayEmpty required value={type || ''} onChange={this.onChange} MenuProps={{ style: {maxHeight: 300} }} inputProps={{
+                            <Select required value={type || ''} onChange={this.onChange} MenuProps={{ style: {maxHeight: 300} }} inputProps={{
                                 name: 'type',
                                 id: 'type'
                             }}>
@@ -357,14 +290,14 @@ render() {
                     <Grid item xs={12} sm={6}>
                         <FormControl margin="normal" required fullWidth>
                           <InputLabel htmlFor="bio">Short Bio</InputLabel>
-                          <Input type="text" id="bio" name="bio" value={bio} multiline fullWidth onChange={this.onChange}>
+                          <Input type="text" id="bio" name="bio" value={bio || ''} multiline fullWidth onChange={this.onChange}>
                           </Input>
                         </FormControl>
                     </Grid>
                     <Grid item xs={12}>
                         <FormControl margin="normal" required fullWidth>
                           <InputLabel htmlFor="availability">Availablity</InputLabel>
-                          <Input type="text" id="availability" name="availability" value={availability} multiline fullWidth onChange={this.onChange}>
+                          <Input type="text" id="availability" name="availability" value={availability || ''} multiline fullWidth onChange={()=>this.onChange()}>
                           </Input>
                         </FormControl>
                     </Grid>
@@ -411,33 +344,3 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps, { createProfile, getCurrentProfile, getSubjects })(withRouter(EditProfile));
-
-
-
-
-//  componentDidUpdate(prevProps,prevState){
-//     if (prevProps.errors !== this.props.errors) {
-//         this.setState({
-//           errors: this.props.errors
-//         });
-//     }
-//     if (prevProps.profile.propfile !== this.props.profile.propfile) {
-//         const profile = this.props.profile.propfile;
-//         const courses = profile.courses.length > 0 ? profile.courses : [];
-//         this.setState ({
-//             major: profile.major,
-//             minor: profile.minor,
-//             bio: profile.bio,
-//             availability: profile.availability,
-//             type: profile.type,
-//             courses: courses
-//         });
-//     }
-//     if (prevProps.subjects !== this.props.subjects) {
-//         this.setState ({
-//             subjects: sortArrByAscending(this.props.subjects.subjects, ['name'])
-//         });
-//     }
-//  }
-
- 

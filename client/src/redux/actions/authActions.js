@@ -2,12 +2,11 @@ import axios from 'axios';
 import setAuthToken from '../../utils/setAuthToken';
 import jwt_decode from 'jwt-decode';
 import { GET_ERRORS, CLEAR_ERRORS, SET_CURRENT_USER } from './types';
-// import { API_URL } from '../../client-config'
 
 // Register User
 export const registerUser = (userData) => dispatch => {
     axios
-        .post(`/api/users/register`, userData)
+        .post('/api/users/register', userData)
         .then(res => {
             if (res.status === 200) {
                 dispatch({
@@ -25,7 +24,7 @@ export const registerUser = (userData) => dispatch => {
 
 // Login - Get User JWT
 export const loginUser = userData => dispatch => {
-    axios.post(`/api/users/login`, userData)
+    axios.post('/api/users/login', userData)
         .then(res => {
             // save to localStorage
             const { token } = res.data;
@@ -63,7 +62,7 @@ export const setCurrentUser = decoded => {
 
 // Set admin property
 export const setAdmin = (adminProps) => dispatch => {
-    axios.post(`/api/users/admin`, {adminProps: adminProps})
+    axios.post('/api/users/admin', {adminProps: adminProps})
         .catch(err => console.log(err));
 }
 
