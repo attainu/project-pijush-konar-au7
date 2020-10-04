@@ -37,18 +37,9 @@ app.use(bodyParser.urlencoded({ extended: false }));  //false
 app.use(bodyParser.json());
 // app.use(express.session({ secret: process.env.secretOrKey }));
 
-// Serve the static files from the React app
-// app.use(express.static(path.join(__dirname, 'client/public')));
-
-// Handles any requests that don't match the ones above
-
-// const path  =  require('path');
-// app.get('/*',(req,res)=>{
-//         res.sendFile(path.resolve(__dirname,'client', 'public', 'index.html'))
-//     })
 // Connect to DB
 mongoose
-    .connect(keys.mongoURI, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true})
+    .connect(keys.mongoURI, { useNewUrlParser: true, useCreateIndex: true })
     .then(() => console.info('MongoDB Connected'))
     .catch(err => console.error(err));
 

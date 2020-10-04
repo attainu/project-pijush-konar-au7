@@ -21,7 +21,7 @@ import { filterArrDuplicates, sortArrByAscending, filterByOptions, findFirstMatc
 
 class EditProfile extends Component {
  state = {
-     major: ['abc', 'bnv'],
+     major: [],
      bio: '',
      type: '',
      minor: [],
@@ -36,32 +36,10 @@ class EditProfile extends Component {
      this.props.getSubjects();
  }
 
- componentDidUpdate(prevProps) {
-    if (this.props.errors !==prevProps.errors) this.setState({ errors: this.props.errors });
-    if (this.props.profile !==prevProps.profile) {
-        const profile = this.props.profile.profile;
-        const courses = profile.courses?.length > 0 ? profile.courses : [];
-        this.setState({
-            major: profile.major,
-            minor: profile.minor,
-            bio: profile.bio,
-            availability: profile.availability,
-            type: profile.type,
-            courses: courses
-        });
-        console.log(profile)
-    }
-    if (this.props.subjects.subjects !==prevProps.subjects.subjects) {
-        this.setState({
-            subjects: sortArrByAscending(this.props.subjects.subjects, ['name'])
-        });
-    }
- }
-
-// UNSAFE_componentWillReceiveProps(nextProps) {
-//     if (nextProps.errors) this.setState({ errors: nextProps.errors });
-//     if (nextProps.profile.profile) {
-//         const profile = nextProps.profile.profile;
+//  componentDidUpdate(prevProps) {
+//     if (this.props.errors !== prevProps.errors) this.setState({ errors: this.props.errors });
+//     if (this.props.profile !== prevProps.profile) {
+//         const profile = this.props.profile.profile;
 //         const courses = profile.courses?.length > 0 ? profile.courses : [];
 //         this.setState({
 //             major: profile.major,
@@ -71,14 +49,35 @@ class EditProfile extends Component {
 //             type: profile.type,
 //             courses: courses
 //         });
-//         console.log(profile[0].isAdmin)
+//         // console.log(profile)
 //     }
-//     if (nextProps.subjects.subjects) {
+//     if (this.props.subjects.subjects !==prevProps.subjects.subjects) {
 //         this.setState({
-//             subjects: sortArrByAscending(nextProps.subjects.subjects, ['name'])
+//             subjects: sortArrByAscending(this.props.subjects.subjects, ['name'])
 //         });
 //     }
 //  }
+
+ UNSAFE_componentWillReceiveProps(nextProps) {
+    if (nextProps.errors) this.setState({ errors: nextProps.errors });
+    if (nextProps.profile.profile) {
+        const profile = nextProps.profile.profile;
+        const courses = profile.courses.length > 0 ? profile.courses : [];
+        this.setState({
+            major: profile.major,
+            minor: profile.minor,
+            bio: profile.bio,
+            availability: profile.availability,
+            type: profile.type,
+            courses: courses
+        });
+    }
+    if (nextProps.subjects.subjects) {
+        this.setState({
+            subjects: sortArrByAscending(nextProps.subjects.subjects, ['name'])
+        });
+    }
+ }
 
  addCourse = (e) => {
     const newCourse = {
@@ -115,7 +114,7 @@ class EditProfile extends Component {
    return (e.charCode >= 48 && e.charCode <= 57);
  }
 
- onSubmit = (e) => {    
+ onSubmit = (e) => {
      e.preventDefault();
      const { bio, major, minor, availability, courses, type } = this.state;
 
@@ -215,7 +214,7 @@ render() {
 
     ///enforcing major & type to be required
      var validProfile = false;
-     if(major?.length > 0 && type?.length > 0){ 
+     if(major.length > 0 && type.length > 0){ 
          validProfile = true;
      }
      else{
@@ -249,12 +248,12 @@ render() {
             <Typography variant="h4" component="h1" align="center" className="editHeading">
                 Edit Profile
             </Typography>
-             <form onSubmit={()=>this.onSubmit()}>    
+             <form onSubmit={this.onSubmit}>    
                 <Grid container spacing={6}>
                     <Grid item xs={12} sm={6} md={6}>
                         <FormControl margin="normal" required fullWidth>
                             <InputLabel htmlFor="major">Major(s)</InputLabel>
-                            <Select multiple value={major || []} onChange={this.onChange} variant="outlined" MenuProps={{ style: {maxHeight: 300} }} 
+                            <Select multiple value={major} onChange={this.onChange} variant="outlined" MenuProps={{ style: {maxHeight: 300} }} 
                               inputProps={{
                                   name: 'major',
                                   id: 'major'
@@ -290,14 +289,14 @@ render() {
                     <Grid item xs={12} sm={6}>
                         <FormControl margin="normal" required fullWidth>
                           <InputLabel htmlFor="bio">Short Bio</InputLabel>
-                          <Input type="text" id="bio" name="bio" value={bio || ''} multiline fullWidth onChange={this.onChange}>
+                          <Input type="text" id="bio" name="bio" value={bio} multiline fullWidth onChange={this.onChange}>
                           </Input>
                         </FormControl>
                     </Grid>
                     <Grid item xs={12}>
                         <FormControl margin="normal" required fullWidth>
                           <InputLabel htmlFor="availability">Availablity</InputLabel>
-                          <Input type="text" id="availability" name="availability" value={availability || ''} multiline fullWidth onChange={()=>this.onChange()}>
+                          <Input type="text" id="availability" name="availability" value={availability} multiline fullWidth onChange={this.onChange}>
                           </Input>
                         </FormControl>
                     </Grid>
@@ -344,3 +343,33 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps, { createProfile, getCurrentProfile, getSubjects })(withRouter(EditProfile));
+
+
+
+
+
+// componentDidUpdate(prevProps) {
+//     if (this.props.errors !== prevProps.errors) this.setState({ errors: this.props.errors });
+//     if (this.props.profile !== prevProps.profile) {
+//         const profile = this.props.profile?.profile;
+//         const courses = profile?.courses?.length > 0 ? profile.courses : [];
+//         this.setState({
+//             major: profile?.major,
+//             minor: profile?.minor,
+//             bio: profile?.bio,
+//             availability: profile?.availability,
+//             type: profile?.type,
+//             courses: courses
+//         });
+//         console.log(profile)
+//     }
+//     if (this.props.subjects.subjects !==prevProps.subjects.subjects) {
+//         this.setState({
+//             subjects: sortArrByAscending(this.props.subjects.subjects, ['name'])
+//         });
+//     }
+//  }
+ 
+//  static getDerivedStateFromProps(nextProps) {
+//     if (nextProps.errors) return ({ errors: nextProps.errors });
+//  }

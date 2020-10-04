@@ -21,7 +21,7 @@ const subjectControll = {
             }
             subjectFields.id = subject.id ? subject.id.trim() : '';
     
-            console.log(subjectFields);
+            // console.log(subjectFields);
     
             // See if there is already a subject with the subject ID
             Subject.findOne({ _id: subject._id }).then(subject => {

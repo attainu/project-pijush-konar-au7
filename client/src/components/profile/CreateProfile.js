@@ -137,7 +137,7 @@ render() {
     const majorMenuItems =  majors.map((major, index) =>
             <MenuItem key={index} value={major.name}>{major.name}</MenuItem>
     );
-    console.log(majorMenuItems)
+    // console.log(majorMenuItems)
 
     const minorMenuItems = minors.map((minor, i) => 
             <MenuItem key={i} value={minor.name}>{minor.name}</MenuItem>
