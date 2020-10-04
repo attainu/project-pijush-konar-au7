@@ -1,4 +1,4 @@
-# GuruKul App
+# GuruKul Application
 
 A Peer to peer educational website.
 The objective of this website/project is to provide a social platform to students and teachers from any university to Join As a Student or Teacher where they can teach or learn from one of the Teacher. 
@@ -53,17 +53,24 @@ If the installation was successful, you should be able to run the following comm
 ---
 
 ## Project Installation
-  After installing node, this project will need many NPM Packages, so just run the following command to install all.
-
-    $ git clone Here(https://github.com/attainu/project-pijush-konar-au7)
-    $ cd project-pijush-konar-au7
-    $ npm i
-
+  **After installing node, this project will need many NPM Packages, so just run the following command to install all the dependencies.**
+```
+$ git clone Here(https://github.com/attainu/project-pijush-konar-au7)
+$ cd project-pijush-konar-au7
+```   
+**Run npm install at app root**
+```
+$ npm i
+```
+**Then install the React App Dependencies within the /client folder -**
+```
+$ npm i 
+```
 ---
 
-## Configuration
+## Configuration for the App
 
-Open `project-pijush-konar-au7` then create and dev.env file and edit it with your infos. You will need:
+Open `project-pijush-konar-au7` then create and **dev.env** file and edit it with your infos. You will need:
 
 - PORT=`Your Desired Port`
 - MONGODB_URL_SET=`Your Database Address`
