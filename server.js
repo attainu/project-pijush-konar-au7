@@ -48,7 +48,7 @@ app.use(bodyParser.json());
 //     })
 // Connect to DB
 mongoose
-    .connect(keys.mongoURI, { useNewUrlParser: true, useCreateIndex: true })
+    .connect(keys.mongoURI, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true})
     .then(() => console.info('MongoDB Connected'))
     .catch(err => console.error(err));
 
@@ -100,7 +100,11 @@ app.listen(port, () => console.info(`Server started on port ${port} & Prod setti
 //docker build . -t docker/getting-started:latest
 //docker run -d -p 80:80 docker/getting-started
 //docker-compose up -d
-//netstat -ano | findstr :3000
+
+// To check running ports
+//netstat -ano | findstr :5000
+
+// To kill running ports
 //tskill 12345
 
 // npm install -g create-react-app
