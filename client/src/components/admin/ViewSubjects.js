@@ -12,6 +12,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import { withStyles } from '@material-ui/core/styles';
+// import { sortArrByAscending } from '../../utils/lodashOps';
 import _ from 'lodash';
 // import { GET_SUBJECTS } from '../../redux/actions/types';
 
@@ -71,6 +72,16 @@ class ViewSubjects extends Component {
   }
   
 }
+
+// componentDidUpdate(nextProps) {
+//   if (nextProps.errors !== this.props.errors) this.setState({ errors: nextProps.errors });
+//   // console.log(nextProps);
+//   if(nextProps.subjects?.subjects !== this.props.subjects.subjects){
+//    this.setState({
+//     subjects: sortArrByAscending(this.props.subjects.subjects, ['name'])
+//    });
+//  }
+// }
 
 // on cancel go back to dashboard to eliminate need for extra button
 render() {

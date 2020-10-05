@@ -35,7 +35,7 @@ class CreateProfile extends Component {
     
  }
 
-componentDidUpdate(prevProps){
+ componentDidUpdate(prevProps){
     if(prevProps.subjects.subjects !== this.props.subjects.subjects){
         this.setState({
             subjects: sortArrByAscending(this.props.subjects.subjects, ['name'])

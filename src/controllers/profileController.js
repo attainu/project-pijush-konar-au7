@@ -133,7 +133,7 @@ const profileControll = {
             });
         }
         catch (err) {
-            console.error(err);
+            res.status(404).json(err);
     
         }
     },
@@ -150,7 +150,7 @@ const profileControll = {
     
         }
         catch (err) {
-            console.error(err);
+            res.status(404).json(err);
         }
     },
     deleteProfile: (req, res) => {

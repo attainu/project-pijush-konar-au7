@@ -6,7 +6,7 @@ import keys from '../../config/keys'
 mongoose.connect(keys.mongoURI, {
     useNewUrlParser: true,
     useCreateIndex: true,
-    // useUnifiedTopology: true,
+    useUnifiedTopology: true,
     useFindAndModify: false
 })
 .then(() => console.log('MongoDB Connected'))

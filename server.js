@@ -10,7 +10,7 @@ import path from 'path';
 import mongoose from 'mongoose';
 import keys from './config/keys'
 
-// import { } from './src/db/keys';
+import { } from './src/db/keys';
 import setting from './config/checkProd';
 
 // Load routes
@@ -38,10 +38,10 @@ app.use(bodyParser.json());
 // app.use(express.session({ secret: process.env.secretOrKey }));
 // routes(app);
 // Connect to DB
-mongoose
-    .connect(keys.mongoURI, { useNewUrlParser: true, useCreateIndex: true })
-    .then(() => console.info('MongoDB Connected'))
-    .catch(err => console.error(err));
+// mongoose
+//     .connect(keys.mongoURI, { useNewUrlParser: true, useCreateIndex: true })
+//     .then(() => console.info('MongoDB Connected'))
+//     .catch(err => console.error(err));
 
 // Config express-session
 const MemoryStore = memorystore(session)

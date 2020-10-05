@@ -112,7 +112,6 @@ class ProfilesShowcase extends Component {
             this.setState({ data: nextProps.profile.profiles })
         }
      }
-
     //for randomizing profiles displayed
     shuffle = event => {
         this.setState({

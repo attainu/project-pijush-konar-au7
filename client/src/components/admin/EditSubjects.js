@@ -60,6 +60,16 @@ class EditSubjects extends Component {
     }
  }
 
+//  componentDidUpdate(nextProps) {
+//   if (nextProps.errors !== this.props.errors) this.setState({ errors: nextProps.errors });
+//   // console.log(nextProps);
+//   if(nextProps.subjects?.subjects !== this.props.subjects.subjects){
+//    this.setState({
+//     subjects: sortArrByAscending(this.props.subjects.subjects, ['name'])
+//    });
+//  }
+// }
+
  addSubject = (e) => {
     // push new subject to the top of the existing list
     let newSubjects = _.concat([{id: "", name: "", isMajor: "", isMinor: "", isCourse: ""}], this.state.subjects);

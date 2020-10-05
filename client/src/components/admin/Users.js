@@ -79,6 +79,16 @@ class Users extends Component {
     }
   }
 
+  // componentDidUpdate(nextProps) {
+  //   if (nextProps.errors !== this.props.errors) this.setState({ errors: nextProps.errors });
+  //   // console.log(nextProps);
+  //   if(nextProps.profiles !== this.props.profiles){
+  //    this.setState({
+  //     profiles: sortArrByAscending(this.props.profiles, ['firstname', 'lastname'])
+  //    });
+  //  }
+  // }
+
   handleAdminClose = () => {
     this.setState({ adminToastOpen: false });
   };
