@@ -37,9 +37,10 @@ app.use(bodyParser.urlencoded({ extended: false }));  //false
 app.use(bodyParser.json());
 // app.use(express.session({ secret: process.env.secretOrKey }));
 // routes(app);
-// Connect to DB
+
+// Connection to DB
 mongoose
-    .connect(keys.mongoURI, { useNewUrlParser: true, useCreateIndex: true })
+    .connect(keys.mongoURI, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true })
     .then(() => console.info('MongoDB Connected'))
     .catch(err => console.error(err));
 
@@ -49,7 +50,7 @@ const sessConfig = {
     secret: keys.sessionSecret,
     cookie: { secure: true },
     store: new MemoryStore({
-        checkPeriod: 86400000 // prune expired entries every 24h
+        checkPeriod: 86400000 // Expired entries every 24hours
       }),
     resave: false,
     saveUninitialized: true
@@ -82,9 +83,10 @@ if (setting.isProduction) {
     });
 }
 
-app.listen(port, () => console.info(`Server started on port ${port} & Prod setting is ${setting.isProduction}`));
+app.listen(port, () => console.info(`Server started on port ${port}`));
 
 
+// docker settings and commands
 //docker-compose up -d
 //docker build . -t docker/getting-started
 //docker build . -t docker/getting-started:latest

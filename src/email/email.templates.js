@@ -1,10 +1,6 @@
-// This file is exporting an Object with a single key/value pair.
-// However, because this is not a part of the logic of the application
-// it makes sense to abstract it to another file. Plus, it is now easily 
-// extensible if the application needs to send different email templates
-// (eg. unsubscribe) in the future.
+// Email template for confirmation
 
-const url = 'localhost:3000';
+const url = process.env.NODE_ENV === 'production' ? process.env.hostedClientURL : 'localhost:3000';
 
 module.exports = {
   confirm: id => {
@@ -13,9 +9,9 @@ module.exports = {
       a {
         text-decoration: none;
         color: #FFFFFF !important;
-        background-color: #5E9CAE;
+        background-color: #6670ae;
           border-radius: 10px;
-          border: 3px solid #5E9CAE;
+          border: 3px solid #6670ae;
         padding: 10px;
         font-weight: 400;
         margin: auto;
@@ -26,8 +22,8 @@ module.exports = {
 
       }
       a:hover {
-        background-color: #97bece;
-          border: 3px solid #97bece;
+        background-color: #acb4d5;
+          border: 3px solid #acb4d5;
       }
       h1 {
         font-family: "Roboto", Helvetica, Veranda, sans-serif;
