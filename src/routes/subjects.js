@@ -4,17 +4,18 @@ import passport from 'passport';
 //Load controllers
 import subjectControll from '../controllers/subjectController'
 
-const router = express.Router();
 
-// @route   POST /subjects
-// @desc    Create or edit a subject
-// @access  Private
-router.post('/', passport.authenticate('jwt', { session: false }), subjectControll.postSubject);
+const router = express.Router();
 
 // @route   GET /subjects
 // @desc    Get all subjects
 // @access  Private 
 router.get('/', subjectControll.getSubject);
+
+// @route   POST /subjects
+// @desc    Create or edit a subject
+// @access  Private
+router.post('/', passport.authenticate('jwt', { session: false }), subjectControll.postSubject);
 
 // @route   DELETE /subjects
 // @desc    Delete a subject by id

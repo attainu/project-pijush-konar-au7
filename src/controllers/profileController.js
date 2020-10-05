@@ -64,7 +64,7 @@ const profileControll = {
 
         // Check validation
         if (!isValid) {
-            return res.status(400).json(errors);
+            return res.status(404).json(errors);
         }
         
         // Get fields
@@ -113,7 +113,7 @@ const profileControll = {
                 .populate('user', ['isAdmin']);
             if (!profile) {
                 errors.noprofile = 'There is no profile for this user';
-                return res.status(404).json(errors);
+                return res.status(400).json(errors);
             }
             res.json(profile);
         }
@@ -154,8 +154,8 @@ const profileControll = {
         }
     },
     deleteProfile: (req, res) => {
-        Profile.findOneAndRemove({ user: req.user.id }).then(() => {
-            User.findOneAndRemove({ _id: req.user.id }).then(() =>
+        Profile.findOneAndRemove({ user: req.user?.id }).then(() => {
+            User.findOneAndRemove({ _id: req.user?.id }).then(() =>
               res.json({ success: true })
             );
           });

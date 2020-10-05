@@ -67,19 +67,15 @@ class Users extends Component {
 
  componentDidMount() {
      this.props.getAllProfilesByAdmin();
+    //  this.props.deleteAccountByAdmin()
  }
-   
-  componentDidUpdate(prevProps) {
-    // Typical usage (don't forget to compare props):
-    if (this.props.profiles !== prevProps.profiles) {
-      this.setState({
-        profiles: sortArrByAscending(this.props.profiles, ['firstname', 'lastname'])
-      });
-    }
-    if (prevProps.errors !== this.props.errors) {
-      this.setState({
-        errors: this.props.errors
-      });
+
+ UNSAFE_componentWillReceiveProps(nextProps) {
+    if (nextProps.errors) this.setState({ errors: nextProps.errors });
+    if (nextProps.profiles) {
+        this.setState({
+            profiles: sortArrByAscending(nextProps.profiles, ['firstname', 'lastname'])
+        });
     }
   }
 
@@ -128,10 +124,7 @@ class Users extends Component {
  deleteUser = (e, userID) => {
     e.preventDefault();
     let profiles = [...this.state.profiles];
-    let updatedUser = removeByMatch(profiles, function(user) { 
-      // if(user)
-      return user._id === userID; 
-    });
+    let updatedUser = removeByMatch(profiles, function(user) { return user._id === userID; });
     let userName = updatedUser[0].firstname + " " + updatedUser[0].lastname;
 
     this.setState({
@@ -315,7 +308,7 @@ render() {
               <DialogTitle id="alert-dialog-title">{"Delete Account for " + this.state.deleteName + "?"}</DialogTitle>
               <DialogContent>
                 <DialogContentText id="alert-dialog-description">
-                    Clicking Delete Account below will delete both their tutor profile and user account.
+                    Clicking Delete Account below will delete both their GuruKul profile and user account.
                 </DialogContentText>
               </DialogContent>
               <DialogActions>
@@ -349,3 +342,18 @@ const mapStateToProps = state => ({
 
 export default connect(mapStateToProps, { getAllProfilesByAdmin, deleteAccountByAdmin, setAdmin, disableProfileByUser, enableProfileByUser })(withRouter(withStyles(styles)(Users)));
 
+
+ // componentDidUpdate(prevProps) {
+   
+  //   if (prevProps.errors !== this.props.errors) {
+  //     this.setState({
+  //       errors: this.props.errors
+  //     });
+  //   }
+  //    // Typical usage (don't forget to compare props):
+  //    if (this.props.profiles !== prevProps.profiles) {
+  //     this.setState({
+  //       profiles: sortArrByAscending(this.props.profiles, ['firstname', 'lastname'])
+  //     });
+  //   }
+  // }

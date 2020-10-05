@@ -3,6 +3,7 @@ import passport from 'passport';
 
 // import Profile from '../models/Profile';
 // import User from '../models/User';
+// Load validation
 
 //Load controllers
 import profileControll from '../controllers/profileController'

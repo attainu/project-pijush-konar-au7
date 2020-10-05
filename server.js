@@ -36,7 +36,7 @@ app.use(require('morgan')('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));  //false
 app.use(bodyParser.json());
 // app.use(express.session({ secret: process.env.secretOrKey }));
-
+// routes(app);
 // Connect to DB
 mongoose
     .connect(keys.mongoURI, { useNewUrlParser: true, useCreateIndex: true })
@@ -46,7 +46,7 @@ mongoose
 // Config express-session
 const MemoryStore = memorystore(session)
 const sessConfig = {
-    secret: process.env.SESSION_SECRET,
+    secret: keys.sessionSecret,
     cookie: { secure: true },
     store: new MemoryStore({
         checkPeriod: 86400000 // prune expired entries every 24h
@@ -63,8 +63,7 @@ require('./config/userAuth')(passport);
 
 // Passport middleware
 app.use(passport.initialize());
-app.use(passport.session());
-
+app.use(passport.session()); 
 
 app.use('/api/users', users);
 app.use('/api/profile', profile);
