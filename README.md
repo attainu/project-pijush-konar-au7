@@ -70,10 +70,10 @@ $ npm i
 
 ## Configuration for the App
 
-Open `project-pijush-konar-au7` then create and **dev.env** file and edit it with your infos. You will need:
+Open `project-pijush-konar-au7` then create and **dev.env** file in the root and edit it with your credentials. You will need:
 
 - PORT=`Your Desired Port`
-- MONGODB_URL_SET=`Your Database Address`
+- MONGODB_URI=`Your Database Address`
 - SENDGRID_KEY=`Enter Your SendGrid Email API Register On Sendgrid`
 - SESSION_SECRET=`your secret key`
 - SECRET_OR_KEY=`KEY`
@@ -92,42 +92,102 @@ Open `project-pijush-konar-au7` then create and **dev.env** file and edit it wit
     $ npm run cover
 ```
 
+## Full Project Website Link Hosted On Heroku -
+
+- #### Visit Here [GuruKul World](https://gurukul-world.herokuapp.com/)
+
 ## Project BackEnd Hosted On Heroku -
 
 - #### Visit Here [BackEnd Hosted By Pijush](https://tutionapp.herokuapp.com/)
 - #### Visit Here [BackEnd Hosted By Saidul](https://tution-media.herokuapp.com/)
 
 
-## Full Project Website Link Hosted On Heroku -
 
-- #### Visit Here [GuruKul](#)
-
-
-
-## NPM Packages Used -
+## BackEnd NPM Packages Used -
 
 - ##### `@sendgrid/mail` - It’s Mail Service npm for the SendGrid v3 Web Email API. We used it to send signup emails and account deletion emails to the users. You can find it out here - [@sendgrid/mail](https://www.npmjs.com/package/@sendgrid/mail)
+
+
+- ##### `@material-ui/core` - For designing system. You can find it out here - [@material-ui/core](https://www.npmjs.com/package/@material-ui/core).
 
 
 - ##### `bcryptjs` - We are using bcrypt.js module to hash password of the user. It’s an npm module that you can find it out here at [bcryptjs](https://www.npmjs.com/package/bcryptjs).
 
 
+- ##### `body-parser` - It’s a Node.js body parsing middleware for accessing data. You can find it out here - [body-parser](https://www.npmjs.com/package/body-parser).
+
+
+- ##### `compression` - It’s a compression middleware we used for GZip Compression. Check it out here - [compression](https://www.npmjs.com/package/compression). 
+
+
+- ##### `concurrently` - It is used to run multiple commands concurrently. Check it out here - [concurrently](https://www.npmjs.com/package/concurrently).
+
+
+- ##### `cors` - It is used as a middleware in Node.JS. Check it out here - [cors](https://www.npmjs.com/package/cors). 
+
+
+- ##### `dotenv` - It is used to load environment variables from a .env file into process.env. You can find it out here - [dotenv](https://www.npmjs.com/package/dotenv).
+
+
 - ##### `express` - It's the web framework for Node.js that we used to structure our web application. You can find more details here [express](https://www.npmjs.com/package/express).
 
-
-- ##### `express-session` - It's for the storage of the cookies. Session data is not saved in the cookie itself, just the session ID. Session data is stored server-side.  For more details check here [express-session](https://www.npmjs.com/package/express-session).
-
-
-- ##### `mongoose` - We used Mongoose because it provides schema-based solution to model our application data with MongoDB. Which has many features to use example - validation of user's data. For more details check here [mongoose](https://www.npmjs.com/package/mongoose).
+- ##### `express-session` - It's for the storage of the cookies. Session data is not saved in the cookie itself, just the session ID. Session data is stored server-side. For more details check here - [express-session](https://www.npmjs.com/package/express-session).
 
 
-- ##### `passport` - We have used Passport for authentication as it is one of the best authentication middleware available for Node.js. For more details check here [passport](https://www.npmjs.com/package/passport).
+- ##### `helmet` - It helps to secure our Express app by setting various HTTP headers. For more details check here - [helmet](https://www.npmjs.com/package/helmet).
 
 
-- ##### `passport-jwt` - We used Passport-jwt. For more details check here [passport-jwt](https://www.npmjs.com/package/passport-jwt).
+- ##### `heroku-logger` -  We used this for Heroku. For more details check here - [heroku-logger](https://www.npmjs.com/package/heroku-logger). 
 
 
-- ##### `validator` - We used validator to vadidate user data for example - user's entered email address. For more details check here [validator](https://www.npmjs.com/package/validator).
+- ##### `jsonwebtoken` - We used to create access tokens for our application. For more details check here - [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken). 
+
+
+- ##### `memorystore` - It helps for session store implementation for Express. For more details check here - [memorystore](https://www.npmjs.com/package/memorystore).
+
+
+- ##### `mongoose` - We used Mongoose because it provides a schema-based solution to model our application data with MongoDB. Which has many features to use example - validation of user's data. For more details check here - [mongoose](https://www.npmjs.com/package/mongoose).
+
+
+- ##### `morgan` - HTTP request logger middleware for node.js. For more details check here - [morgan](https://www.npmjs.com/package/morgan).
+
+
+- ##### `passport` - We have used Passport for authentication as it is one of the best authentication middleware available for Node.js. For more details check here - [passport](https://www.npmjs.com/package/passport).
+
+
+- ##### `passport-jwt` - It used for for authenticating with our app JSON Web Token. For more details check here - [passport-jwt](https://www.npmjs.com/package/passport-jwt).
+
+
+- ##### `sinon` - For testing. For more details check here - [sinon](https://www.npmjs.com/package/sinon).
+
+
+- ##### `validator` - We used validator to validate user data for example - user's entered email address. For more details check here - [validator](https://www.npmjs.com/package/validator).
+
+
+---
+
+
+## FrontEnd NPM Packages Used -
+
+- ##### `React` -  For the full frontend we used react with CRA. Check it out here [React](https://www.npmjs.com/package/react).
+
+
+- ##### `@material-ui/core` - For Material UI react component design system. You can find it out here - [@material-ui/core](https://www.npmjs.com/package/@material-ui/core).
+
+
+- ##### `axios` - Promise based HTTP client for the browser. For more details check here - [axios](https://www.npmjs.com/package/axios).
+
+
+- ##### `classnames` - Used for joining classNames together. For more details check here - [classnames](https://www.npmjs.com/package/classnames).
+
+
+- ##### `jwt-decode` - We used it  in our utils, actions and files for decoding JWTs. Check it out here - [jwt-decode](https://www.npmjs.com/package/jwt-decode).
+
+
+- ##### `lodash` - We used lodash for our filter, sorting options and others. For more details check here - [lodash](https://www.npmjs.com/package/lodash).
+
+
+- ##### `redux-thunk` - Middleware for redux. For more details - [redux-thunk](https://www.npmjs.com/package/redux-thunk).
 
 ---
 
