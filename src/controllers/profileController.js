@@ -59,6 +59,23 @@ const profileControll = {
             res.status(404).json(err);
         }
     },
+
+    getProfile: async (req, res) => {
+        const errors = {};
+        try {
+            const profile =  await Profile.findOne({ user: req.user.id })
+                .populate('user', ['isAdmin']);
+            if (!profile) {
+                errors.noprofile = 'There is no profile for this user';
+                return res.status(400).json(errors);
+            }
+            res.json(profile);
+        }
+        catch (err) {
+            res.status(404).json(err);
+        }
+    },
+
     postProfile: (req, res) => {
         const { errors, isValid } = validateProfileInput(req.body);
 
@@ -106,21 +123,7 @@ const profileControll = {
             }
         });
     },
-    getProfile: async (req, res) => {
-        const errors = {};
-        try {
-            const profile =  await Profile.findOne({ user: req.user.id })
-                .populate('user', ['isAdmin']);
-            if (!profile) {
-                errors.noprofile = 'There is no profile for this user';
-                return res.status(400).json(errors);
-            }
-            res.json(profile);
-        }
-        catch (err) {
-            res.status(404).json(err);
-        }
-    },
+    
     disableProfile: async (req, res) => {
         try {
             console.log(req.body.userId)
@@ -130,7 +133,7 @@ const profileControll = {
             ).then(profile => {
                 res.json(profile);
                 User.findOneAndUpdate({ _id: req.body.userId }, {$set: {disabled: true }}).then(user => res.json(user));
-            });
+            })
         }
         catch (err) {
             res.status(404).json(err);
@@ -146,7 +149,7 @@ const profileControll = {
             ).then(profile => {
                 res.json(profile);
                 User.findOneAndUpdate({ _id: req.body.userId}, {$set: {disabled: false }}).then(user => res.json(user));
-            });
+            })
     
         }
         catch (err) {
@@ -160,31 +163,26 @@ const profileControll = {
             );
           });
     },
-    deleteProfileId: async(req, res) => {  
-        // const _id = req.body.id.user
-        try{
-            const user = await User.findOne({ _id: req.body.id.user }).then(user => {
+    deleteProfileId: (req, res) => {  
+        // const delBody = req.body
+            User.findOne({ _id: req.body.id?.user }).then(user => {
                 if (user) {
                     if (user.hasProfile) {
-                        Profile.findOneAndRemove({ user: req.body.id.user }).then(() => {
-                            User.findOneAndRemove({ _id: req.body.id.user }).then(() =>
+                        Profile.findOneAndRemove({ user: req.body.id?.user }).then(() => {
+                            User.findOneAndRemove({ _id: req.body.id?.user }).then(() =>
                               res.json({ success: true })
                             );
-                        });
+                        })
                     }
                     else {
-                        User.findOneAndRemove({ _id: req.body.id.user }).then(() =>
+                        User.findOneAndRemove({ _id: req.body.id?.user }).then(() =>
                           res.json({ success: true })
                         );
                     }
       
                 }
             });
-        }
-        catch(err){
-            console.error(err)
-        }
-    }  
+        } 
 
 }
 

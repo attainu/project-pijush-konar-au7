@@ -51,24 +51,26 @@ class EditSubjects extends Component {
      this.props.getSubjects();
  }
 
- UNSAFE_componentWillReceiveProps(nextProps) {
-    if (nextProps.errors) this.setState({ errors: nextProps.errors });
-    if (nextProps.subjects.subjects) {
-        this.setState({
-            subjects: sortArrByAscending(nextProps.subjects.subjects, ['name'])
-        });
-    }
- }
-
-//  componentDidUpdate(nextProps) {
-//   if (nextProps.errors !== this.props.errors) this.setState({ errors: nextProps.errors });
-//   // console.log(nextProps);
-//   if(nextProps.subjects?.subjects !== this.props.subjects.subjects){
-//    this.setState({
-//     subjects: sortArrByAscending(this.props.subjects.subjects, ['name'])
-//    });
+//  UNSAFE_componentWillReceiveProps(nextProps) {
+//     if (nextProps.errors) this.setState({ errors: nextProps.errors });
+//     console.log(nextProps)
+//     if (nextProps.subjects.subjects) {
+//         this.setState({
+//             subjects: sortArrByAscending(nextProps.subjects.subjects, ['name'])
+//         });
+//     }
 //  }
-// }
+
+ componentDidUpdate(nextProps) {
+  if (nextProps.errors !== this.props.errors) this.setState({ errors: nextProps.errors });
+  // console.log(nextProps);
+  // console.log(this.props)
+  if(nextProps.subjects?.subjects !== this.props.subjects.subjects){
+   this.setState({
+    subjects: sortArrByAscending(nextProps.subjects.subjects, ['name'])
+   });
+ }
+}
 
  addSubject = (e) => {
     // push new subject to the top of the existing list

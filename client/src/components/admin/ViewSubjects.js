@@ -60,28 +60,29 @@ class ViewSubjects extends Component {
     //  console.log(this.props)
  }
 
- componentDidUpdate(prevProps,prevState) {
+//  componentDidUpdate(prevProps,prevState) {
    
-  if(prevProps.subjects.subjects !== this.props.subjects.subjects) {
-      this.setState({ subjects:_.sortBy(this.props.subjects.subjects, ['name']) })
-  }
-  if (prevProps.errors !== this.props.errors) {
-    this.setState({
-      errors: this.props.errors
-    });
-  }
+//   if(prevProps.subjects.subjects !== this.props.subjects.subjects) {
+//       this.setState({ subjects:_.sortBy(this.props.subjects.subjects, ['name']) })
+//   }
+//   if (prevProps.errors !== this.props.errors) {
+//     this.setState({
+//       errors: this.props.errors
+//     });
+//   }
   
-}
-
-// componentDidUpdate(nextProps) {
-//   if (nextProps.errors !== this.props.errors) this.setState({ errors: nextProps.errors });
-//   // console.log(nextProps);
-//   if(nextProps.subjects?.subjects !== this.props.subjects.subjects){
-//    this.setState({
-//     subjects: sortArrByAscending(this.props.subjects.subjects, ['name'])
-//    });
-//  }
 // }
+
+componentDidUpdate(nextProps) {
+  if (nextProps.errors !== this.props.errors) this.setState({ errors: nextProps.errors });
+  // console.log(nextProps.subjects.subjects);
+  // console.log(this.props.subjects.subjects)
+  if(nextProps.subjects?.subjects !== this.props.subjects.subjects){
+   this.setState({
+    subjects:_.sortBy(this.props.subjects.subjects, ['name'])
+   });
+ }
+}
 
 // on cancel go back to dashboard to eliminate need for extra button
 render() {

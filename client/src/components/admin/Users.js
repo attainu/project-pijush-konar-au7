@@ -70,24 +70,26 @@ class Users extends Component {
     //  this.props.deleteAccountByAdmin()
  }
 
- UNSAFE_componentWillReceiveProps(nextProps) {
-    if (nextProps.errors) this.setState({ errors: nextProps.errors });
-    if (nextProps.profiles) {
-        this.setState({
-            profiles: sortArrByAscending(nextProps.profiles, ['firstname', 'lastname'])
-        });
-    }
-  }
+//  UNSAFE_componentWillReceiveProps(nextProps) {
+//     if (nextProps.errors) this.setState({ errors: nextProps.errors });
+//     console.log(nextProps)
+//     if (nextProps.profiles) {
+//         this.setState({
+//             profiles: sortArrByAscending(nextProps.profiles, ['firstname', 'lastname'])
+//         });
+//     }
+//   }
 
-  // componentDidUpdate(nextProps) {
-  //   if (nextProps.errors !== this.props.errors) this.setState({ errors: nextProps.errors });
-  //   // console.log(nextProps);
-  //   if(nextProps.profiles !== this.props.profiles){
-  //    this.setState({
-  //     profiles: sortArrByAscending(this.props.profiles, ['firstname', 'lastname'])
-  //    });
-  //  }
-  // }
+  componentDidUpdate(nextProps) {
+    if (nextProps.errors !== this.props.errors) this.setState({ errors: nextProps.errors });
+    // console.log(nextProps);
+    // console.log(this.props)
+    if(nextProps.profiles !== this.props.profiles){
+     this.setState({
+      profiles: sortArrByAscending(this.props.profiles, ['firstname', 'lastname'])
+     });
+   }
+  }
 
   handleAdminClose = () => {
     this.setState({ adminToastOpen: false });

@@ -88,7 +88,7 @@ class App extends Component {
                   <Route exact path='/confirm/:id' component={UserConfirm} />
                   <Route exact path="/about" component={About} />
                   <PrivateRoute exact path="/profile" component={Dashboard}/>
-                  <Route exact path="/create-profile" component={CreateProfile} />
+                  <PrivateRoute exact path="/create-profile" component={CreateProfile} />
                   <PrivateRoute exact path="/edit-profile" component={EditProfile} />
                   <AdminRoute exact path="/subjects" component={Subjects} />
                   <AdminRoute exact path="/view-subjects" component={ViewSubjects} />
