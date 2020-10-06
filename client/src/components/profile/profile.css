@@ -1,8 +1,8 @@
 .chip {
 	margin-right: 10px;
 	margin-bottom: 10px;
-	border-color: #5E9CAE !important;
-	background-color: #5E9CAE !important;
+	border-color: #6670ae !important;
+	background-color: #6670ae !important;
 	color: #fff !important;
 	font-weight: 500 !important;
 }
@@ -91,7 +91,7 @@
 .blueAvatar {
     margin: 10px;
     color: #ffffff !important;
-    background-color: #5E9CAE !important;
+    background-color: #6670ae !important;
 }
 
 .colorPurple {
@@ -99,7 +99,7 @@
 }
 
 .colorBlue {
-	color: #5E9CAE !important;
+	color: #6670ae !important;
 }
 
 .backgroundPurple {
@@ -107,7 +107,7 @@
 }
 
 .backgroundBlue {
-	background-color: #5E9CAE !important;
+	background-color: #6670ae !important;
 }
 
 .purpleSubmit {

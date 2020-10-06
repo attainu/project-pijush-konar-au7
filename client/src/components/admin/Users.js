@@ -35,7 +35,7 @@ import { sortArrByAscending, removeByMatch } from '../../utils/lodashOps';
 
 const CustomTableCell = withStyles(theme => ({
   head: {
-    backgroundColor: '#5E9CAE',
+    backgroundColor: '#6670ae',
     color: '#fff',
     fontWeight: 'bold'
   }

@@ -124,7 +124,7 @@ const profileControll = {
     disableProfile: async (req, res) => {
         try {
             console.log(req.body.userId)
-            const profile = await Profile.findOneAndUpdate(
+            await Profile.findOneAndUpdate(
                 { user: req.body.userId},
                 { $set: { disabled: true }}
             ).then(profile => {
@@ -140,7 +140,7 @@ const profileControll = {
     enableProfile: async (req, res) => {
         try {
             console.log(req.body.userId)
-            const profile = await Profile.findOneAndUpdate(
+            await Profile.findOneAndUpdate(
                 { user: req.body.userId},
                 { $set: { disabled: false }}
             ).then(profile => {
