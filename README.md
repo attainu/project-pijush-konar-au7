@@ -194,8 +194,50 @@ Open `project-pijush-konar-au7` then create and **dev.env** file in the root and
 
 ## Project Screenshots
 
-- ###### Will Be Added
- ![](/Demo-Pictures/pic.jpg) 
+- ###### Welcome Page/Landing Page
+ ![](/demoPictures/1-welcome.png) 
+
+- ###### Signup Page
+ ![](/Demo-Pictures/2-register.png) 
+
+- ###### Login Page
+ ![](/Demo-Pictures/3-login.png) 
+
+- ###### Dashboard
+ ![](/Demo-Pictures/4-dashboard.png) 
+
+- ###### Create Guru Profile Page
+ ![](/Demo-Pictures/5-CGP.png) 
+
+- ###### Guru Dashboard Page
+ ![](/Demo-Pictures/6-guruDashboard.png)
+
+- ###### Edit Guru Profile Page
+ ![](/Demo-Pictures/7-editProfile.png) 
+
+- ###### View Guru Profile Page
+ ![](/Demo-Pictures/8-viewProfile.png)
+
+- ###### Find A Guru Page
+ ![](/Demo-Pictures/9-findGuru.png) 
+
+- ###### About GuruKul Page
+ ![](/Demo-Pictures/14-About.png)
+
+---
+
+- ###### Subjects Admin Page (Admin Tools)
+ ![](/Demo-Pictures/10-subjectsAdmin.png)
+
+ - ###### View Subjects (Admin Tools)
+ ![](/Demo-Pictures/11-viewSubAdmin.png)
+
+ - ###### Create & Edit Subjects (Admin Tools)
+ ![](/Demo-Pictures/12-createEditSubAdmin.png)
+
+ - ###### Manage Profiles/Users (Admin Tools)
+ ![](/Demo-Pictures/13-manageUser.png)
+
 
  
 
