@@ -198,45 +198,45 @@ Open `project-pijush-konar-au7` then create and **dev.env** file in the root and
  ![](/demoPictures/1-welcome.png) 
 
 - ###### Signup Page
- ![](/Demo-Pictures/2-register.png) 
+ ![](/demoPictures/2-register.png) 
 
 - ###### Login Page
- ![](/Demo-Pictures/3-login.png) 
+ ![](/demoPictures/3-login.png) 
 
 - ###### Dashboard
- ![](/Demo-Pictures/4-dashboard.png) 
+ ![](/demoPictures/4-dashboard.png) 
 
 - ###### Create Guru Profile Page
- ![](/Demo-Pictures/5-CGP.png) 
+ ![](/demoPictures/5-CGP.png) 
 
 - ###### Guru Dashboard Page
- ![](/Demo-Pictures/6-guruDashboard.png)
+ ![](/demoPictures/6-guruDashboard.png)
 
 - ###### Edit Guru Profile Page
- ![](/Demo-Pictures/7-editProfile.png) 
+ ![](/demoPictures/7-editProfile.png) 
 
 - ###### View Guru Profile Page
- ![](/Demo-Pictures/8-viewProfile.png)
+ ![](/demoPictures/8-viewProfile.png)
 
 - ###### Find A Guru Page
- ![](/Demo-Pictures/9-findGuru.png) 
+ ![](/demoPictures/9-findGuru.png) 
 
 - ###### About GuruKul Page
- ![](/Demo-Pictures/14-About.png)
+ ![](/demoPictures/14-About.png)
 
 ---
 
 - ###### Subjects Admin Page (Admin Tools)
- ![](/Demo-Pictures/10-subjectsAdmin.png)
+ ![](/demoPictures/10-subjectsAdmin.png)
 
  - ###### View Subjects (Admin Tools)
- ![](/Demo-Pictures/11-viewSubAdmin.png)
+ ![](/demoPictures/11-viewSubAdmin.png)
 
  - ###### Create & Edit Subjects (Admin Tools)
- ![](/Demo-Pictures/12-createEditSubAdmin.png)
+ ![](/demoPictures/12-createEditSubAdmin.png)
 
  - ###### Manage Profiles/Users (Admin Tools)
- ![](/Demo-Pictures/13-manageUser.png)
+ ![](/demoPictures/13-manageUser.png)
 
 
  
