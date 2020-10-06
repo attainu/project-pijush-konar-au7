@@ -194,48 +194,48 @@ Open `project-pijush-konar-au7` then create and **dev.env** file in the root and
 
 ## Project Screenshots
 
-- ###### Welcome Page/Landing Page
+- ##### Welcome Page/Landing Page
  ![](/demoPictures/1-welcome.png) 
 
-- ###### Signup Page
+- ##### Signup Page
  ![](/demoPictures/2-register.png) 
 
-- ###### Login Page
+- ##### Login Page
  ![](/demoPictures/3-login.png) 
 
-- ###### Dashboard
+- ##### Dashboard
  ![](/demoPictures/4-dashboard.png) 
 
-- ###### Create Guru Profile Page
+- ##### Create Guru Profile Page
  ![](/demoPictures/5-CGP.png) 
 
-- ###### Guru Dashboard Page
+- ##### Guru Dashboard Page
  ![](/demoPictures/6-guruDashboard.png)
 
-- ###### Edit Guru Profile Page
+- ##### Edit Guru Profile Page
  ![](/demoPictures/7-editProfile.png) 
 
-- ###### View Guru Profile Page
+- ##### View Guru Profile Page
  ![](/demoPictures/8-viewProfile.png)
 
-- ###### Find A Guru Page
+- ##### Find A Guru Page
  ![](/demoPictures/9-findGuru.png) 
 
-- ###### About GuruKul Page
+- ##### About GuruKul Page
  ![](/demoPictures/14-About.png)
 
 ---
 
-- ###### Subjects Admin Page (Admin Tools)
+- ##### Subjects Admin Page (Admin Tools)
  ![](/demoPictures/10-subjectsAdmin.png)
 
- - ###### View Subjects (Admin Tools)
+ - ##### View Subjects (Admin Tools)
  ![](/demoPictures/11-viewSubAdmin.png)
 
- - ###### Create & Edit Subjects (Admin Tools)
+ - ##### Create & Edit Subjects (Admin Tools)
  ![](/demoPictures/12-createEditSubAdmin.png)
 
- - ###### Manage Profiles/Users (Admin Tools)
+ - ##### Manage Profiles/Users (Admin Tools)
  ![](/demoPictures/13-manageUser.png)
 
 
