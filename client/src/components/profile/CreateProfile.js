@@ -35,22 +35,22 @@ class CreateProfile extends Component {
     
  }
 
- componentDidUpdate(prevProps){
-    if(prevProps.subjects.subjects !== this.props.subjects.subjects){
+ componentDidUpdate(nextProps){
+    if(nextProps.subjects.subjects !== this.props.subjects.subjects){
         this.setState({
             subjects: sortArrByAscending(this.props.subjects.subjects, ['name'])
         });
      }
-    if (prevProps.errors !== this.props.errors) {
+    if (nextProps.errors !== this.props.errors) {
        this.setState({
-         errors: this.props.errors
+         errors: nextProps.errors
        });
      }
  }
 
-static getDerivedStateFromProps(nextProps) {
-    if (nextProps.errors) return ({ errors: nextProps.errors });
- }
+// static getDerivedStateFromProps(nextProps) {
+//     if (nextProps.errors) return ({ errors: nextProps.errors });
+//  }
 
  addCourse = (e) => {
     this.setState((prevState) => ({

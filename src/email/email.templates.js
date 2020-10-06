@@ -1,6 +1,7 @@
 // Email template for confirmation
 
-const url = process.env.NODE_ENV === 'production' ? process.env.hostedClientURL : 'localhost:3000';
+// const url = process.env.NODE_ENV === 'production' ? process.env.hostedClientURL : 'localhost:3000';
+const url = 'localhost:3000'
 
 module.exports = {
   confirm: id => {

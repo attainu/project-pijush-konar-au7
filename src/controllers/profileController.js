@@ -166,6 +166,7 @@ const profileControll = {
     deleteProfileId: (req, res) => {  
         // const delBody = req.body
             User.findOne({ _id: req.body.id?.user }).then(user => {
+
                 if (user) {
                     if (user.hasProfile) {
                         Profile.findOneAndRemove({ user: req.body.id?.user }).then(() => {
@@ -181,6 +182,7 @@ const profileControll = {
                     }
       
                 }
+                
             });
         } 
 
