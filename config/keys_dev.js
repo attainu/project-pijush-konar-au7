@@ -1,6 +1,8 @@
 module.exports = {
-    stripePublishableKey:'_YOUR_OWN_PUBLISHABLE_KEY_',
-    stripeSecretKey:'_YOUR_OWN_SECRET_KEY_',
-    secretOrKey: 'abcd1234',
-    mongoURI: process.env.MONGODB_URI
+    // stripePublishableKey:process.env.PUBLISHED_KEY,
+    // stripeSecretKey:process.env.STRIPE_KEY,
+    sessionSecret: process.env.SESSION_SECRET,
+    secretOrKey: process.env.SECRET_OR_KEY,
+    mongoURI: process.env.MONGODB_URI,
+    saltRounds: process.env.SALT_ROUNDS,
   }

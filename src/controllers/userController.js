@@ -40,6 +40,7 @@ const userControll = {
 
                 if (!setting.isProduction) {
                     newUser.confirmed = true
+                    // sendEmail(newUser.email, templates.confirm(newUser._id));
                 }
 
                 // Generate hashed password

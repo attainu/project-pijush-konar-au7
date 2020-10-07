@@ -32,7 +32,7 @@ import emailController from './src/email/email.controller';
 
 // Normal express middleware config defaults
 app.use(require('morgan')('dev'));
-app.use(bodyParser.urlencoded({ extended: false }));  //false
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 // app.use(express.session({ secret: process.env.secretOrKey }));
 
@@ -50,13 +50,12 @@ const sessConfig = {
 
 app.use(session(sessConfig));
 
-
 // Passport Config
 require('./config/userAuth')(passport);
 
 // Passport middleware
 app.use(passport.initialize());
-app.use(passport.session()); 
+app.use(passport.session());
 
 app.use('/api/users', users);
 app.use('/api/profile', profile);
@@ -75,7 +74,9 @@ if (setting.isProduction) {
     });
 }
 
-app.listen(port, () => console.info(`Server started on port ${port}`));
+app.listen(port, () => console.info(`Server started on port ${port} & Prod setting is ${setting.isProduction}`));
+
+module.exports = app;
 
 //node --unhandled-rejections=strict
 //--trace-warnings

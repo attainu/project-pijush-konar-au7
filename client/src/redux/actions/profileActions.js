@@ -116,7 +116,7 @@ export const deleteAccount = () => dispatch => {
 }
 
 export const deleteAccountByAdmin = (id) => dispatch => {
-    axios.delete('/api/profile/id', {data: { id: id }})
+    axios.delete(`/api/profile/id`, {data: { id: id }})
     .catch(err =>
       dispatch({
         type: GET_ERRORS,

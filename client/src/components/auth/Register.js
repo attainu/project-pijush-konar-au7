@@ -114,7 +114,7 @@ class Register extends Component {
         return (
             <div className={classes.main}>
               <Paper className={classes.paper} elevation={3}>
-                <Avatar className="blueAvatar" />
+                <Avatar className="blueAvatar">GK</Avatar>
                 <Typography component="h1" variant="h5">
                   Register
                 </Typography>
