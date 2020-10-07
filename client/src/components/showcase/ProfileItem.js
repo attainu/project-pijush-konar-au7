@@ -68,7 +68,7 @@ const ProfileItem = props => {
     const majors = profile.major ? profile.major.join(", "): "";
     const minors = profile.minor ? profile.minor.join(", ") : "";
     const headerText = profile.type === "Paid" ?
-        <span>{shortname}<span className="tag">$$$</span></span>
+        <span>{shortname}<span className="tag">Paid - ₹</span></span>
         : <span>{shortname}</span>;
     const subheaderText = (minors.length > 0) ? majors + " (" + minors + ")" : majors;
 
