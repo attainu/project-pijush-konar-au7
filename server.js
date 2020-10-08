@@ -77,6 +77,3 @@ if (setting.isProduction) {
 app.listen(port, () => console.info(`Server started on port ${port} & Prod setting is ${setting.isProduction}`));
 
 module.exports = app;
-
-//node --unhandled-rejections=strict
-//--trace-warnings
