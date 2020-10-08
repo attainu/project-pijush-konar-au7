@@ -30,7 +30,7 @@ export const getProfiles = () => dispatch => {
 // ADMIN: Get all enabled and disabled profiles
 export const getAllProfilesByAdmin = () => dispatch => {
     dispatch(setProfileLoading());
-    axios.get('/api/profile/allUsers')
+    axios.get('/api/profile/allusers')
     .then(res => {
         dispatch({
             type: GET_PROFILES,

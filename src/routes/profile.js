@@ -15,7 +15,7 @@ router.get('/all', profileControll.allProfiles);
 
 // @desc    Get profile/allUsers
 // @access  Admin
-router.get('/allUsers', profileControll.allUsers);
+router.get('/allusers', profileControll.allUsers);
 
 // @route   GET profile/handle/:handle
 // @desc    Get profile by handle
