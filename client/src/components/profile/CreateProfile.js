@@ -48,10 +48,6 @@ class CreateProfile extends Component {
      }
  }
 
-// static getDerivedStateFromProps(nextProps) {
-//     if (nextProps.errors) return ({ errors: nextProps.errors });
-//  }
-
  addCourse = (e) => {
     this.setState((prevState) => ({
       courses: [...prevState.courses, 
@@ -63,7 +59,7 @@ class CreateProfile extends Component {
       }],
     }));
  }
-//Math.random().toString(36).replace(/[^a-z]+/g, '').substr(2, 10)
+
  removeCourse = id => {
     let courses = [...this.state.courses];
     const newCourses = courses.filter(course => {
@@ -181,7 +177,7 @@ render() {
              </Grid> 
            )}  
     );
-    ///enforcing major & type to be required
+    /// enforcing major & type to be required
     var validProfile = false;
     if(major.length > 0 && type.length > 0){ 
         validProfile = true;
@@ -190,7 +186,7 @@ render() {
         validProfile = false;
     }
 
-    //courseId required for each new course
+    // courseId required for each new course
     var validCourseIds = true;
     if(courses.length > 0){
         for(var c in courses){ 
@@ -203,7 +199,7 @@ render() {
             }
         }
     }
-    //submit button invalid unless both are satisfied
+    // submit button invalid unless both are satisfied
     var valid = false;
     if(validCourseIds && validProfile){
         valid = true;

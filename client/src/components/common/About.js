@@ -12,6 +12,7 @@ import '../profile/profile.css';
 
 import { withStyles } from '@material-ui/core/styles';
 
+// For Copyright
 const Copyright = () => {
     return (
       <Typography variant="body2" gutterBottom className="about-text" align="center">
@@ -25,6 +26,7 @@ const Copyright = () => {
     );
   }
 
+  // Developed by information
   const Developed = () => {
     return (
       <Typography variant="body2" className="about-text" align="center">

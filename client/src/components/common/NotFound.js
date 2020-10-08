@@ -7,6 +7,7 @@ import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import NotFoundImg from '../../images/page-not-found.jpg';
 
+// 404 Page setup
 function NotFound() {
   return (
         <div className="padding20">

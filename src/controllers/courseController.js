@@ -3,14 +3,7 @@ import User from '../models/User';
 import Course from '../models/Course';
 
 const coursesControll = {
-    postCourse: (req, res) => {
-        // const { errors, isValid } = validateCourseInput(req.body);
-
-        // Check validation
-        // if (!isValid) {
-        //     return res.status(400).json(errors);
-        // }
-        
+    postCourse: (req, res) => {        
         // Get fields
         const courseFields = {};
         courseFields.user = req.user.id;

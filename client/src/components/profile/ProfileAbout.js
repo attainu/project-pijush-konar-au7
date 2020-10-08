@@ -20,7 +20,7 @@ class ProfileAbout extends Component {
     render() {
         const { profile } = this.props;
 
-        // Create initials and short version of name for use on card
+        // Created initials and short version of name for use on card
         const email = profile.user ? profile.user.email : "";
         const firstname = profile.user ? profile.user.firstname : "";
         const lastname = profile.user ? profile.user.lastname : "";
@@ -40,7 +40,7 @@ class ProfileAbout extends Component {
         const majors = profile.major ? profile.major.join(", ") : "";
         const minors = profile.minor ? profile.minor.join(", ") : "";
         const headerText = profile.type === "Paid" ?
-            <span>{shortname}<span className="tag">Requesting Compensation</span></span>
+            <span>{shortname}<span className="tag">Paid Class Available - ₹</span></span>
             : <span>{shortname}</span>;
         const subheaderText = (minors.length > 0) ? majors + " (" + minors + ")" : majors;
 
