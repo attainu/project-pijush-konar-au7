@@ -70,16 +70,6 @@ class Users extends Component {
     //  this.props.deleteAccountByAdmin()
  }
 
-//  UNSAFE_componentWillReceiveProps(nextProps) {
-//     if (nextProps.errors) this.setState({ errors: nextProps.errors });
-//     console.log(nextProps)
-//     if (nextProps.profiles) {
-//         this.setState({
-//             profiles: sortArrByAscending(nextProps.profiles, ['firstname', 'lastname'])
-//         });
-//     }
-//   }
-
   componentDidUpdate(nextProps) {
     if (nextProps.errors !== this.props.errors) this.setState({ errors: nextProps.errors });
     // console.log(nextProps);
@@ -353,19 +343,3 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps, { getAllProfilesByAdmin, deleteAccountByAdmin, setAdmin, disableProfileByUser, enableProfileByUser })(withRouter(withStyles(styles)(Users)));
-
-
- // componentDidUpdate(prevProps) {
-   
-  //   if (prevProps.errors !== this.props.errors) {
-  //     this.setState({
-  //       errors: this.props.errors
-  //     });
-  //   }
-  //    // Typical usage (don't forget to compare props):
-  //    if (this.props.profiles !== prevProps.profiles) {
-  //     this.setState({
-  //       profiles: sortArrByAscending(this.props.profiles, ['firstname', 'lastname'])
-  //     });
-  //   }
-  // }

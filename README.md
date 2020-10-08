@@ -5,6 +5,13 @@ The objective of this website/project is to provide a social platform to student
 
 ---
 
+## Live Website & Video Demo
+[GuruKul World](https://gurukul-world.herokuapp.com/)
+
+[GuruKul Demo Video](https://youtu.be/AiO7LlU-_OU)
+
+---
+
 # Project Authors
 
 #### Check Us Out

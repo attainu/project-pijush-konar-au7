@@ -36,28 +36,6 @@ class EditProfile extends Component {
      this.props.getSubjects();
  }
 
-//  componentDidUpdate(prevProps) {
-//     if (this.props.errors !== prevProps.errors) this.setState({ errors: this.props.errors });
-//     if (this.props.profile !== prevProps.profile) {
-//         const profile = this.props.profile.profile;
-//         const courses = profile.courses?.length > 0 ? profile.courses : [];
-//         this.setState({
-//             major: profile.major,
-//             minor: profile.minor,
-//             bio: profile.bio,
-//             availability: profile.availability,
-//             type: profile.type,
-//             courses: courses
-//         });
-//         // console.log(profile)
-//     }
-//     if (this.props.subjects.subjects !==prevProps.subjects.subjects) {
-//         this.setState({
-//             subjects: sortArrByAscending(this.props.subjects.subjects, ['name'])
-//         });
-//     }
-//  }
-
  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.errors) this.setState({ errors: nextProps.errors });
     if (nextProps.profile.profile) {
@@ -343,33 +321,3 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps, { createProfile, getCurrentProfile, getSubjects })(withRouter(EditProfile));
-
-
-
-
-
-// componentDidUpdate(prevProps) {
-//     if (this.props.errors !== prevProps.errors) this.setState({ errors: this.props.errors });
-//     if (this.props.profile !== prevProps.profile) {
-//         const profile = this.props.profile?.profile;
-//         const courses = profile?.courses?.length > 0 ? profile.courses : [];
-//         this.setState({
-//             major: profile?.major,
-//             minor: profile?.minor,
-//             bio: profile?.bio,
-//             availability: profile?.availability,
-//             type: profile?.type,
-//             courses: courses
-//         });
-//         console.log(profile)
-//     }
-//     if (this.props.subjects.subjects !==prevProps.subjects.subjects) {
-//         this.setState({
-//             subjects: sortArrByAscending(this.props.subjects.subjects, ['name'])
-//         });
-//     }
-//  }
- 
-//  static getDerivedStateFromProps(nextProps) {
-//     if (nextProps.errors) return ({ errors: nextProps.errors });
-//  }

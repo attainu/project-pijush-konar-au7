@@ -35,4 +35,3 @@ password | Saidul#123
 5) Admin
 - : Local Server - http://localhost:8080/api/users/admin
 - : Production Server - https://tutionapp.herokuapp.com/api/users/admin
-- 

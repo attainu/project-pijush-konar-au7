@@ -1,6 +1,5 @@
 import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
-// TODO: add payment or not
 
 const CourseSchema = new Schema({
     id: {

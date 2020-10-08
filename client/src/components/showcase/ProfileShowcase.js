@@ -96,24 +96,6 @@ class ProfilesShowcase extends Component {
         }
      }
 
-    // componentDidUpdate(nextProps){
-
-    //     if (nextProps.errors !== this.props.errors) this.setState({ errors: nextProps.errors });
-    //     if (nextProps.subjects.subjects !== this.props.subjects.subjects) {
-    //         this.setState({
-    //             subjects: _.sortBy(_.map(this.props.subjects.subjects, 'name'))
-    //         });
-    //     }
-    //     if (nextProps.profile.profiles !== this.props.profile.profiles) {
-    //         this.setState({
-    //             allProfiles: this.props.profile.profiles
-    //         });
-    //     }
-    //     if (sessionStorage.length < 1) {
-    //         this.setState({ data: this.props.profile.profiles })
-    //     }
-
-    // }
     //for randomizing profiles displayed
     shuffle = event => {
         this.setState({

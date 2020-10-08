@@ -9,7 +9,7 @@ import ConfirmImg from '../../images/confirmed-text.jpg';
 import axios from 'axios';
 // import { API_URL } from '../../client-config'
 
-
+// Account Confirming
 class UserConfirm extends Component {
     componentDidMount = () => {
         const { id } = this.props.match.params;

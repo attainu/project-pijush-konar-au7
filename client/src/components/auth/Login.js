@@ -17,7 +17,7 @@ import withStyles from '@material-ui/core/styles/withStyles';
 const styles = theme => ({
   main: {
     width: 'auto',
-    display: 'block', // Fix IE 11 issue.
+    display: 'block', // To Fix IE 11 issue.
     marginLeft: theme.spacing(3),
     marginRight: theme.spacing(3),
     [theme.breakpoints.up(400 + theme.spacing(3) * 2)]: {
@@ -34,7 +34,7 @@ const styles = theme => ({
     padding: `${theme.spacing(2)}px ${theme.spacing(3)}px ${theme.spacing(3)}px`,
   },
   form: {
-    width: '100%', // Fix IE 11 issue.
+    width: '100%', // To Fix IE 11 issue.
     marginTop: theme.spacing(1),
   },
 });
@@ -123,11 +123,6 @@ class Login extends Component {
               <div className="link-container">
                 <Link to="/register" className="link reg-link">
                     New user? Click here to register!
-                </Link>
-              </div>
-              <div className="link-container">
-                <Link to="#" className="link reg-link">
-                    Forgot password?
                 </Link>
               </div>
             </div>
