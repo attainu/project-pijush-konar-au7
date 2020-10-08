@@ -15,7 +15,7 @@
     "start": "babel-node server.js",
     "server": "env-cmd -f dev.env nodemon --exec babel-node server.js",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "dropdb": "node drop.db.js",
+    "dropdb": "node ./src/db/drop.js",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "keywords": [
