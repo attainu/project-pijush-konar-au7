@@ -18,7 +18,7 @@ The objective of this website/project is to provide a social platform to student
 
 👤 **Pijush Konar**
 
-- Github: [@pijush-konar-au7](https://github.com/pijush-konar-au7)
+- Github: [@pijush-konar-au7](https://github.com/pijushkonar)
 
 👤 **Saidul Mondal**
 
@@ -250,6 +250,6 @@ Open `project-pijush-konar-au7` then create and **dev.env** file in the root and
 
  ## 📝 License
 
-Copyright © 2020 [Pijush Konar](https://github.com/pijush-konar-au7) & [Saidul Mondal](https://github.com/saidul-mondal-au7).
+Copyright © 2020 [Pijush Konar](https://github.com/pijushkonar) & [Saidul Mondal](https://github.com/saidul-mondal-au7).
 
 ---
