@@ -18,7 +18,7 @@ The objective of this website/project is to provide a social platform to student
 
 👤 **Pijush Konar**
 
-- Github: [@pijush-konar-au7](https://github.com/pijushkonar)
+- Github: [@pijushkonar](https://github.com/pijushkonar)
 
 👤 **Saidul Mondal**
 
